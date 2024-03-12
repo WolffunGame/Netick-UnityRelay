@@ -13,7 +13,8 @@ public class Weapon : NetworkBehaviour
     [SerializeField] private Tank.Scripts.Tank _tank;
     [SerializeField] private NetworkObject _bulletPrefab;
     [SerializeField] private MuzzleFlash _muzzleFlash;
-
+    
+    
     [Networked] public byte Ammo { get; set; }
     [Networked] public float CurrentReloadTime { get; set; }
 

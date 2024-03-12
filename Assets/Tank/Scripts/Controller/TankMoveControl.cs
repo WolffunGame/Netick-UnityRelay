@@ -17,7 +17,6 @@ public class TankMoveControl : NetworkBehaviour
     [Networked] private float TurretDir { get; set; }
     [Networked] private float HullDir { get; set; }
 
-
     public override void NetworkStart()
     {
         base.NetworkStart();
