@@ -1,0 +1,14 @@
+*.asset eol=lf
+Assets/Plugins/iOS/Firebase/libFirebaseCppApp.a filter=lfs diff=lfs merge=lfs -text
+Assets/Plugins/Protobuf/PluginGoogle/runtimes/ios/libgrpc.a filter=lfs diff=lfs merge=lfs -text
+Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/11_0_0/firebase-app-unity-11_0_0.aar filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/11_0_0/firebase-app-unity-11_0_0.srcaar filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-11_0_0.bundle filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-11_0_0.dll filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-11_0_0.so filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Editor/network_request.exe filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Editor/generate_xml_from_google_services_json.exe filter=lfs diff=lfs merge=lfs -text
+Assets/Adjust/iOS/AdjustSdk.a filter=lfs diff=lfs merge=lfs -text
+Assets/FacebookSDK/Plugins/Windows/x86/libcrypto-1_1.dll filter=lfs diff=lfs merge=lfs -text
+Assets/FacebookSDK/Plugins/Windows/x64/libcrypto-1_1-x64.dll filter=lfs diff=lfs merge=lfs -text
+*.bundle filter=lfs diff=lfs merge=lfs -text
