@@ -322,6 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6674640751963955606}
+  - component: {fileID: 4389758487003337801}
   m_Layer: 6
   m_Name: TankParent
   m_TagString: Untagged
@@ -346,6 +347,20 @@ Transform:
   - {fileID: 1185371072849741531}
   m_Father: {fileID: 7911653039066033918}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &4389758487003337801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335094400671562540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2824c1950e172434593d63aa5ea6abdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeAmountByAxis: {x: -0.02, y: 0.06, z: -0.02}
+  _shakeSpeed: 40
 --- !u!1 &7042979508877330587
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +438,7 @@ GameObject:
   - component: {fileID: -5421185645810922197}
   - component: {fileID: 6430651140651163753}
   - component: {fileID: -2680542678223487224}
+  - component: {fileID: 8448859175952781624}
   m_Layer: 6
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -592,7 +608,7 @@ MonoBehaviour:
   Children: []
   PrefabIndex: -1
   Persistent: 0
-  predictionMode: 0
+  predictionMode: 1
 --- !u!114 &-5421185645810922197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +624,7 @@ MonoBehaviour:
   RenderTransform: {fileID: 6674640751963955606}
   TeleportDistance: 50
   PositionPrecision: 3
-  Settings: 15
+  Settings: 5
   TransformSpace: 0
   _interpolationSource: 0
 --- !u!114 &6430651140651163753
@@ -624,8 +640,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
+  _hullRotationSpeed: 8
+  _turretRotationSpeed: 14
   _cc: {fileID: 1723606642065551448}
   _turret: {fileID: 1185371072849741531}
+  _null: {fileID: 8452678108642866672}
+  <TurretDir>k__BackingField: 0
+  <HullDir>k__BackingField: 0
 --- !u!114 &-2680542678223487224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +666,28 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7e453c08f65900e45ac5cc243a9aef54, type: 2}
   - {fileID: 2100000, guid: c0b5a8092855bc640a66a3f25c3718ef, type: 2}
   _moveControl: {fileID: 6430651140651163753}
+--- !u!114 &8448859175952781624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917003752575662290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762bc8a37d9348058f75ebf89f91f2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turret: {fileID: 1185371072849741531}
+  _firePoint: {fileID: 1914983726224435810}
+  _reloadTime: 1
+  _maxAmmo: 5
+  _fireInterval: 0.4
+  _tank: {fileID: -2680542678223487224}
+  _bulletPrefab: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
+  <Ammo>k__BackingField: 0
+  <CurrentReloadTime>k__BackingField: 0
+  _fireTime: 0
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1274,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
+--- !u!4 &1914983726224435810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5002116699142556863, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
+  m_PrefabInstance: {fileID: 6915406073108358877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8866115795160154240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2662384361004050013, guid: 86bd09311ff04004d9a475344b051bae, type: 3}

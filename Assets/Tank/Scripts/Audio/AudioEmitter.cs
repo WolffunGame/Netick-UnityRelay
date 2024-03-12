@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FusionExamples.Tanknarok
@@ -80,9 +81,8 @@ namespace FusionExamples.Tanknarok
 			audioSource.pitch = audioClip.GetPitchOffset();
 		}
 
-		private void StopClip()
-		{
-			audioSource.Stop();
-		}
+		private void StopClip() => audioSource.Stop();
+
+		private void OnValidate() => _audioSource ??= GetComponent<AudioSource>();
 	}
 }

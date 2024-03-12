@@ -29,6 +29,7 @@ public class InputHandler : NetworkEventsListener
         var input = sandbox.GetInput<InputData>();
         input.SetAimDirection(_aimDelta.normalized);
         input.SetMoveDirection(_moveDelta.normalized);
+        input.Buttons = _buttonSample;
         _buttonReset |= _buttonSample; 
         sandbox.SetInput(input);
     }
@@ -63,13 +64,16 @@ public class InputHandler : NetworkEventsListener
         if (Input.GetKey(KeyCode.D))
             _moveDelta += Vector2.right;
         var mousePos = Input.mousePosition;
+        
+        var view = _cam.ScreenToViewportPoint(mousePos);
+        var isOutside = view.x < 0 || view.x > 1 || view.y < 0 || view.y > 1;
+        if (isOutside) return;
         var ray = _cam.ScreenPointToRay(mousePos);
         var mouseCollisionPoint = Vector3.zero;
         // RayCast towards the mouse collider box in the world
         if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _mouseRayMask))
             if (hit.collider != null)
                 mouseCollisionPoint = hit.point;
-
         var aimDirection = mouseCollisionPoint - _player.position;
         _aimDelta = new Vector2(aimDirection.x, aimDirection.z);
     }
