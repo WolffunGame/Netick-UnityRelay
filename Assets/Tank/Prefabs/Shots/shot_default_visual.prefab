@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 5422049924759650424}
   - component: {fileID: 3867883247384738835}
   - component: {fileID: 4540109828252303289}
-  - component: {fileID: 7215830595600193188}
   m_Layer: 6
   m_Name: shot_default_visual
   m_TagString: Untagged
@@ -141,24 +140,6 @@ MonoBehaviour:
   PrefabIndex: -1
   Persistent: 0
   predictionMode: 0
---- !u!114 &7215830595600193188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8219689177351906792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 682374318, guid: da78c2c9df60edc4fb5f65b59fa57c41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RenderTransform: {fileID: 7611710913590070502}
-  TeleportDistance: 50
-  PositionPrecision: 3
-  Settings: -1
-  TransformSpace: 0
-  _interpolationSource: 0
 --- !u!1 &9128550410504632716
 GameObject:
   m_ObjectHideFlags: 0

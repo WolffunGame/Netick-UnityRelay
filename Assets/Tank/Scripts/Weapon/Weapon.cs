@@ -19,6 +19,7 @@ public class Weapon : NetworkBehaviour
     [Networked] public float CurrentReloadTime { get; set; }
 
     [Networked] public float FireTime;
+    [Networked] public byte ShotID;
 
     public override void NetworkStart()
     {
@@ -31,7 +32,7 @@ public class Weapon : NetworkBehaviour
         AutoReloadAmmo();
 
         if (FireTime > 0)
-            FireTime -= Time.fixedDeltaTime;
+            FireTime -= Sandbox.FixedDeltaTime;
 
         if (!FetchInput(out InputData input))
             return;
@@ -51,25 +52,27 @@ public class Weapon : NetworkBehaviour
 
     private void Fire()
     {
-        if (!IsServer)
+        FireTime = _fireInterval;
+        Ammo--;
+        ShotID++;
+        if (IsClient)
         {
             if (Sandbox.IsResimulating) 
                 return;
             var tran = transform;
-            Debug.LogError($"Fire {Sandbox.Tick} {Sandbox.IsResimulating}");
             LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
             return;
         }
-        FireTime = _fireInterval;
-        Ammo--;
-        Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation);
+
+        Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation,
+            predictedSpawnKey: new SpawnPredictionKey(ShotID));
         RpcShot();
     }
 
     [Rpc(target: RpcPeers.Everyone)]
     private void RpcShot()
     {
-        if(IsOwner)
+        if(IsOwner || IsServer)
             return;
         var tran = transform;
         LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
