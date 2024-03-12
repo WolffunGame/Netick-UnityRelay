@@ -23,7 +23,7 @@ namespace Tank.Scripts.Projectile
         [Networked] private bool IsDestroyed { get; set; }
         [Networked] private float LifeTime { get; set; }
         
-        [Networked] private NetworkArray<ShotState> _bulletStates = new(12);
+        [Networked(size:12)] private NetworkArray<ShotState> _bulletStates = new(12);
         
         private NetworkArray<ShotState> _pevBulletState = new(12);
         
