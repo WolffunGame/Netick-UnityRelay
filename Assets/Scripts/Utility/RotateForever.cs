@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class RotateForever : MonoBehaviour
 	{

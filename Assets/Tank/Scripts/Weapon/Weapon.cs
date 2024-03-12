@@ -1,6 +1,8 @@
-﻿using Netick;
+﻿using Examples.Tank;
+using Netick;
 using Netick.Unity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Weapon : NetworkBehaviour
 {
@@ -9,13 +11,14 @@ public class Weapon : NetworkBehaviour
     [SerializeField] private float _reloadTime;
     [SerializeField] private byte _maxAmmo = 5;
     [SerializeField] private float _fireInterval = .4f;
-    [SerializeField] Tank.Scripts.Tank _tank;
+    [SerializeField] private Tank.Scripts.Tank _tank;
     [SerializeField] private NetworkObject _bulletPrefab;
+    [SerializeField] private MuzzleFlash _muzzleFlash;
 
     [Networked] public byte Ammo { get; set; }
     [Networked] public float CurrentReloadTime { get; set; }
 
-    [Networked(relevancy:Relevancy.InputSource)] public float _fireTime;
+    [Networked] public float FireTime;
 
     public override void NetworkStart()
     {
@@ -23,17 +26,16 @@ public class Weapon : NetworkBehaviour
         Sandbox.InitializePool(_bulletPrefab.gameObject, 20);
     }
 
-
     public override void NetworkFixedUpdate()
     {
         AutoReloadAmmo();
 
-        if (_fireTime > 0)
-            _fireTime -= Time.fixedDeltaTime;
-        
+        if (FireTime > 0)
+            FireTime -= Time.fixedDeltaTime;
+
         if (!FetchInput(out InputData input))
             return;
-        if (!input.IsDown(InputData.BUTTON_FIRE_PRIMARY) || _fireTime > 0 || Ammo <= 0)
+        if (!input.IsDown(InputData.BUTTON_FIRE_PRIMARY) || FireTime > 0 || Ammo <= 0)
             return;
         Fire();
     }
@@ -49,10 +51,27 @@ public class Weapon : NetworkBehaviour
 
     private void Fire()
     {
-        if(!IsServer)
+        if (!IsServer)
+        {
+            if (Sandbox.IsResimulating) 
+                return;
+            var tran = transform;
+            Debug.LogError($"Fire {Sandbox.Tick} {Sandbox.IsResimulating}");
+            LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
             return;
-        _fireTime = _fireInterval;
+        }
+        FireTime = _fireInterval;
         Ammo--;
         Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation);
+        RpcShot();
+    }
+
+    [Rpc(target: RpcPeers.Everyone)]
+    private void RpcShot()
+    {
+        if(IsOwner)
+            return;
+        var tran = transform;
+        LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
     }
 }

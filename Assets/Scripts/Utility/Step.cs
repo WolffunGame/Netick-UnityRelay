@@ -1,4 +1,4 @@
-namespace FusionExamples.Utility
+namespace Examples.Utility
 {
 	/// <summary>
 	/// Convenient helper to use in for-loops when stepping fractional values but want to be sure to always end exactly at 1.0f

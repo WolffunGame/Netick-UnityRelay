@@ -114,10 +114,10 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 65
-  _speed: 20
+  _speed: 30
   _lifeTime: 1
   _damage: 1
-  _impactEffect: {fileID: 1647817060853758, guid: 1be5a805225d53645826793b190514c4, type: 3}
+  _impactEffect: {fileID: 5974986753548891422, guid: 1be5a805225d53645826793b190514c4, type: 3}
 --- !u!114 &4540109828252303289
 MonoBehaviour:
   m_ObjectHideFlags: 0

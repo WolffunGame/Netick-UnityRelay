@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	[RequireComponent(typeof(AudioSource))]
 	public class AudioEmitter : MonoBehaviour

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class MuzzleFlash : AutoReleasedFx
 	{
@@ -9,11 +9,12 @@ namespace FusionExamples.Tanknarok
 		[SerializeField] private float _timeToFade;
 
 		protected override float Duration => _timeToFade;
-		
-		// public virtual void OnFire(ShotState state)
-		// {
-		// 	_audioEmitter.PlayOneShot();
-		// 	_particleEmitter.Play();
-		// }
+
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+			_audioEmitter.PlayOneShot();
+			_particleEmitter.Play();
+		}
 	}
 }

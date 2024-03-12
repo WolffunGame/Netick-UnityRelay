@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class ExplosionFX : AutoReleasedFx
 	{

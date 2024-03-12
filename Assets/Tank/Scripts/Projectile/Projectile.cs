@@ -1,4 +1,5 @@
 ﻿using System;
+using Examples.Tank;
 using Netick.Unity;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace Tank.Scripts.Projectile
         [SerializeField] private float _speed = 10f;
         [SerializeField] private float _lifeTime = 2f;
         [SerializeField] private float _damage = 1f;
-        [SerializeField] private GameObject _impactEffect;
+        [SerializeField] private ExplosionFX _impactEffect;
 
         public override void NetworkFixedUpdate()
         {
@@ -43,8 +44,7 @@ namespace Tank.Scripts.Projectile
         {
             if (IsServer)
                 return;
-            var hitFx = Instantiate(_impactEffect);
-            hitFx.transform.position = transform.position;
+            LocalObjectPool.Acquire(_impactEffect, transform.position, Quaternion.identity);
         }
     }
 }

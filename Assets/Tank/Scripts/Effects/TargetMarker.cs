@@ -1,4 +1,4 @@
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class TargetMarker : AutoReleasedFx
 	{

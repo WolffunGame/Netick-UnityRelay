@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public abstract class AutoReleasedFx : MonoBehaviour
 	{
@@ -8,18 +8,14 @@ namespace FusionExamples.Tanknarok
 		
 		protected abstract float Duration { get; }
 
-		protected void OnEnable()
-		{
-			_timeToDie = Duration;
-		}
-
+		protected virtual void OnEnable() => _timeToDie = Duration;
 		private void Update()
 		{
 			if (_timeToDie > 0)
 			{
 				_timeToDie -= Time.deltaTime;
-				// if(_timeToDie<=0)
-				// 	LocalObjectPool.Release(this);
+				if(_timeToDie<=0)
+					LocalObjectPool.Release(this);
 			}
 		}		
 	}

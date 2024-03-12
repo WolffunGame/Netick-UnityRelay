@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	[CreateAssetMenu(fileName = "AudioClip", menuName = "ScriptableObjects/AudioClip")]
 	public class AudioClipData : ScriptableObject

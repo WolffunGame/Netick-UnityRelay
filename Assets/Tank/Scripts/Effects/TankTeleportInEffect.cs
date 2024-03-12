@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class TankTeleportInEffect : MonoBehaviour
 	{

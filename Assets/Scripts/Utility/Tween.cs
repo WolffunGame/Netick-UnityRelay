@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FusionExamples.Utility
+namespace Examples.Utility
 {
 	public class Tween
 	{

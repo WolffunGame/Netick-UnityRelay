@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class MusicPlayer : MonoBehaviour
 	{

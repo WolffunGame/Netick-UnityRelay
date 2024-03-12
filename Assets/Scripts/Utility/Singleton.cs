@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FusionExamples.Utility
+namespace Examples.Utility
 {
 	/// <summary>
 	/// Be aware this will not prevent a non singleton constructor

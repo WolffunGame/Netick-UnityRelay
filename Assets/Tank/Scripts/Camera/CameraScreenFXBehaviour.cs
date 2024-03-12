@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace FusionExamples.Tanknarok
+namespace Examples.Tank
 {
 	public class CameraScreenFXBehaviour : MonoBehaviour
 	{
