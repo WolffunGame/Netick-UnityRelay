@@ -19,7 +19,6 @@ public class Weapon : NetworkBehaviour
     [Networked] public float CurrentReloadTime { get; set; }
 
     [Networked] public float FireTime;
-    [Networked] public byte ShotID;
 
     public override void NetworkStart()
     {
@@ -54,7 +53,6 @@ public class Weapon : NetworkBehaviour
     {
         FireTime = _fireInterval;
         Ammo--;
-        ShotID++;
         if (IsClient)
         {
             if (Sandbox.IsResimulating) 
@@ -63,9 +61,7 @@ public class Weapon : NetworkBehaviour
             LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
             return;
         }
-
-        Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation,
-            predictedSpawnKey: new SpawnPredictionKey(ShotID));
+        Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation);
         RpcShot();
     }
 
