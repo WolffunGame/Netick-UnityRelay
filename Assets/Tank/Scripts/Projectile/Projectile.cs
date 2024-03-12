@@ -48,7 +48,7 @@ namespace Tank.Scripts.Projectile
             if (IsDestroyed || !Object.HasValidId)
                 return;
             
-            _bullets.Process(this, (ref ShotState bullet, int _) =>
+            _bullets?.Process(this, (ref ShotState bullet, int _) =>
             {
                 if (bullet.Position.y < -.15f)
                 {
@@ -97,7 +97,6 @@ namespace Tank.Scripts.Projectile
         [OnChanged(nameof(IsDestroyed))]
         private void OnProjectileDestroy(OnChangedData onChangedData)
         {
-            Debug.LogError( $"Projectile Destroyed: {IsDestroyed}");
             if (IsServer)
                 return;
             LocalObjectPool.Acquire(_impactEffect, transform.position, Quaternion.identity);
