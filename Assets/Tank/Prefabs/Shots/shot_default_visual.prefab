@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 5422049924759650424}
   - component: {fileID: 3867883247384738835}
   - component: {fileID: 4540109828252303289}
+  - component: {fileID: 8512851050966969355}
   m_Layer: 6
   m_Name: shot_default_visual
   m_TagString: Untagged
@@ -114,9 +115,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   _speed: 30
-  _lifeTime: 1
-  _damage: 1
+  _lifeTime: 0.5
   _impactEffect: {fileID: 5974986753548891422, guid: 1be5a805225d53645826793b190514c4, type: 3}
+  <IsDestroyed>k__BackingField: 0
+  <LifeTime>k__BackingField: 0
 --- !u!114 &4540109828252303289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,14 +134,33 @@ MonoBehaviour:
   _BroadPhaseFilter: 0
   _SpatialPrioritization: 0
   _NarrowPhaseFilter: 0
+  AddToNetworkLoop: 1
   GlobalObjectIdHash: 0
   SceneId: -1
-  _PrefabId: 6
+  _PrefabId: 7
   PrefabRoot: {fileID: 0}
   Children: []
   PrefabIndex: -1
   Persistent: 0
-  predictionMode: 0
+  _predictionMode: 0
+--- !u!114 &8512851050966969355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8219689177351906792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 682374318, guid: da78c2c9df60edc4fb5f65b59fa57c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RenderTransform: {fileID: 7611710913590070502}
+  TeleportDistance: 2
+  PositionPrecision: 3
+  Settings: -1
+  TransformSpace: 1
+  _interpolationSource: 0
 --- !u!1 &9128550410504632716
 GameObject:
   m_ObjectHideFlags: 0

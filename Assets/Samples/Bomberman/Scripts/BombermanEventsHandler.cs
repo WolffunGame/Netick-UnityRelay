@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Netick;
 using Netick.Unity;
 
 namespace Netick.Samples.Bomberman
@@ -19,7 +20,7 @@ namespace Netick.Samples.Bomberman
         private GameObject               _playerPrefab;
         private Queue<Vector3>           _freePositions = new Queue<Vector3>(4);
 
-        // ******************** Netick Callbacks ********************
+        // ******************* Netick Callbacks *******************
 
         // This is called on the server and the clients when Netick has started.
         public override void OnStartup(NetworkSandbox sandbox)
@@ -32,19 +33,17 @@ namespace Netick.Samples.Bomberman
         public override void OnInput(NetworkSandbox sandbox)
         {
             var input = sandbox.GetInput<BombermanInput>();
+
             input.Movement   = GetMovementDir();
             input.PlantBomb |= Input.GetKeyDown(KeyCode.Space);
             sandbox.SetInput(input);
         }
 
-        // This is called on the server when a client has connected.
-        public override void OnClientConnected(NetworkSandbox sandbox, NetworkConnection client)
+        // This is called on the server when a player has connected.
+        public override void OnPlayerConnected(NetworkSandbox sandbox, NetworkPlayer networkPlayer)
         {
-            var player = sandbox.NetworkInstantiate(_playerPrefab, SpawnPositions[Sandbox.ConnectedClients.Count], Quaternion.identity, client).GetComponent<BombermanController>();
-
-            client.PlayerObject = player.gameObject;
-            player.PlayerNumber = Sandbox.ConnectedClients.Count;
-
+            var player                 = sandbox.NetworkInstantiate(_playerPrefab, SpawnPositions[Sandbox.ConnectedPlayers.Count], Quaternion.identity, networkPlayer).GetComponent<BombermanController>();
+            networkPlayer.PlayerObject = player.gameObject;
             AlivePlayers.Add(player);
         }
 
@@ -67,15 +66,9 @@ namespace Netick.Samples.Bomberman
                 return;
 
             _freePositions.Clear();
-            
+
             for (int i = 0; i < 4; i++)
                 _freePositions.Enqueue(SpawnPositions[i]);
-            
-            // for (int i = 0; i < sandbox.ConnectedPlayers.Count; i++)
-            // {
-            //     var player = sandbox.NetworkInstantiate(_playerPrefab, SpawnPositions[i], Quaternion.identity, sandbox.ConnectedPlayers[i]);
-            //     sandbox.ConnectedPlayers[i].PlayerObject = player.gameObject;
-            // }
 
             RestartGame();
         }
@@ -87,6 +80,8 @@ namespace Netick.Samples.Bomberman
             DestroyLevel();
             CreateNewLevel();
 
+            foreach (var player in Sandbox.ConnectedPlayers)
+                ((GameObject)player.PlayerObject).GetComponent<BombermanController>().Respawn();
         }
 
         private void DestroyLevel()
@@ -99,6 +94,7 @@ namespace Netick.Samples.Bomberman
             foreach (var bomb in bombs)
                 Sandbox.Destroy(bomb.Object);
         }
+
 
         private void CreateNewLevel()
         {

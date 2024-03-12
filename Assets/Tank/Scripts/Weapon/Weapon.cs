@@ -2,7 +2,6 @@
 using Netick;
 using Netick.Unity;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Weapon : NetworkBehaviour
 {
@@ -57,8 +56,7 @@ public class Weapon : NetworkBehaviour
         {
             if (Sandbox.IsResimulating) 
                 return;
-            var tran = transform;
-            LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
+            LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, _firePoint);
             return;
         }
         Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation);
@@ -68,9 +66,8 @@ public class Weapon : NetworkBehaviour
     [Rpc(target: RpcPeers.Everyone)]
     private void RpcShot()
     {
-        if(IsOwner || IsServer)
+        if(IsInputSource)
             return;
-        var tran = transform;
-        LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, tran);
+        LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, _firePoint);
     }
 }

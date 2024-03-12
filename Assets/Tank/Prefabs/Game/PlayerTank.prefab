@@ -600,14 +600,15 @@ MonoBehaviour:
   _BroadPhaseFilter: 0
   _SpatialPrioritization: 0
   _NarrowPhaseFilter: 0
+  AddToNetworkLoop: 1
   GlobalObjectIdHash: 0
   SceneId: -1
-  _PrefabId: 5
+  _PrefabId: 6
   PrefabRoot: {fileID: 0}
   Children: []
   PrefabIndex: -1
   Persistent: 0
-  predictionMode: 1
+  _predictionMode: 0
 --- !u!114 &-5421185645810922197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,10 +622,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RenderTransform: {fileID: 6674640751963955606}
-  TeleportDistance: 50
+  TeleportDistance: 2
   PositionPrecision: 3
   Settings: 5
-  TransformSpace: 0
+  TransformSpace: 1
   _interpolationSource: 0
 --- !u!114 &6430651140651163753
 MonoBehaviour:
@@ -638,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01481116f3e41e9baa7d191358e69d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _moveSpeed: 8
   _hullRotationSpeed: 8
   _turretRotationSpeed: 14
   _cc: {fileID: 1723606642065551448}
@@ -1281,7 +1282,7 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 8565631724367042892, guid: 7d01ea3d7489caf45af46db5d0da9098, type: 3}
   <Ammo>k__BackingField: 0
   <CurrentReloadTime>k__BackingField: 0
-  _fireTime: 0
+  FireTime: 0
 --- !u!4 &1914983726224435810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5002116699142556863, guid: 86bd09311ff04004d9a475344b051bae, type: 3}

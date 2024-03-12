@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
+using Netick;
 using Netick.Unity;
 using Network = Netick.Unity.Network;
-using Random = UnityEngine.Random;
 
 namespace Netick.Samples
 {
@@ -39,23 +38,28 @@ namespace Netick.Samples
 
             else if (AutoStart)
             {
-                if (Network.Instance != null) return;
-                switch (Mode)
+                if (Network.Instance == null)
                 {
-                    case StartMode.Server:
-                        Network.StartAsServer(Transport, Port, SandboxPrefab);
-                        break;
-                    case StartMode.Client:
-                        Network.StartAsClient(Transport, Port, SandboxPrefab).Connect(Port, ServerIPAddress);
-                        break;
-                    case StartMode.MultiplePeers:
-                        var sandboxes = Network.StartAsMultiplePeers(Transport, Port, SandboxPrefab, StartServerInMultiplePeersMode, Clients);
-                        if (AutoConnect)
-                            foreach (var t in sandboxes.Clients)
-                                t.Connect(Port, ServerIPAddress);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    switch (Mode)
+                    {
+                        case StartMode.Server:
+                            Network.StartAsServer(Transport, Port, SandboxPrefab);
+                            break;
+                        case StartMode.Client:
+                            Network.StartAsClient(Transport, Port, SandboxPrefab).Connect(Port, ServerIPAddress);
+                            break;
+                        case StartMode.MultiplePeers:
+                            var sandboxes = Network.StartAsMultiplePeers(Transport, Port, SandboxPrefab, StartServerInMultiplePeersMode, true, Clients);
+
+                            if (AutoConnect)
+                            {
+                                for (int i = 0; i < sandboxes.Clients.Length; i++)
+                                    sandboxes.Clients[i].Connect(Port, ServerIPAddress);
+                            }
+
+
+                            break;
+                    }
                 }
             }
         }
@@ -87,20 +91,25 @@ namespace Netick.Samples
                 return;
             }
 
-            if (GUI.Button(new Rect(10, 10, 200, 50), "Run Client"))
+            if (GUI.Button(new Rect(10, 10, 200, 50), "Run Host"))
+            {
+               Network.StartAsHost(Transport, Port, SandboxPrefab);
+            }
+
+            if (GUI.Button(new Rect(10, 70, 200, 50), "Run Client"))
             {
                 var sandbox = Network.StartAsClient(Transport, Port, SandboxPrefab);
                 sandbox.Connect(Port, ServerIPAddress);
             }
 
-            if (GUI.Button(new Rect(10, 70, 200, 50), "Run Server"))
+             if (GUI.Button(new Rect(10, 130, 200, 50), "Run Server"))
             {
                 Network.StartAsServer(Transport, Port, SandboxPrefab);
             }
 
-            if (GUI.Button(new Rect(10, 130, 200, 50), "Run Server + Client"))
+            if (GUI.Button(new Rect(10, 190, 200, 50), "Run Host + Client"))
             {
-                var sandboxes = Network.StartAsMultiplePeers(Transport, Port, SandboxPrefab, StartServerInMultiplePeersMode, Clients);
+                var sandboxes = Network.StartAsMultiplePeers(Transport, Port, SandboxPrefab, StartServerInMultiplePeersMode, true, Clients);
 
                 if (AutoConnect)
                 {
@@ -109,7 +118,7 @@ namespace Netick.Samples
                 }
             }
 
-            ServerIPAddress = GUI.TextField(new Rect(10, 220, 200, 50), ServerIPAddress);
+            ServerIPAddress = GUI.TextField(new Rect(10, 250, 200, 50), ServerIPAddress);
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using Netick;
+﻿using System;
+using Netick;
 using Netick.Unity;
 using Tank.Scripts.Utility;
 using UnityEngine;
@@ -34,10 +35,8 @@ public class TankMoveControl : NetworkBehaviour
             return;
         var moveDir = input.GetMoveDirection().XOY();
         var aimDir = input.GetAimDirection().XOY();
-
         RotateTurret(aimDir);
         RotateHull(moveDir);
-
         if (!_cc.isGrounded)
             moveDir.y += Physics.gravity.y;
         _cc.Move(moveDir * _moveSpeed * Sandbox.FixedDeltaTime);
@@ -45,7 +44,7 @@ public class TankMoveControl : NetworkBehaviour
         HullDir = _null.rotation.eulerAngles.y;
     }
 
-    public override void NetworkRender()
+    private void LateUpdate()
     {
         if (IsOwner)
             return;
@@ -53,9 +52,8 @@ public class TankMoveControl : NetworkBehaviour
         var turretRotation = Quaternion.Euler(0, TurretDir, 0);
         rotation = Quaternion.Slerp(rotation, turretRotation, 20 * Time.deltaTime);
         _turret.rotation = rotation;
-
         var hullRotation = _null.rotation;
-        hullRotation = Quaternion.Slerp(hullRotation, Quaternion.Euler(0, HullDir, 0), 20 * Time.deltaTime);
+        hullRotation = Quaternion.Slerp(hullRotation, Quaternion.Euler(0, HullDir, 0), 30 * Time.deltaTime);
         _null.rotation = hullRotation;
     }
 

@@ -51,14 +51,15 @@ MonoBehaviour:
   _BroadPhaseFilter: 0
   _SpatialPrioritization: 0
   _NarrowPhaseFilter: 0
+  AddToNetworkLoop: 1
   GlobalObjectIdHash: 0
   SceneId: -1
-  _PrefabId: 1
+  _PrefabId: 2
   PrefabRoot: {fileID: 0}
   Children: []
   PrefabIndex: -1
   Persistent: 0
-  predictionMode: 0
+  _predictionMode: 0
 --- !u!114 &4040699876961413387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,9 +94,7 @@ MonoBehaviour:
   SpawnPos: {x: 0, y: 0, z: 0}
   _speed: 6
   _speedBoostMultiplayer: 2
-  _bombPrefab: {fileID: 6276855212308729943, guid: 84bdaf9c034444f408cc66234ee3344d, type: 3}
   <Score>k__BackingField: 0
-  <PlayerNumber>k__BackingField: 0
   <Alive>k__BackingField: 1
   <MaxBombs>k__BackingField: 1
   <SpeedPowerUpTimer>k__BackingField: 0
