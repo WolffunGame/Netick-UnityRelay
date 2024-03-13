@@ -1,7 +1,6 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Examples.Tank;
-using FusionHelpers;
+using Helpers;
 using Netick;
 using Netick.Unity;
 using UnityEngine;

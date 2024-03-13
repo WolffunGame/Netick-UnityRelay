@@ -2,7 +2,7 @@ using Netick.Unity;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace FusionHelpers
+namespace Helpers
 {
     /// <summary>
     /// ISparseState represents the networked part of a simple object that require infrequent (network) updates,
@@ -102,7 +102,7 @@ namespace FusionHelpers
             var sandbox = owner.Sandbox;
             
             var renderTime = sandbox.Engine.LocalInterpolation;
-            var localRenderTime = renderTime.Time - sandbox.FixedDeltaTime + (double)renderTime.Alpha * sandbox.DeltaTime;
+            var localRenderTime = renderTime.Time - sandbox.FixedDeltaTime + (double)renderTime.Alpha * sandbox.FixedDeltaTime;
 
             for (var i = 0; i < _entries.Length; i++)
             {
@@ -114,8 +114,8 @@ namespace FusionHelpers
 
                 // Note: t may be less than zero if we're rendering across several ticks and StartTick is somewhere in-between.
                 // (E.g. from=100, to=102 with start=101 and alpha=0.25 will place us ahead of the start tick)
-                var t = localRenderTime - state.StartTick * sandbox.DeltaTime;
-                var t1 = (state.EndTick - state.StartTick) * sandbox.DeltaTime;
+                var t = localRenderTime - state.StartTick * sandbox.FixedDeltaTime;
+                var t1 = (state.EndTick - state.StartTick) * sandbox.FixedDeltaTime;
 
                 var isLastRender = t >= t1 && e.Enabled;
                 var isFirstRender = false;
@@ -185,7 +185,7 @@ namespace FusionHelpers
             {
                 var state = _states[i];
                 var simTick = sandbox.Tick.TickValue;
-                var t = (simTick - state.StartTick) * sandbox.DeltaTime;
+                var t = (simTick - state.StartTick) * sandbox.FixedDeltaTime;
                 if (simTick > state.EndTick) continue;
                 state.Extrapolate(t, _prefab);
                 if (!process(ref state, simTick)) continue;
@@ -206,7 +206,7 @@ namespace FusionHelpers
         public void Add(NetworkSandbox sandbox, T state, float secondsToLive)
         {
             state.StartTick = sandbox.Tick.TickValue;
-            state.EndTick = state.StartTick + Mathf.Max(1, (int)(secondsToLive / sandbox.DeltaTime));
+            state.EndTick = state.StartTick + Mathf.Max(1, (int)(secondsToLive / sandbox.FixedDeltaTime));
 
             for (var i = 0; i < _states.Length; i++)
             {
