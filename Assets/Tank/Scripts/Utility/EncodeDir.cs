@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class EncodeDir
 {
@@ -8,7 +7,7 @@ public static class EncodeDir
         if (dir == default)
             return default;
         var directionAngle = Vector2.SignedAngle(Vector2.right, dir);
-        directionAngle = (((directionAngle + 360) % 360) / 2) + 1;
+        directionAngle = (directionAngle + 360) % 360 / 2 + 1;
         return (byte)directionAngle;
     }
 

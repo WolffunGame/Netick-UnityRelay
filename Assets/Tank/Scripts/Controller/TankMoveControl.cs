@@ -16,6 +16,8 @@ public class TankMoveControl : NetworkBehaviour
 
     [Networked] private float TurretDir { get; set; }
     [Networked] private float HullDir { get; set; }
+    
+    public float TurretDirection => TurretDir;
 
     public override void NetworkStart()
     {
@@ -45,12 +47,10 @@ public class TankMoveControl : NetworkBehaviour
 
     public override void NetworkRender()
     {
-        if (IsOwner)
-            return;
         var rotation = _turret.rotation;
         var turretRotation = Quaternion.Euler(0, TurretDir, 0);
         rotation = Quaternion.Slerp(rotation, turretRotation, 20 * Time.deltaTime);
-        _turret.rotation = turretRotation;
+        _turret.rotation = rotation;
         var hullRotation = _null.rotation;
         hullRotation = Quaternion.Slerp(hullRotation, Quaternion.Euler(0, HullDir, 0), 30 * Time.deltaTime);
         _null.rotation = hullRotation;

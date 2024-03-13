@@ -1,5 +1,6 @@
 ﻿using Netick;
 using Netick.Unity;
+using Tank.Scripts.Utility;
 using UnityEngine;
 
 namespace Tank.Scripts
@@ -11,7 +12,8 @@ namespace Tank.Scripts
         
         public override void OnClientConnected(NetworkSandbox sandbox, NetworkConnection client)
         {
-            var player = sandbox.NetworkInstantiate(_playerPrefab, _spawnPositions[Sandbox.ConnectedClients.Count].position, Quaternion.identity, client);
+            var position = Random.insideUnitCircle * 4;
+            var player = sandbox.NetworkInstantiate(_playerPrefab,position.XOY() , Quaternion.identity, client);
             client.PlayerObject = player.gameObject;
             if (player.TryGetComponent(out Tank tank))
                 tank.TankIndex = (byte) Sandbox.ConnectedClients.Count;

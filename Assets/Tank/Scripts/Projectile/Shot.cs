@@ -1,6 +1,7 @@
 ﻿using Examples.Tank;
 using Helpers;
 using Netick.Unity;
+using Tank.Scripts.Utility;
 using UnityEngine;
 
 public struct ShotState : ISparseState<Shot>
@@ -102,7 +103,8 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
         if (isFirstRender && _muzzleFlash)
             LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),
                 owner.transform);
-
+        if(owner.IsClient)
+            Debug.DrawLine(state.Position, state.Position + Vector3.up * 2, Color.red, 4);
         _xForm.forward = state.Direction;
         _xForm.position = state.Position;
     }

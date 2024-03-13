@@ -2,6 +2,7 @@
 using Helpers;
 using Netick;
 using Netick.Unity;
+using Tank.Scripts.Utility;
 using UnityEngine;
 
 public class Weapon : NetworkBehaviour
@@ -22,7 +23,7 @@ public class Weapon : NetworkBehaviour
     [Networked] public byte BulletID { get; set; }
 
     [Networked(size: 32)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(32);
-    
+
     private readonly NetworkArray<ShotState> _fromStates = new(32);
 
     private SparseCollection<ShotState, Shot> _bullets;
@@ -51,7 +52,7 @@ public class Weapon : NetworkBehaviour
             return;
         if (!input.IsDown(InputData.BUTTON_FIRE_PRIMARY) || FireTime > 0 || Ammo <= 0)
             return;
-        Fire();
+        Fire(input.GetAimDirection().XOY());
     }
 
     private void ProcessBullets()
@@ -79,10 +80,12 @@ public class Weapon : NetworkBehaviour
     {
         for (var i = 0; i < _bulletStates.Length; i++)
         {
-            if (!_interpolation.GetInterpolationData<ShotState>(InterpolationSource.Auto, i, out var from, out _,out _))
-                 continue;
+            if (!_interpolation.GetInterpolationData<ShotState>(InterpolationSource.Auto, i, out var from, out _,
+                    out _))
+                continue;
             _fromStates[i] = from;
         }
+
         _bullets?.Render(this, _fromStates);
     }
 
@@ -97,12 +100,14 @@ public class Weapon : NetworkBehaviour
         CurrentReloadTime = 0;
     }
 
-    private void Fire()
+    private void Fire(Vector3 aimDir)
     {
         FireTime = _fireInterval;
         Ammo--;
         BulletID++;
-        _bullets.Add(Sandbox, new ShotState(_firePoint.position, _firePoint.forward), _bulletShotPrefab.TimeToLive);
+        var position = _firePoint.position;
+        Draw.DrawArrow(position, position + aimDir * 10, Color.blue, 2);
+        _bullets.Add(Sandbox, new ShotState(position, aimDir), _bulletShotPrefab.TimeToLive);
     }
 
     public override void NetworkDestroy() => _bullets.Clear();

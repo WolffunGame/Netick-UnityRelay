@@ -19,9 +19,13 @@ namespace Tank.Scripts
         public Material PlayerMaterial { get; set; }
         public Color PlayerColor { get; set; }
         
+        public TankMoveControl MoveControl => _moveControl;
+        
         [OnChanged(nameof(TankIndex))]
         private void OnIndexChange(OnChangedData onChangedData)
         {
+            if (TankIndex >= _tankMaterials.Length)
+                return;
             PlayerMaterial = Instantiate(_tankMaterials[TankIndex]);
             PlayerColor = PlayerMaterial.GetColor(EnergyColor);
             var tankParts = GetComponentsInChildren<TankPartMesh>();
@@ -29,9 +33,6 @@ namespace Tank.Scripts
                 part.SetMaterial(PlayerMaterial);
         }
 
-        private void OnValidate()
-        {
-            _moveControl??=GetComponent<TankMoveControl>();
-        }
+        private void OnValidate()=> _moveControl??=GetComponent<TankMoveControl>();
     }
 }
