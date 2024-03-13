@@ -1,4 +1,5 @@
 ﻿using Examples.Tank;
+using Helpers;
 using Netick;
 using Netick.Unity;
 using UnityEngine;
@@ -13,22 +14,35 @@ public class Weapon : NetworkBehaviour
     [SerializeField] private Tank.Scripts.Tank _tank;
     [SerializeField] private NetworkObject _bulletPrefab;
     [SerializeField] private MuzzleFlash _muzzleFlash;
-    
-    
+    [SerializeField] private Shot _bulletShotPrefab;
+
     [Networked] public byte Ammo { get; set; }
     [Networked] public float CurrentReloadTime { get; set; }
+    [Networked] public float FireTime { get; set; }
+    [Networked] public byte BulletID { get; set; }
 
-    [Networked] public float FireTime;
+    [Networked(size: 32)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(32);
+    
+    private readonly NetworkArray<ShotState> _fromStates = new(32);
+
+    private SparseCollection<ShotState, Shot> _bullets;
+
+    private Interpolator _interpolation;
+
+    public void Start() => _bullets = new SparseCollection<ShotState, Shot>(_bulletStates, _bulletShotPrefab);
 
     public override void NetworkStart()
     {
         base.NetworkStart();
         Sandbox.InitializePool(_bulletPrefab.gameObject, 20);
+        _interpolation = FindInterpolator(nameof(_bulletStates));
     }
 
     public override void NetworkFixedUpdate()
     {
         AutoReloadAmmo();
+
+        ProcessBullets();
 
         if (FireTime > 0)
             FireTime -= Sandbox.FixedDeltaTime;
@@ -40,11 +54,45 @@ public class Weapon : NetworkBehaviour
         Fire();
     }
 
+    private void ProcessBullets()
+    {
+        _bullets?.Process(this, (ref ShotState bullet, int _) =>
+        {
+            if (bullet.Position.y < -.15f)
+            {
+                bullet.EndTick = Sandbox.Tick.TickValue;
+                return true;
+            }
+
+            if (_bulletShotPrefab.IsHitScan || bullet.EndTick <= Sandbox.Tick.TickValue) return false;
+            var dir = bullet.Direction.normalized;
+            var length = Mathf.Max(_bulletShotPrefab.Radius, _bulletShotPrefab.Speed * Sandbox.FixedDeltaTime);
+            if (!Sandbox.Physics.Raycast(bullet.Position - length * dir, dir, out var hitInfo, length,
+                    _bulletShotPrefab.HitMask.value, QueryTriggerInteraction.Ignore)) return false;
+            bullet.Position = hitInfo.point;
+            bullet.EndTick = Sandbox.Tick.TickValue;
+            return true;
+        });
+    }
+
+    public override void NetworkRender()
+    {
+        for (var i = 0; i < _bulletStates.Length; i++)
+        {
+            if (!_interpolation.GetInterpolationData<ShotState>(InterpolationSource.Auto, i, out var from, out _,out _))
+                 continue;
+            _fromStates[i] = from;
+        }
+        _bullets?.Render(this, _fromStates);
+    }
+
     private void AutoReloadAmmo()
     {
-        if (Ammo >= _maxAmmo) return;
-        CurrentReloadTime += Time.fixedDeltaTime;
-        if (!(CurrentReloadTime >= _reloadTime)) return;
+        if (Ammo >= _maxAmmo)
+            return;
+        CurrentReloadTime += Sandbox.FixedDeltaTime;
+        if (!(CurrentReloadTime >= _reloadTime))
+            return;
         Ammo++;
         CurrentReloadTime = 0;
     }
@@ -53,22 +101,9 @@ public class Weapon : NetworkBehaviour
     {
         FireTime = _fireInterval;
         Ammo--;
-        if (IsClient)
-        {
-            if (Sandbox.IsResimulating) 
-                return;
-            LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, _firePoint);
-            return;
-        }
-        Sandbox.NetworkInstantiate(_bulletPrefab.gameObject, _firePoint.position, _turret.rotation);
-        RpcShot();
+        BulletID++;
+        _bullets.Add(Sandbox, new ShotState(_firePoint.position, _firePoint.forward), _bulletShotPrefab.TimeToLive);
     }
 
-    [Rpc(target: RpcPeers.Everyone)]
-    private void RpcShot()
-    {
-        if(IsInputSource)
-            return;
-        LocalObjectPool.Acquire(_muzzleFlash, _firePoint.position, _firePoint.rotation, _firePoint);
-    }
+    public override void NetworkDestroy() => _bullets.Clear();
 }

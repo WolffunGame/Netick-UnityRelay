@@ -1,3 +1,4 @@
+using Netick;
 using Netick.Unity;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -32,7 +33,8 @@ namespace Helpers
     /// </summary>
     /// <typeparam name="T">The actual type of the sparse state</typeparam>
     /// <typeparam name="TP">The MonoBehaviour used to visualise the sparse state</typeparam>
-    public interface ISparseVisual<in T, TP> where T : unmanaged, ISparseState<TP> where TP : MonoBehaviour, ISparseVisual<T, TP>
+    public interface ISparseVisual<in T, TP> where T : unmanaged, ISparseState<TP>
+        where TP : MonoBehaviour, ISparseVisual<T, TP>
     {
         /// <summary>
         /// This method is called every frame to update the visual game object to match the current render state.
@@ -50,7 +52,8 @@ namespace Helpers
     /// </summary>
     /// <typeparam name="T">The actual type of the sparse state</typeparam>
     /// <typeparam name="TP">The MonoBehaviour used to visualise the sparse state</typeparam>
-    public class SparseCollection<T, TP> where T : unmanaged, ISparseState<TP> where TP : MonoBehaviour, ISparseVisual<T, TP>
+    public class SparseCollection<T, TP> where T : unmanaged, ISparseState<TP>
+        where TP : MonoBehaviour, ISparseVisual<T, TP>
     {
         // Internal struct for keeping track of matching states and visuals
         private struct Entry
@@ -100,9 +103,8 @@ namespace Helpers
         public void Render(NetworkBehaviour owner, NetworkArray<T> states)
         {
             var sandbox = owner.Sandbox;
-            
-            var renderTime = sandbox.Engine.LocalInterpolation;
-            var localRenderTime = renderTime.Time - sandbox.FixedDeltaTime + (double)renderTime.Alpha * sandbox.FixedDeltaTime;
+            Interpolation interpolation = owner.IsInputSource || owner.IsServer? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
+            var localRenderTime = interpolation.Time - sandbox.FixedDeltaTime + interpolation.Alpha * sandbox.FixedDeltaTime;
 
             for (var i = 0; i < _entries.Length; i++)
             {
@@ -120,6 +122,7 @@ namespace Helpers
                 var isLastRender = t >= t1 && e.Enabled;
                 var isFirstRender = false;
 
+                //e.Enabled =true;
                 // We delay disabling of the object one frame since "last render" isn't really a last render if the object is immediately hidden.
                 e.Enabled = t >= 0 && t < t1;
 
@@ -128,7 +131,7 @@ namespace Helpers
                 {
                     if (!e.Visual)
                     {
-                        e.Visual = Object.Instantiate(_prefab);
+                        e.Visual = LocalObjectPool.Acquire(_prefab);
                         isFirstRender = true;
                     }
 
@@ -144,7 +147,7 @@ namespace Helpers
                             ApplyState(state, e, 0, true, false);
                             break;
                         case false when !isLastRender:
-                            ApplyState(state, e, (float)t, false, false);
+                            ApplyState(state, e, t, false, false);
                             break;
                     }
 
@@ -155,12 +158,13 @@ namespace Helpers
                 // Done modifying the entry struct, copy it back to the array
                 _entries[i] = e;
             }
+
             return;
+
             void ApplyState(T state, Entry e, float t, bool isFirstRender, bool isLastRender)
             {
                 // Update state to t
                 state.Extrapolate(t, _prefab);
-
                 // Update visual to match the state
                 e.Visual.ApplyStateToVisual(owner, state, t, isFirstRender, isLastRender);
             }
@@ -179,7 +183,6 @@ namespace Helpers
         {
             if (owner.IsProxy)
                 return;
-
             var sandbox = owner.Sandbox;
             for (var i = 0; i < _states.Length; i++)
             {
@@ -227,7 +230,7 @@ namespace Helpers
             {
                 var e = _entries[i];
                 if (e.Visual)
-                    Object.Destroy(e.Visual.gameObject);
+                    LocalObjectPool.Release(e.Visual);
                 _entries[i] = default;
             }
         }

@@ -43,14 +43,14 @@ public class TankMoveControl : NetworkBehaviour
         HullDir = _null.rotation.eulerAngles.y;
     }
 
-    private void LateUpdate()
+    public override void NetworkRender()
     {
         if (IsOwner)
             return;
         var rotation = _turret.rotation;
         var turretRotation = Quaternion.Euler(0, TurretDir, 0);
         rotation = Quaternion.Slerp(rotation, turretRotation, 20 * Time.deltaTime);
-        _turret.rotation = rotation;
+        _turret.rotation = turretRotation;
         var hullRotation = _null.rotation;
         hullRotation = Quaternion.Slerp(hullRotation, Quaternion.Euler(0, HullDir, 0), 30 * Time.deltaTime);
         _null.rotation = hullRotation;
