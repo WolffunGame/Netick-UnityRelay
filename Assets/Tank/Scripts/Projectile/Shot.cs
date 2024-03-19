@@ -1,9 +1,10 @@
-﻿using Examples.Tank;
+﻿using System;
+using Examples.Tank;
 using Helpers;
 using Netick.Unity;
-using Tank.Scripts.Utility;
 using UnityEngine;
 
+[Serializable]
 public struct ShotState : ISparseState<Shot>
 {
     /// <summary>
@@ -19,13 +20,17 @@ public struct ShotState : ISparseState<Shot>
     public Vector3 Position;
 
     public Vector3 Direction;
+    
+    public float Speed;
+    
 
-    public ShotState(Vector3 startPosition, Vector3 direction)
+    public ShotState(Vector3 startPosition, Vector3 direction, float speed)
     {
         StartTick = 0;
         EndTick = 0;
         Position = startPosition;
         Direction = direction;
+        Speed = speed;
     }
 
     public void Extrapolate(float t, Shot prefab)
@@ -45,9 +50,11 @@ public struct ShotState : ISparseState<Shot>
         p.y = 0.05f; // Return the position with a slight y offset to avoid placing target where it will end up z-fighting with the ground;
         return p;
     }
+    
+    public Vector3 GetPositionAt(float t) => Position + t * Speed * Direction;
 
     private Vector3 GetPositionAt(float t, Shot prefab) =>
-        Position + t * (prefab.Speed * Direction + 0.5f * t * prefab.Gravity);
+        Position + t * (Speed * Direction + 0.5f * t * prefab.Gravity);
 
     private Vector3 GetDirectionAt(float t, Shot prefab) =>
         prefab.Speed == 0 ? Direction : (prefab.Speed * Direction + t * prefab.Gravity).normalized;
@@ -80,6 +87,8 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
     public byte AreaDamage => _areaDamage;
     public float TimeToLive => _timeToLive;
     public bool IsHitScan => _isHitScan;
+    
+    private bool _isFirstRender;
 
     private Transform _xForm;
     private ISparseVisual<ShotState, Shot> _sparseVisualImplementation;
@@ -88,23 +97,33 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
 
     public bool IsServerVisible => _serverVisible;
 
+    private void OnEnable() => _isFirstRender = true;
+
+    private void OnDisable()
+    {
+        _isFirstRender = false;
+        LocalObjectPool.Acquire(_detonationPrefab, transform.position, Quaternion.identity);
+    }
+
     public void ApplyStateToVisual(NetworkBehaviour owner, ShotState state, float t, bool isFirstRender,
         bool isLastRender)
     {
-        if (isLastRender)
-        {
-            // Slightly hacky, but we never move the hitScan so its current position is always the muzzle, and target is start + direction
-            if (IsHitScan)
-                LocalObjectPool.Acquire(_detonationPrefab, state.Position + state.Direction, Quaternion.identity);
-            else
-                LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
-        }
-
-        if (isFirstRender && _muzzleFlash)
-            LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),
-                owner.transform);
-        if(owner.IsClient)
-            Debug.DrawLine(state.Position, state.Position + Vector3.up * 2, Color.red, 4);
+        if(_isFirstRender)
+            if(_muzzleFlash)
+                LocalObjectPool.Acquire(_muzzleFlash,  state.Position, Quaternion.LookRotation(state.Direction), owner.transform);
+        // if (isLastRender)
+        // {
+        //     // Slightly hacky, but we never move the hitScan so its current position is always the muzzle, and target is start + direction
+        //     if (IsHitScan)
+        //         LocalObjectPool.Acquire(_detonationPrefab, state.Position + state.Direction, Quaternion.identity);
+        //     else
+        //         LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
+        // }
+        //
+        // if (isFirstRender && _muzzleFlash)
+        //     LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),
+        //         owner.transform);
+        _isFirstRender=false;
         _xForm.forward = state.Direction;
         _xForm.position = state.Position;
     }

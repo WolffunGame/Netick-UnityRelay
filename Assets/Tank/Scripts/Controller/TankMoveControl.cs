@@ -14,13 +14,17 @@ public class TankMoveControl : NetworkBehaviour
     [SerializeField] private Transform _turret;
     [SerializeField] private Transform _null;
 
-    [Networked] private float TurretDir { get; set; }
-    [Networked] private float HullDir { get; set; }
-    
-    public float TurretDirection => TurretDir;
+    [Networked] [Smooth(false)] private Quaternion TurretDir { get; set; }
+    [Networked] [Smooth(false)] private Quaternion HullDir { get; set; }
+
+    private Interpolator _interpolationDir;
+    private Interpolator _interpolationHub;
+
 
     public override void NetworkStart()
     {
+        _interpolationDir = FindInterpolator(nameof(TurretDir));
+        _interpolationHub = FindInterpolator(nameof(HullDir));
         base.NetworkStart();
         if (!IsClient || InputSource?.Engine == null || Sandbox.Engine.LocalPlayer == null ||
             InputSource.Engine.LocalPlayer != Sandbox.Engine.LocalPlayer)
@@ -41,19 +45,21 @@ public class TankMoveControl : NetworkBehaviour
         if (!_cc.isGrounded)
             moveDir.y += Physics.gravity.y;
         _cc.Move(moveDir * _moveSpeed * Sandbox.FixedDeltaTime);
-        TurretDir = _turret.rotation.eulerAngles.y;
-        HullDir = _null.rotation.eulerAngles.y;
+        TurretDir = _turret.rotation;
+        HullDir = _null.rotation;
+        //TurretDir = _turret.rotation.eulerAngles.y;
+        //HullDir = _null.rotation.eulerAngles.y;
     }
 
     public override void NetworkRender()
     {
-        var rotation = _turret.rotation;
-        var turretRotation = Quaternion.Euler(0, TurretDir, 0);
-        rotation = Quaternion.Slerp(rotation, turretRotation, 20 * Time.deltaTime);
-        _turret.rotation = rotation;
-        var hullRotation = _null.rotation;
-        hullRotation = Quaternion.Slerp(hullRotation, Quaternion.Euler(0, HullDir, 0), 30 * Time.deltaTime);
-        _null.rotation = hullRotation;
+        if (_interpolationDir.GetInterpolationData<Quaternion>(InterpolationSource.Auto, out var from, out var to,
+                out var alpha))
+            _turret.rotation = Quaternion.Slerp(from, to, alpha);
+        if (_interpolationHub.GetInterpolationData(InterpolationSource.Auto, out from, out to, out alpha))
+            _null.rotation = Quaternion.Slerp(from, to, alpha);
+        //_turret.rotation = Quaternion.Euler(0, TurretDir, 0);
+        //_null.rotation = Quaternion.Euler(0, HullDir, 0);
     }
 
     private void RotateTurret(Vector3 aimDir)

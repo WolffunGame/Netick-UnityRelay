@@ -29,8 +29,13 @@ public class InputHandler : NetworkEventsListener
         var input = sandbox.GetInput<InputData>();
         input.SetAimDirection(_aimDelta.normalized);
         input.SetMoveDirection(_moveDelta.normalized);
-        input.Buttons = _buttonSample;
-        _buttonReset |= _buttonSample; 
+        if (_buttonSample != 0)
+        {
+            input.Buttons = _buttonSample;
+            input.Buttons = _buttonSample;
+            _buttonReset |= _buttonSample; 
+            _buttonSample = 0;
+        }
         sandbox.SetInput(input);
     }
 
@@ -44,7 +49,7 @@ public class InputHandler : NetworkEventsListener
         if (Input.GetMouseButton(0))
             _buttonSample |= InputData.BUTTON_FIRE_PRIMARY;
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
             _buttonSample |= InputData.BUTTON_FIRE_SECONDARY;
 
         if (Input.GetKey(KeyCode.R))

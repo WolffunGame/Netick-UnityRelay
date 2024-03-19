@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: -5421185645810922197}
   - component: {fileID: 6430651140651163753}
   - component: {fileID: -2680542678223487224}
+  - component: {fileID: 3048040486929872768}
   m_Layer: 6
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -608,7 +609,7 @@ MonoBehaviour:
   Children: []
   PrefabIndex: -1
   Persistent: 0
-  _predictionMode: 0
+  _predictionMode: 1
 --- !u!114 &-5421185645810922197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +667,129 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7e453c08f65900e45ac5cc243a9aef54, type: 2}
   - {fileID: 2100000, guid: c0b5a8092855bc640a66a3f25c3718ef, type: 2}
   _moveControl: {fileID: 6430651140651163753}
+--- !u!114 &3048040486929872768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917003752575662290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762bc8a37d9348058f75ebf89f91f2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turret: {fileID: 1185371072849741531}
+  _firePoint: {fileID: 1914983726224435810}
+  _reloadTime: 0.1
+  _maxAmmo: 10
+  _fireInterval: 0.1
+  _tank: {fileID: -2680542678223487224}
+  _bulletPrefab: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
+  _muzzleFlash: {fileID: 8565631724367042892, guid: 7d01ea3d7489caf45af46db5d0da9098, type: 3}
+  _bulletShotPrefab: {fileID: 3579653652657372702, guid: 3d498f93f682235428e38adaf523667f, type: 3}
+  <Ammo>k__BackingField: 0
+  <CurrentReloadTime>k__BackingField: 0
+  <FireTime>k__BackingField: 0
+  <BulletID>k__BackingField: 0
+  _fromStates:
+    _originalBuffer:
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
+    - Position: {x: 0, y: 0, z: 0}
+      Direction: {x: 0, y: 0, z: 0}
+      Speed: 0
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +802,7 @@ GameObject:
   - component: {fileID: 3486993630297661599}
   - component: {fileID: 2302327643812161395}
   - component: {fileID: 2222726867110808978}
+  - component: {fileID: 3786896235313516299}
   m_Layer: 6
   m_Name: visual_hull
   m_TagString: Untagged
@@ -764,6 +889,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e247855dffd392e49adf578bb9cf713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3786896235313516299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041608635261517176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 682374318, guid: da78c2c9df60edc4fb5f65b59fa57c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RenderTransform: {fileID: 0}
+  TeleportDistance: 50
+  PositionPrecision: 3
+  Settings: 31
+  TransformSpace: 0
+  _interpolationSource: 0
 --- !u!1 &8447894081174985338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,14 +1396,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5790566248479023112, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6206418250819806175}
+      addedObject: {fileID: 6367056858293826828}
   m_SourcePrefab: {fileID: 100100000, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
 --- !u!1 &1127109910291973845 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5790566248479023112, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
   m_PrefabInstance: {fileID: 6915406073108358877}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6206418250819806175
+--- !u!114 &6367056858293826828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1269,22 +1412,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1127109910291973845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 762bc8a37d9348058f75ebf89f91f2c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c30df13aed84e699ca27ef6ecb47e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turret: {fileID: 1185371072849741531}
-  _firePoint: {fileID: 1914983726224435810}
-  _reloadTime: 0.4
-  _maxAmmo: 10
-  _fireInterval: 1
-  _tank: {fileID: -2680542678223487224}
-  _bulletPrefab: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
-  _muzzleFlash: {fileID: 8565631724367042892, guid: 7d01ea3d7489caf45af46db5d0da9098, type: 3}
-  _bulletShotPrefab: {fileID: 3579653652657372702, guid: 3d498f93f682235428e38adaf523667f, type: 3}
-  <Ammo>k__BackingField: 0
-  <CurrentReloadTime>k__BackingField: 0
-  <FireTime>k__BackingField: 0
-  <BulletID>k__BackingField: 0
 --- !u!4 &1914983726224435810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5002116699142556863, guid: 86bd09311ff04004d9a475344b051bae, type: 3}

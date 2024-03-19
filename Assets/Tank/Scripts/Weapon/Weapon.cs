@@ -1,4 +1,5 @@
-﻿using Examples.Tank;
+﻿using System;
+using Examples.Tank;
 using Helpers;
 using Netick;
 using Netick.Unity;
@@ -16,20 +17,23 @@ public class Weapon : NetworkBehaviour
     [SerializeField] private NetworkObject _bulletPrefab;
     [SerializeField] private MuzzleFlash _muzzleFlash;
     [SerializeField] private Shot _bulletShotPrefab;
+    private Vector3 _offset;
 
     [Networked] public byte Ammo { get; set; }
     [Networked] public float CurrentReloadTime { get; set; }
     [Networked] public float FireTime { get; set; }
     [Networked] public byte BulletID { get; set; }
 
+
     [Networked(size: 32)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(32);
 
-    private readonly NetworkArray<ShotState> _fromStates = new(32);
+    public NetworkArray<ShotState> _fromStates = new(32);
 
     private SparseCollection<ShotState, Shot> _bullets;
 
     private Interpolator _interpolation;
 
+    private void Awake() => _offset = _firePoint.position - transform.position;
     public void Start() => _bullets = new SparseCollection<ShotState, Shot>(_bulletStates, _bulletShotPrefab);
 
     public override void NetworkStart()
@@ -57,16 +61,27 @@ public class Weapon : NetworkBehaviour
 
     private void ProcessBullets()
     {
-        _bullets?.Process(this, (ref ShotState bullet, int _) =>
+        if (FetchInput(out InputData input) && input.IsDown(InputData.BUTTON_FIRE_SECONDARY))
         {
-            if (bullet.Position.y < -.15f)
+            for (var i = 0; i < _bulletStates.Length; i++)
             {
-                bullet.EndTick = Sandbox.Tick.TickValue;
-                return true;
+                var temp = _bulletStates[i];
+                var t = (Sandbox.Tick.TickValue - temp.StartTick) * Sandbox.FixedDeltaTime;
+                temp.Position = temp.GetPositionAt(t);
+                temp.StartTick = Sandbox.Tick.TickValue;
+                temp.Speed = temp.Speed == 0 ? _bulletShotPrefab.Speed : 0;
+                _bulletStates[i] = temp;
             }
 
-            if (_bulletShotPrefab.IsHitScan || bullet.EndTick <= Sandbox.Tick.TickValue) return false;
+            return;
+        }
+
+        _bullets?.Process(this, (ref ShotState bullet, int _) =>
+        {
+            if (_bulletShotPrefab.IsHitScan || bullet.EndTick <= Sandbox.Tick.TickValue)
+                return false;
             var dir = bullet.Direction.normalized;
+            Debug.DrawLine(bullet.Position, bullet.Position + Vector3.up, Color.blue, 1);
             var length = Mathf.Max(_bulletShotPrefab.Radius, _bulletShotPrefab.Speed * Sandbox.FixedDeltaTime);
             if (!Sandbox.Physics.Raycast(bullet.Position - length * dir, dir, out var hitInfo, length,
                     _bulletShotPrefab.HitMask.value, QueryTriggerInteraction.Ignore)) return false;
@@ -74,6 +89,8 @@ public class Weapon : NetworkBehaviour
             bullet.EndTick = Sandbox.Tick.TickValue;
             return true;
         });
+        for (var i = 0; i < _fromStates.Length; i++)
+            _fromStates[i] = _bulletStates[i];
     }
 
     public override void NetworkRender()
@@ -86,7 +103,8 @@ public class Weapon : NetworkBehaviour
             _fromStates[i] = from;
         }
 
-        _bullets?.Render(this, _fromStates);
+        if (!IsServer)
+            _bullets?.Render(this, _bulletStates);
     }
 
     private void AutoReloadAmmo()
@@ -105,9 +123,8 @@ public class Weapon : NetworkBehaviour
         FireTime = _fireInterval;
         Ammo--;
         BulletID++;
-        var position = _firePoint.position;
-        Draw.DrawArrow(position, position + aimDir * 10, Color.blue, 2);
-        _bullets.Add(Sandbox, new ShotState(position, aimDir), _bulletShotPrefab.TimeToLive);
+        var position = transform.position + Quaternion.LookRotation( aimDir) * _offset;
+        _bullets.Add(Sandbox, new ShotState(position, aimDir, _bulletShotPrefab.Speed), _bulletShotPrefab.TimeToLive);
     }
 
     public override void NetworkDestroy() => _bullets.Clear();

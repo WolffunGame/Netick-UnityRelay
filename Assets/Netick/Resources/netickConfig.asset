@@ -16,43 +16,43 @@ MonoBehaviour:
   - Assembly-CSharp.dll
   _Prefabs:
   - Obj: {fileID: 6276855212308729943, guid: 84bdaf9c034444f408cc66234ee3344d, type: 3}
-    InstanceId: 26428
+    InstanceId: 26440
     Name: Bomb
     FileName: Assets/Samples/Bomberman/Network Prefabs/Bomb.prefab
     GO: {fileID: 8886278785656527844, guid: 84bdaf9c034444f408cc66234ee3344d, type: 3}
     Id: 1
   - Obj: {fileID: 8143126971102408644, guid: 98e433893a4b70f41a8ab2145afe3e07, type: 3}
-    InstanceId: 26432
+    InstanceId: 26444
     Name: Bomberman Player
     FileName: Assets/Samples/Bomberman/Network Prefabs/Bomberman Player.prefab
     GO: {fileID: 2511112182317059464, guid: 98e433893a4b70f41a8ab2145afe3e07, type: 3}
     Id: 2
   - Obj: {fileID: 4469672062832013922, guid: 8e254087cbaecc049ac87981c263d46c, type: 3}
-    InstanceId: 26436
+    InstanceId: 26448
     Name: DestroyableBlock
     FileName: Assets/Samples/Bomberman/Network Prefabs/DestroyableBlock.prefab
     GO: {fileID: 9137365252298567970, guid: 8e254087cbaecc049ac87981c263d46c, type: 3}
     Id: 3
   - Obj: {fileID: 9177126579482737267, guid: 09a0cccbd8f361641bd963785a4b016c, type: 3}
-    InstanceId: 26440
+    InstanceId: 26452
     Name: Power Up
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up.prefab
     GO: {fileID: 3064325587269614628, guid: 09a0cccbd8f361641bd963785a4b016c, type: 3}
     Id: 4
   - Obj: {fileID: 5100633453439203130, guid: d66d5a97430d3364890108321123b309, type: 3}
-    InstanceId: 26444
+    InstanceId: 26456
     Name: FPS Player
     FileName: Assets/Samples/First Person Shooter/Network Prefabs/FPS Player.prefab
     GO: {fileID: 7011933354638177272, guid: d66d5a97430d3364890108321123b309, type: 3}
     Id: 5
   - Obj: {fileID: 4070793054831254424, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
-    InstanceId: 24398
+    InstanceId: 24400
     Name: PlayerTank
     FileName: Assets/Tank/Prefabs/Game/PlayerTank.prefab
     GO: {fileID: 7917003752575662290, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
     Id: 6
   - Obj: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
-    InstanceId: 25536
+    InstanceId: 25540
     Name: shot_default_visual
     FileName: Assets/Tank/Prefabs/Shots/shot_default_visual.prefab
     GO: {fileID: 8219689177351906792, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
@@ -67,7 +67,7 @@ MonoBehaviour:
   SendBufferSize: 16384
   Timeout: 10
   MaxPredictedTicks: 64
-  ServerDivisor: 2
+  ServerDivisor: 1
   ClientDivisor: 1
   PredictedClientPhysics: 0
   PhysicsType: 1

@@ -103,8 +103,9 @@ namespace Helpers
         public void Render(NetworkBehaviour owner, NetworkArray<T> states)
         {
             var sandbox = owner.Sandbox;
-            Interpolation interpolation = owner.IsInputSource || owner.IsServer? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
-            var localRenderTime = interpolation.Time - sandbox.FixedDeltaTime + interpolation.Alpha * sandbox.FixedDeltaTime;
+            Interpolation interpolation =
+                !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
+            var localRenderTime = interpolation.Time - sandbox.DeltaTime + interpolation.Alpha * sandbox.DeltaTime;
 
             for (var i = 0; i < _entries.Length; i++)
             {
@@ -119,19 +120,19 @@ namespace Helpers
                 var t = localRenderTime - state.StartTick * sandbox.FixedDeltaTime;
                 var t1 = (state.EndTick - state.StartTick) * sandbox.FixedDeltaTime;
 
+                
                 var isLastRender = t >= t1 && e.Enabled;
                 var isFirstRender = false;
 
                 //e.Enabled =true;
                 // We delay disabling of the object one frame since "last render" isn't really a last render if the object is immediately hidden.
-                e.Enabled = t >= 0 && t < t1;
-
+                e.Enabled = t >= -.2f && t <= t1;
                 // Make sure we have a valid enabled GameObject if this state represents an active instance
                 if (e.Enabled || isLastRender)
                 {
                     if (!e.Visual)
                     {
-                        e.Visual = LocalObjectPool.Acquire(_prefab);
+                        e.Visual = Object.Instantiate(_prefab);
                         isFirstRender = true;
                     }
 
@@ -210,7 +211,6 @@ namespace Helpers
         {
             state.StartTick = sandbox.Tick.TickValue;
             state.EndTick = state.StartTick + Mathf.Max(1, (int)(secondsToLive / sandbox.FixedDeltaTime));
-
             for (var i = 0; i < _states.Length; i++)
             {
                 if (sandbox.Tick.TickValue <= _states[i].EndTick + REUSE_DELAY_TICKS) continue;
@@ -230,7 +230,7 @@ namespace Helpers
             {
                 var e = _entries[i];
                 if (e.Visual)
-                    LocalObjectPool.Release(e.Visual);
+                    Object.Destroy(e.Visual);
                 _entries[i] = default;
             }
         }
