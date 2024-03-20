@@ -1,3 +1,10 @@
+### [0.11.8] Changelog - 2024/3/20
+
+- Fixed an issue with generic structs.
+- Fixed an issue with NetworkArray<T> interpolation.
+- Fixed an issue with non-networked static Rigidbody2D causing Netick to change its state into dynamic.
+- Fixed various other issues.
+
 ### [0.11.4] Changelog - 2024/3/12 
 
 - Changed the behaviour of OnChanged. Now, by default, it's not invoked during rollback/resims. Now it's only ever invoked when the value is changed during a new state/tick in the client or when it's changed by the server. 
