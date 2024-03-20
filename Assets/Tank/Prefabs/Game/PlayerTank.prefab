@@ -646,8 +646,8 @@ MonoBehaviour:
   _cc: {fileID: 1723606642065551448}
   _turret: {fileID: 1185371072849741531}
   _null: {fileID: 8452678108642866672}
-  <TurretDir>k__BackingField: 0
-  <HullDir>k__BackingField: 0
+  <TurretDir>k__BackingField: {x: 0, y: 0, z: 0, w: 0}
+  <HullDir>k__BackingField: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &-2680542678223487224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,28 +1393,8 @@ PrefabInstance:
     - {fileID: 8904131417722953992, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5790566248479023112, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6367056858293826828}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
---- !u!1 &1127109910291973845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5790566248479023112, guid: 86bd09311ff04004d9a475344b051bae, type: 3}
-  m_PrefabInstance: {fileID: 6915406073108358877}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6367056858293826828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127109910291973845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c30df13aed84e699ca27ef6ecb47e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1914983726224435810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5002116699142556863, guid: 86bd09311ff04004d9a475344b051bae, type: 3}

@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Samples/Bomberman/Scenes/Bomberman.unity
     guid: b71c088b25b80d84f94a2507d42a689e
   - enabled: 1
-    path: Assets/Transport/Tank/Scenes/Level1.unity
+    path: Assets/Tank/Scenes/Level1.unity
     guid: c8e8f95c091b64329b97fba535292c16
   m_configObjects: {}
