@@ -115,7 +115,7 @@ MonoBehaviour:
   _serverVisible: 0
   _gravity: {x: 0, y: 0, z: 0}
   _speed: 15
-  _radius: 0
+  _radius: 0.1
   _range: 0
   _areaRadius: 0
   _areaImpulse: 0

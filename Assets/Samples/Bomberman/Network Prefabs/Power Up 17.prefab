@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4667690564044089696}
   - component: {fileID: 7879554298239723061}
   m_Layer: 0
-  m_Name: Power Up
+  m_Name: Power Up 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   AddToNetworkLoop: 1
   GlobalObjectIdHash: 0
   SceneId: -1
-  _PrefabId: 26
+  _PrefabId: 20
   PrefabRoot: {fileID: 0}
   Children: []
   PrefabIndex: -1

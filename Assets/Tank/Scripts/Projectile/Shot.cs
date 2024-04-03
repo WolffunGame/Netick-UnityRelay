@@ -1,6 +1,7 @@
 ﻿using System;
 using Examples.Tank;
 using Helpers;
+using Netick;
 using Netick.Unity;
 using UnityEngine;
 
@@ -21,17 +22,41 @@ public struct ShotState : ISparseState<Shot>
 
     public Vector3 Direction;
     
+    [NonSerialized] private const float Gravity = 9.81f;
+    [NonSerialized] private const float Angle = 75;
+    [NonSerialized] private const float TargetDistanceThreshold = 7;
+    [NonSerialized] private const float TargetHeightThreshold = 1.5f;
+
+    public byte ProjectileMoveType;
+    public int Damage;
+
+    public float CriticalChance;
+    public float CriticalRatio;
+
+    public byte TeamSide;
+    public byte Acceleration;
+    public bool IsPiercing;
+    public byte ArrowType;
+    public short AngleDiff;
+    
+    public int BaseUnitId;
+    public int BowId;
+    public int SkinId;
+
+    public Vector2 Destination;
+    public Vector2 StartPosition;
+    public Vector2 Velocity;
+    public float VelocityMag;
+    public bool IsDestroyed;
+    public float ZAxis;
+    [NonSerialized] public Vector2 CurrentPosition;
+    [NonSerialized] public float ZRotation;
+    [NonSerialized] public float OffsetX;
+    
+    public NetworkArrayStruct32<byte> TBytes { get; set; }
+    
     public float Speed;
     
-
-    public ShotState(Vector3 startPosition, Vector3 direction, float speed)
-    {
-        StartTick = 0;
-        EndTick = 0;
-        Position = startPosition;
-        Direction = direction;
-        Speed = speed;
-    }
 
     public void Extrapolate(float t, Shot prefab)
     {
@@ -99,11 +124,7 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
 
     private void OnEnable() => _isFirstRender = true;
 
-    private void OnDisable()
-    {
-        _isFirstRender = false;
-        LocalObjectPool.Acquire(_detonationPrefab, transform.position, Quaternion.identity);
-    }
+    private void OnDisable() => _isFirstRender = false;
 
     public void ApplyStateToVisual(NetworkBehaviour owner, ShotState state, float t, bool isFirstRender,
         bool isLastRender)
@@ -111,14 +132,14 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
         if(_isFirstRender)
             if(_muzzleFlash)
                 LocalObjectPool.Acquire(_muzzleFlash,  state.Position, Quaternion.LookRotation(state.Direction), owner.transform);
-        // if (isLastRender)
-        // {
-        //     // Slightly hacky, but we never move the hitScan so its current position is always the muzzle, and target is start + direction
-        //     if (IsHitScan)
-        //         LocalObjectPool.Acquire(_detonationPrefab, state.Position + state.Direction, Quaternion.identity);
-        //     else
-        //         LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
-        // }
+        if (isLastRender)
+        {
+            // Slightly hacky, but we never move the hitScan so its current position is always the muzzle, and target is start + direction
+            if (IsHitScan)
+                LocalObjectPool.Acquire(_detonationPrefab, state.Position + state.Direction, Quaternion.identity);
+            else
+                LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
+        }
         //
         // if (isFirstRender && _muzzleFlash)
         //     LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),

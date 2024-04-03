@@ -41,7 +41,7 @@ public class InputHandler : NetworkEventsListener
 
     private void Update()
     {
-        if(!_player || !Sandbox.IsClient)
+        if(!_player || !Sandbox || !Sandbox.IsClient)
             return;
         _buttonSample &= ~_buttonReset;
         

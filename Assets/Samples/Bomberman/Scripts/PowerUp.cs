@@ -16,15 +16,22 @@ namespace Netick.Samples.Bomberman
         private Material   _mat;
 
         // Networked properties
-        [Networked]
-        public PowerUpType Type { get; set; }
+        [Networked]  public PowerUpType Type { get; set; }
 
         private void Awake()
         {
             _mat = GetComponentInChildren<Renderer>().material;
         }
 
-        private void Update()
+        // private void Update()
+        // {
+        //     if (Type == PowerUpType.IncreaseBombs)
+        //         _mat.color = GetColor(Color.green);
+        //     else
+        //         _mat.color = GetColor(Color.blue);
+        // }
+
+        public override void NetworkRender()
         {
             if (Type == PowerUpType.IncreaseBombs)
                 _mat.color = GetColor(Color.green);

@@ -1,5 +1,4 @@
-﻿using System;
-using Examples.Tank;
+﻿using Examples.Tank;
 using Helpers;
 using Netick;
 using Netick.Unity;
@@ -8,6 +7,7 @@ using UnityEngine;
 
 public class Weapon : NetworkBehaviour
 {
+     private const byte MaxAmmo = 254;
     [SerializeField] private Transform _turret;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _reloadTime;
@@ -25,9 +25,9 @@ public class Weapon : NetworkBehaviour
     [Networked] public byte BulletID { get; set; }
 
 
-    [Networked(size: 32)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(32);
+    [Networked(size: MaxAmmo)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
 
-    public NetworkArray<ShotState> _fromStates = new(32);
+    public NetworkArray<ShotState> _fromStates;
 
     private SparseCollection<ShotState, Shot> _bullets;
 
@@ -41,7 +41,10 @@ public class Weapon : NetworkBehaviour
         base.NetworkStart();
         Sandbox.InitializePool(_bulletPrefab.gameObject, 20);
         _interpolation = FindInterpolator(nameof(_bulletStates));
+        _fromStates = new NetworkArray<ShotState>(MaxAmmo);
     }
+
+    private void OnDestroy() => _fromStates = null;
 
     public override void NetworkFixedUpdate()
     {
@@ -124,7 +127,14 @@ public class Weapon : NetworkBehaviour
         Ammo--;
         BulletID++;
         var position = transform.position + Quaternion.LookRotation( aimDir) * _offset;
-        _bullets.Add(Sandbox, new ShotState(position, aimDir, _bulletShotPrefab.Speed), _bulletShotPrefab.TimeToLive);
+        _bullets.Add(Sandbox, new ShotState()
+        {
+            Position = position,
+            Direction = aimDir,
+            StartTick = Sandbox.Tick.TickValue,
+            EndTick = Sandbox.Tick.TickValue + 100,
+            Speed = _bulletShotPrefab.Speed,
+        }, _bulletShotPrefab.TimeToLive);
     }
 
     public override void NetworkDestroy() => _bullets.Clear();
