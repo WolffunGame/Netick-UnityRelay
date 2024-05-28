@@ -47,19 +47,15 @@ public class TankMoveControl : NetworkBehaviour
         _cc.Move(moveDir * _moveSpeed * Sandbox.FixedDeltaTime);
         TurretDir = _turret.rotation;
         HullDir = _null.rotation;
-        //TurretDir = _turret.rotation.eulerAngles.y;
-        //HullDir = _null.rotation.eulerAngles.y;
     }
 
     public override void NetworkRender()
     {
         if (_interpolationDir.GetInterpolationData<Quaternion>(InterpolationSource.Auto, out var from, out var to,
                 out var alpha))
-            _turret.rotation = Quaternion.Slerp(from, to, alpha);
+            _turret.rotation = Quaternion.Slerp(from, to, alpha + Time.deltaTime);
         if (_interpolationHub.GetInterpolationData(InterpolationSource.Auto, out from, out to, out alpha))
-            _null.rotation = Quaternion.Slerp(from, to, alpha);
-        //_turret.rotation = Quaternion.Euler(0, TurretDir, 0);
-        //_null.rotation = Quaternion.Euler(0, HullDir, 0);
+            _null.rotation = Quaternion.Slerp(from, to, alpha+ Time.deltaTime);
     }
 
     private void RotateTurret(Vector3 aimDir)

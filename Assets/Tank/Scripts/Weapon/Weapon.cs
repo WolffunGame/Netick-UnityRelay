@@ -1,5 +1,4 @@
-﻿using Examples.Tank;
-using Helpers;
+﻿using Helpers;
 using Netick;
 using Netick.Unity;
 using Tank.Scripts.Utility;
@@ -8,26 +7,23 @@ using UnityEngine;
 public class Weapon : NetworkBehaviour
 {
      private const byte MaxAmmo = 254;
-    [SerializeField] private Transform _turret;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _reloadTime;
     [SerializeField] private byte _maxAmmo = 5;
     [SerializeField] private float _fireInterval = .4f;
-    [SerializeField] private Tank.Scripts.Tank _tank;
     [SerializeField] private NetworkObject _bulletPrefab;
-    [SerializeField] private MuzzleFlash _muzzleFlash;
     [SerializeField] private Shot _bulletShotPrefab;
     private Vector3 _offset;
 
-    [Networked] public byte Ammo { get; set; }
-    [Networked] public float CurrentReloadTime { get; set; }
-    [Networked] public float FireTime { get; set; }
-    [Networked] public byte BulletID { get; set; }
+    [Networked] private byte Ammo { get; set; }
+    [Networked] private float CurrentReloadTime { get; set; }
+    [Networked] private float FireTime { get; set; }
+    [Networked] private byte BulletID { get; set; }
 
 
     [Networked(size: MaxAmmo)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
 
-    public NetworkArray<ShotState> _fromStates;
+    public NetworkArray<ShotState> FromStates;
 
     private SparseCollection<ShotState, Shot> _bullets;
 
@@ -41,10 +37,10 @@ public class Weapon : NetworkBehaviour
         base.NetworkStart();
         Sandbox.InitializePool(_bulletPrefab.gameObject, 20);
         _interpolation = FindInterpolator(nameof(_bulletStates));
-        _fromStates = new NetworkArray<ShotState>(MaxAmmo);
+        FromStates = new NetworkArray<ShotState>(MaxAmmo);
     }
 
-    private void OnDestroy() => _fromStates = null;
+    private void OnDestroy() => FromStates = null;
 
     public override void NetworkFixedUpdate()
     {
@@ -84,7 +80,6 @@ public class Weapon : NetworkBehaviour
             if (_bulletShotPrefab.IsHitScan || bullet.EndTick <= Sandbox.Tick.TickValue)
                 return false;
             var dir = bullet.Direction.normalized;
-            Debug.DrawLine(bullet.Position, bullet.Position + Vector3.up, Color.blue, 1);
             var length = Mathf.Max(_bulletShotPrefab.Radius, _bulletShotPrefab.Speed * Sandbox.FixedDeltaTime);
             if (!Sandbox.Physics.Raycast(bullet.Position - length * dir, dir, out var hitInfo, length,
                     _bulletShotPrefab.HitMask.value, QueryTriggerInteraction.Ignore)) return false;
@@ -92,8 +87,8 @@ public class Weapon : NetworkBehaviour
             bullet.EndTick = Sandbox.Tick.TickValue;
             return true;
         });
-        for (var i = 0; i < _fromStates.Length; i++)
-            _fromStates[i] = _bulletStates[i];
+        for (var i = 0; i < FromStates.Length; i++)
+            FromStates[i] = _bulletStates[i];
     }
 
     public override void NetworkRender()
@@ -103,7 +98,7 @@ public class Weapon : NetworkBehaviour
             if (!_interpolation.GetInterpolationData<ShotState>(InterpolationSource.Auto, i, out var from, out _,
                     out _))
                 continue;
-            _fromStates[i] = from;
+            FromStates[i] = from;
         }
 
         if (!IsServer)

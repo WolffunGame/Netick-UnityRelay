@@ -32,7 +32,7 @@ namespace Tank.Scripts
             foreach (var part in tankParts)
                 part.SetMaterial(PlayerMaterial);
         }
-
+[Rpc]
         private void OnValidate()=> _moveControl??=GetComponent<TankMoveControl>();
     }
 }

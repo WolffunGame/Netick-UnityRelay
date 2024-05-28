@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 321
   _speed: 30
   _lifeTime: 0.5
   _impactEffect: {fileID: 5974986753548891422, guid: 1be5a805225d53645826793b190514c4, type: 3}
@@ -160,6 +160,12 @@ MonoBehaviour:
   PositionPrecision: 3
   Settings: -1
   TransformSpace: 1
+  EnablePredictionErrorCorrectionSmoothing: 0
+  InterpolationMultiplier: 20
+  CorrectionMultiplier: 3
+  CorrectionMaxBlendAlpha: 0.7
+  PositionTeleportThreshold: 50
+  RotationTeleportThreshold: 10
   _interpolationSource: 0
 --- !u!1 &9128550410504632716
 GameObject:

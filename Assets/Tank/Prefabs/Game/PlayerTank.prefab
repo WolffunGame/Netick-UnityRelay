@@ -625,8 +625,14 @@ MonoBehaviour:
   RenderTransform: {fileID: 6674640751963955606}
   TeleportDistance: 2
   PositionPrecision: 3
-  Settings: 5
+  Settings: 1
   TransformSpace: 1
+  EnablePredictionErrorCorrectionSmoothing: 0
+  InterpolationMultiplier: 20
+  CorrectionMultiplier: 3
+  CorrectionMaxBlendAlpha: 0.7
+  PositionTeleportThreshold: 50
+  RotationTeleportThreshold: 10
   _interpolationSource: 0
 --- !u!114 &6430651140651163753
 MonoBehaviour:
@@ -679,117 +685,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762bc8a37d9348058f75ebf89f91f2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turret: {fileID: 1185371072849741531}
   _firePoint: {fileID: 1914983726224435810}
   _reloadTime: 0.1
   _maxAmmo: 10
   _fireInterval: 0.1
-  _tank: {fileID: -2680542678223487224}
   _bulletPrefab: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
-  _muzzleFlash: {fileID: 8565631724367042892, guid: 7d01ea3d7489caf45af46db5d0da9098, type: 3}
   _bulletShotPrefab: {fileID: 3579653652657372702, guid: 3d498f93f682235428e38adaf523667f, type: 3}
   <Ammo>k__BackingField: 0
   <CurrentReloadTime>k__BackingField: 0
   <FireTime>k__BackingField: 0
   <BulletID>k__BackingField: 0
-  _fromStates:
-    _originalBuffer:
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
-    - Position: {x: 0, y: 0, z: 0}
-      Direction: {x: 0, y: 0, z: 0}
-      Speed: 0
+  FromStates:
+    _originalBuffer: []
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +813,12 @@ MonoBehaviour:
   PositionPrecision: 3
   Settings: 31
   TransformSpace: 0
+  EnablePredictionErrorCorrectionSmoothing: 0
+  InterpolationMultiplier: 20
+  CorrectionMultiplier: 3
+  CorrectionMaxBlendAlpha: 0.7
+  PositionTeleportThreshold: 50
+  RotationTeleportThreshold: 10
   _interpolationSource: 0
 --- !u!1 &8447894081174985338
 GameObject:
@@ -1097,7 +1010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663626851215297795, guid: 8ff0f46fc7dbb2448b962b45e072a6c6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852380389912475930, guid: 8ff0f46fc7dbb2448b962b45e072a6c6, type: 3}
+      propertyPath: _audioEmitter
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8456190840094203608, guid: 8ff0f46fc7dbb2448b962b45e072a6c6, type: 3}
       propertyPath: m_Layer
@@ -1107,9 +1024,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3621281252139367486, guid: 8ff0f46fc7dbb2448b962b45e072a6c6, type: 3}
-    - {fileID: 7852380389912475930, guid: 8ff0f46fc7dbb2448b962b45e072a6c6, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

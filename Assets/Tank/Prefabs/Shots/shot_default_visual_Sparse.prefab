@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 321
   _serverVisible: 0
   _gravity: {x: 0, y: 0, z: 0}
   _speed: 15
@@ -120,7 +120,7 @@ MonoBehaviour:
   _areaRadius: 0
   _areaImpulse: 0
   _areaDamage: 0
-  _timeToLive: 1
+  _timeToLive: 1.5
   _isHitScan: 0
   _detonationPrefab: {fileID: 5974986753548891422, guid: 1be5a805225d53645826793b190514c4, type: 3}
   _muzzleFlash: {fileID: 8565631724367042892, guid: 7d01ea3d7489caf45af46db5d0da9098, type: 3}
