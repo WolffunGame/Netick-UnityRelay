@@ -10,16 +10,20 @@ namespace Tank.Scripts
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private GameObject _app;
         [SerializeField] private Transform[] _spawnPositions = new Transform[4];
-        
+
         public override void OnClientConnected(NetworkSandbox sandbox, NetworkConnection client)
         {
             var position = Random.insideUnitCircle * 4;
-            var player = sandbox.NetworkInstantiate(_playerPrefab,position.XOY() , Quaternion.identity, client);
+            var player = sandbox.NetworkInstantiate(_playerPrefab, position.XOY(), Quaternion.identity, client);
             client.PlayerObject = player.gameObject;
             if (player.TryGetComponent(out Tank tank))
-                tank.TankIndex = (byte) Sandbox.ConnectedClients.Count;
+                tank.TankIndex = (byte)Sandbox.ConnectedClients.Count;
         }
 
-        public override void OnStartup(NetworkSandbox sandbox) => _app.SetActive(false);
+        public override void OnStartup(NetworkSandbox sandbox)
+        {
+            if (_app)
+                _app.SetActive(false);
+        }
     }
 }
