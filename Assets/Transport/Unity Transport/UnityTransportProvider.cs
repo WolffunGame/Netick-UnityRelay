@@ -6,24 +6,43 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Collections;
 using Netick;
 using Netick.Unity;
+using Unity.Networking.Transport.Relay;
+using Unity.Services.Relay.Models;
 using static NetickUnityTransport;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
+
 // ReSharper disable All
 
 [CreateAssetMenu(fileName = "UnityTransportProvider", menuName = "Netick/Transport/UnityTransportProvider", order = 1)]
 public class UnityTransportProvider : NetworkTransportProvider
 {
-    public override NetworkTransport MakeTransportInstance() => new NetickUnityTransport();
+    [SerializeField] private bool _isReylay;
+    [SerializeField] private BoolSo _hostReady;
+    [SerializeField] private StringSo _joinCode;
+    private Allocation _allocation;
+    
+    public void SetAllocation(Allocation allocation) => _allocation = allocation;
+    public override NetworkTransport MakeTransportInstance()
+    {
+        var transport = new NetickUnityTransport();
+        transport.HostReady = _hostReady;
+        transport.JoinCode = _joinCode;
+        transport.SetRelay(_isReylay);
+        transport.SetAllocation( _allocation);
+        return transport;
+    }
 }
 
 public static class NetickUnityTransportExt
 {
     public static NetickUnityTransportEndPoint ToNetickEndPoint(this NetworkEndpoint networkEndpoint) =>
-        new (networkEndpoint);
+        new(networkEndpoint);
 }
 
 public unsafe class NetickUnityTransport : NetworkTransport
 {
+    private bool _isReylay;
+    private Allocation _allocation;
     public struct NetickUnityTransportEndPoint : IEndPoint
     {
         private NetworkEndpoint _endPoint;
@@ -34,7 +53,7 @@ public unsafe class NetickUnityTransport : NetworkTransport
 
         public override string ToString() => _endPoint.Address;
     }
-    
+
     private class NetickUnityTransportConnection : TransportConnection
     {
         private readonly NetickUnityTransport _transport;
@@ -59,19 +78,18 @@ public unsafe class NetickUnityTransport : NetworkTransport
 
     private NetworkDriver _driver;
 
-    private readonly Dictionary<NetworkConnection, NetickUnityTransportConnection> _connectedPeers =
-        new();
-
+    private readonly Dictionary<NetworkConnection, NetickUnityTransportConnection> _connectedPeers = new();
     private readonly Queue<NetickUnityTransportConnection> _freeConnections = new();
     private NetworkConnection _serverConnection;
-
     private NativeList<NetworkConnection> _connections;
-
     private BitBuffer _bitBuffer;
     private readonly byte* _bytesBuffer = (byte*)UnsafeUtility.Malloc(BytesBufferSize, 4, Allocator.Persistent);
     private const int BytesBufferSize = 2048;
     private readonly byte[] _connectionRequestBytes = new byte[200];
     private NativeArray<byte> _connectionRequestNative = new NativeArray<byte>(200, Allocator.Persistent);
+    public WrappedRelayServiceSDK RelayServiceSDK { get; set; } = new WrappedRelayServiceSDK();
+    public BoolSo HostReady { get; set; }
+    public StringSo JoinCode { get; set; }
 
     ~NetickUnityTransport()
     {
@@ -79,10 +97,23 @@ public unsafe class NetickUnityTransport : NetworkTransport
         _connectionRequestNative.Dispose();
     }
 
+    public void SetJoinCode(string joinCode) => JoinCode.SetValue(joinCode);
+    public void SetRelay(bool isRelay) => _isReylay = isRelay;
+    public void SetAllocation(Allocation allocation) => _allocation = allocation;
     public override void Init()
     {
         _bitBuffer = new BitBuffer(createChunks: false);
-        _driver = NetworkDriver.Create(new UDPNetworkInterface());
+        if (_isReylay)
+        {
+            var relayServerData = RelayUtils.HostRelayData(_allocation, RelayServerEndpoint.NetworkOptions.Udp);
+            var networkSettings = new NetworkSettings();
+            //Initialize relay network
+            networkSettings.WithRelayParameters(ref relayServerData);
+            _driver = NetworkDriver.Create(networkSettings);
+        }
+        else
+            _driver = NetworkDriver.Create(new UDPNetworkInterface());
+
         _connections = new NativeList<NetworkConnection>(
             Engine.IsServer ? Engine.Config.MaxPlayers : 0, Allocator.Persistent);
     }
@@ -92,18 +123,38 @@ public unsafe class NetickUnityTransport : NetworkTransport
         if (Engine.IsServer)
         {
             var endpoint = NetworkEndpoint.AnyIpv4.WithPort((ushort)port);
-
             if (_driver.Bind(endpoint) != 0)
             {
                 Debug.LogError($"Failed to bind to port {port}");
                 return;
             }
-
-            _driver.Listen();
+            else
+            {
+                if (_driver.Listen() != 0)
+                    Debug.LogError("Host client failed to listen");
+                else if(_isReylay)
+                {
+                    HostReady.SetValue(true);
+                    Debug.Log("Host client bound to Relay server");
+                }
+            }
         }
 
         for (var i = 0; i < Engine.Config.MaxPlayers; i++)
             _freeConnections.Enqueue(new NetickUnityTransportConnection(this));
+    }
+
+    private void ConnectRelayClient(string joinCode)
+    {
+        RelayServiceSDK.AllocationFromJoinCode(joinCode, (joinAllocation) =>
+        {
+            RelayServerData relayServerData =
+                RelayUtils.PlayerRelayData(joinAllocation, RelayServerEndpoint.NetworkOptions.Udp);
+            var networkSettings = new NetworkSettings();
+            networkSettings.WithRelayParameters(ref relayServerData);
+            _driver = NetworkDriver.Create(networkSettings);
+            _serverConnection = _driver.Connect();
+        }, null);
     }
 
     public override void Shutdown()
@@ -122,7 +173,12 @@ public unsafe class NetickUnityTransport : NetworkTransport
             _serverConnection = _driver.Connect(endpoint, _connectionRequestNative);
         }
         else
-            _serverConnection = _driver.Connect(endpoint);
+        {
+            if (_isReylay)
+                ConnectRelayClient(JoinCode.Value);
+            else
+                _serverConnection = _driver.Connect(endpoint);
+        }
     }
 
     public override void Disconnect(TransportConnection connection)
@@ -187,7 +243,6 @@ public unsafe class NetickUnityTransport : NetworkTransport
             HandleConnectionEvents(_serverConnection, 0);
     }
 
-
     private void HandleConnectionEvents(NetworkConnection conn, int index)
     {
         NetworkEvent.Type cmd;
@@ -217,7 +272,8 @@ public unsafe class NetickUnityTransport : NetworkTransport
                     _connectedPeers.Add(conn, connection);
                     _connections.Add(conn);
 
-                    connection.MaxPayloadSize = NetworkParameterConstants.MTU - _driver.MaxHeaderSize(NetworkPipeline.Null);
+                    connection.MaxPayloadSize =
+                        NetworkParameterConstants.MTU - _driver.MaxHeaderSize(NetworkPipeline.Null);
                     NetworkPeer.OnConnected(connection);
                     break;
                 }

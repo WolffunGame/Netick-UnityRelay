@@ -12,11 +12,17 @@ namespace Tank.Scripts
         
         public override void OnClientConnected(NetworkSandbox sandbox, NetworkConnection client)
         {
+            Debug.LogError( " OnClientConnected");
             var position = Random.insideUnitCircle * 4;
             var player = sandbox.NetworkInstantiate(_playerPrefab,position.XOY() , Quaternion.identity, client);
             client.PlayerObject = player.gameObject;
             if (player.TryGetComponent(out Tank tank))
                 tank.TankIndex = (byte) Sandbox.ConnectedClients.Count;
+        }
+        
+        public override void OnSceneOperationDone(NetworkSandbox sandbox, NetworkSceneOperation sceneOperation)
+        {
+            Debug.LogError( " OnSceneOperationDone");
         }
     }
 }

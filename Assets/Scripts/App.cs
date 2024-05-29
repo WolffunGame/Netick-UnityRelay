@@ -1,10 +1,5 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
-using FusionExamples.UIHelpers;
-using Tank.UI;
+﻿using FusionExamples.UIHelpers;
 using TMPro;
-using Unity.Services.Authentication;
-using Unity.Services.Core;
 using UnityEngine;
 
 namespace Examples.Tank
@@ -22,24 +17,16 @@ namespace Examples.Tank
 		[SerializeField] private Panel _uiStart;
 		[SerializeField] private Panel _uiProgress;
 		[SerializeField] private Panel _uiRoom;
+		[SerializeField] private Panel _joinCode;
 		[SerializeField] private GameObject _uiGame;
 		private int _nextPlayerIndex;
-		private string _playerId;
 
 		private void Awake() => DontDestroyOnLoad(this);
 
-		private async void Start()
+		private void Start()
 		{
-			await Initialize();
 			_uiStart.SetVisible(true);
 			_uiCurtain.SetVisible(true);
-		}
-
-		private async UniTask Initialize()
-		{
-			await UnityServices.InitializeAsync(); 
-			await  AuthenticationService.Instance.SignInAnonymouslyAsync();
-			_playerId = AuthenticationService.Instance.PlayerId;
 		}
 
 		private void Update()
@@ -63,7 +50,11 @@ namespace Examples.Tank
 		}
 
 		// What mode to play - Called from the start menu
-		public void OnHostOptions()=> SetGameMode();
+		public void OnHostOptions()
+		{
+			if (GateUI(_uiStart))
+				_joinCode.SetVisible(true);
+		}
 		public void OnJoinOptions() => SetGameMode();
 
 		private void SetGameMode()

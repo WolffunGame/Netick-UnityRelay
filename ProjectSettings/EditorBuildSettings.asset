@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tank/Scenes/Level1.unity
     guid: c8e8f95c091b64329b97fba535292c16
+  - enabled: 1
+    path: Assets/Tank/Scenes/Level2.unity
+    guid: 6e19821baef78417da7d17a921d05fcb
+  - enabled: 1
+    path: Assets/Tank/Scenes/Level3.unity
+    guid: 28fd3fb6229c39d499597c2853dd2d40
   m_configObjects: {}

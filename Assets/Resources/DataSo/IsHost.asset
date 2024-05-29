@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ca45df17f91a44db368b1842f7d294, type: 3}
-  m_Name: UnityTransportProvider
+  m_Script: {fileID: 11500000, guid: b96dc7fcf79e4ce8a00855b9242b155b, type: 3}
+  m_Name: IsHost
   m_EditorClassIdentifier: 
-  _isReylay: 1
-  _hostReady: {fileID: 11400000, guid: 65681c9486a2d574eae499fa0773d83a, type: 2}
-  _joinCode: {fileID: 11400000, guid: 5e0881373df2e7a46a4c46b296aa37bc, type: 2}
+  _value: 0
