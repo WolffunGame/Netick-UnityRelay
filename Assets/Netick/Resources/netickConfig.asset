@@ -16,181 +16,181 @@ MonoBehaviour:
   - Assembly-CSharp.dll
   _Prefabs:
   - Obj: {fileID: 6276855212308729943, guid: 84bdaf9c034444f408cc66234ee3344d, type: 3}
-    InstanceId: 24912
+    InstanceId: 28768
     Name: Bomb
     FileName: Assets/Samples/Bomberman/Network Prefabs/Bomb.prefab
     GO: {fileID: 8886278785656527844, guid: 84bdaf9c034444f408cc66234ee3344d, type: 3}
     Id: 1
   - Obj: {fileID: 8143126971102408644, guid: 98e433893a4b70f41a8ab2145afe3e07, type: 3}
-    InstanceId: 24930
+    InstanceId: 28772
     Name: Bomberman Player
     FileName: Assets/Samples/Bomberman/Network Prefabs/Bomberman Player.prefab
     GO: {fileID: 2511112182317059464, guid: 98e433893a4b70f41a8ab2145afe3e07, type: 3}
     Id: 2
   - Obj: {fileID: 4469672062832013922, guid: 8e254087cbaecc049ac87981c263d46c, type: 3}
-    InstanceId: 27060
+    InstanceId: 28776
     Name: DestroyableBlock
     FileName: Assets/Samples/Bomberman/Network Prefabs/DestroyableBlock.prefab
     GO: {fileID: 9137365252298567970, guid: 8e254087cbaecc049ac87981c263d46c, type: 3}
     Id: 3
   - Obj: {fileID: 9177126579482737267, guid: 115695f39852f7f4b9842889b2797c56, type: 3}
-    InstanceId: 27064
+    InstanceId: 28780
     Name: Power Up 1
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 1.prefab
     GO: {fileID: 3064325587269614628, guid: 115695f39852f7f4b9842889b2797c56, type: 3}
     Id: 4
   - Obj: {fileID: 9177126579482737267, guid: 53c4a5599f3db044380e31d0e62d9bab, type: 3}
-    InstanceId: 27068
+    InstanceId: 28784
     Name: Power Up 2
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 2.prefab
     GO: {fileID: 3064325587269614628, guid: 53c4a5599f3db044380e31d0e62d9bab, type: 3}
     Id: 5
   - Obj: {fileID: 9177126579482737267, guid: 8e9cf6c5a7ded0440aa68d4f7a15dcfb, type: 3}
-    InstanceId: 24902
+    InstanceId: 28788
     Name: Power Up 3
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 3.prefab
     GO: {fileID: 3064325587269614628, guid: 8e9cf6c5a7ded0440aa68d4f7a15dcfb, type: 3}
     Id: 6
   - Obj: {fileID: 9177126579482737267, guid: 563cf0cbe26b5574fa725900944ee76e, type: 3}
-    InstanceId: 27072
+    InstanceId: 28792
     Name: Power Up 4
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 4.prefab
     GO: {fileID: 3064325587269614628, guid: 563cf0cbe26b5574fa725900944ee76e, type: 3}
     Id: 7
   - Obj: {fileID: 9177126579482737267, guid: 0516bf94dd52a2f4fb41b1775436a64b, type: 3}
-    InstanceId: 24940
+    InstanceId: 28796
     Name: Power Up 5
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 5.prefab
     GO: {fileID: 3064325587269614628, guid: 0516bf94dd52a2f4fb41b1775436a64b, type: 3}
     Id: 8
   - Obj: {fileID: 9177126579482737267, guid: e1d413341e01f6b48a80cc020c457c87, type: 3}
-    InstanceId: 27076
+    InstanceId: 28800
     Name: Power Up 6
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 6.prefab
     GO: {fileID: 3064325587269614628, guid: e1d413341e01f6b48a80cc020c457c87, type: 3}
     Id: 9
   - Obj: {fileID: 9177126579482737267, guid: 13cad91eee96e3d47b379276c9a7f311, type: 3}
-    InstanceId: 27080
+    InstanceId: 28804
     Name: Power Up 7
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 7.prefab
     GO: {fileID: 3064325587269614628, guid: 13cad91eee96e3d47b379276c9a7f311, type: 3}
     Id: 10
   - Obj: {fileID: 9177126579482737267, guid: 7e13d1cbc7e766645b3154e67e19dc29, type: 3}
-    InstanceId: 27084
+    InstanceId: 28808
     Name: Power Up 8
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 8.prefab
     GO: {fileID: 3064325587269614628, guid: 7e13d1cbc7e766645b3154e67e19dc29, type: 3}
     Id: 11
   - Obj: {fileID: 9177126579482737267, guid: 1f392e7d21cfd384da91f20be7917521, type: 3}
-    InstanceId: 27088
+    InstanceId: 28812
     Name: Power Up 9
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 9.prefab
     GO: {fileID: 3064325587269614628, guid: 1f392e7d21cfd384da91f20be7917521, type: 3}
     Id: 12
   - Obj: {fileID: 9177126579482737267, guid: 272e94f0a3475c54ea956c0306e43434, type: 3}
-    InstanceId: 27092
+    InstanceId: 28816
     Name: Power Up 10
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 10.prefab
     GO: {fileID: 3064325587269614628, guid: 272e94f0a3475c54ea956c0306e43434, type: 3}
     Id: 13
   - Obj: {fileID: 9177126579482737267, guid: e381c388a117f6b47a47614fd9aa5d3b, type: 3}
-    InstanceId: 27096
+    InstanceId: 28820
     Name: Power Up 11
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 11.prefab
     GO: {fileID: 3064325587269614628, guid: e381c388a117f6b47a47614fd9aa5d3b, type: 3}
     Id: 14
   - Obj: {fileID: 9177126579482737267, guid: ae18128379819c34abc5d0194e9e08d5, type: 3}
-    InstanceId: 27100
+    InstanceId: 28824
     Name: Power Up 12
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 12.prefab
     GO: {fileID: 3064325587269614628, guid: ae18128379819c34abc5d0194e9e08d5, type: 3}
     Id: 15
   - Obj: {fileID: 9177126579482737267, guid: af872b4e4bc14234699d2585efcdc76b, type: 3}
-    InstanceId: 27104
+    InstanceId: 28828
     Name: Power Up 13
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 13.prefab
     GO: {fileID: 3064325587269614628, guid: af872b4e4bc14234699d2585efcdc76b, type: 3}
     Id: 16
   - Obj: {fileID: 9177126579482737267, guid: 85ff858799fb00a418f7ea599aeb8c18, type: 3}
-    InstanceId: 27108
+    InstanceId: 28832
     Name: Power Up 14
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 14.prefab
     GO: {fileID: 3064325587269614628, guid: 85ff858799fb00a418f7ea599aeb8c18, type: 3}
     Id: 17
   - Obj: {fileID: 9177126579482737267, guid: a2de4763a039b334e8d6b35dd0bcfa8a, type: 3}
-    InstanceId: 27112
+    InstanceId: 28836
     Name: Power Up 15
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 15.prefab
     GO: {fileID: 3064325587269614628, guid: a2de4763a039b334e8d6b35dd0bcfa8a, type: 3}
     Id: 18
   - Obj: {fileID: 9177126579482737267, guid: 837313a296d535a49a4c96c92f57ec52, type: 3}
-    InstanceId: 27116
+    InstanceId: 28840
     Name: Power Up 16
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 16.prefab
     GO: {fileID: 3064325587269614628, guid: 837313a296d535a49a4c96c92f57ec52, type: 3}
     Id: 19
   - Obj: {fileID: 9177126579482737267, guid: 1464ac7abd9a459459a4a8ad10433d53, type: 3}
-    InstanceId: 27120
+    InstanceId: 28844
     Name: Power Up 17
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 17.prefab
     GO: {fileID: 3064325587269614628, guid: 1464ac7abd9a459459a4a8ad10433d53, type: 3}
     Id: 20
   - Obj: {fileID: 9177126579482737267, guid: f84eb83e4c3639d4596a1244788bf85b, type: 3}
-    InstanceId: 27124
+    InstanceId: 28848
     Name: Power Up 18
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 18.prefab
     GO: {fileID: 3064325587269614628, guid: f84eb83e4c3639d4596a1244788bf85b, type: 3}
     Id: 21
   - Obj: {fileID: 9177126579482737267, guid: 66cf38222d7d4484c9ee2f964e986ddb, type: 3}
-    InstanceId: 27128
+    InstanceId: 28852
     Name: Power Up 19
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 19.prefab
     GO: {fileID: 3064325587269614628, guid: 66cf38222d7d4484c9ee2f964e986ddb, type: 3}
     Id: 22
   - Obj: {fileID: 9177126579482737267, guid: e9cc3e4e49e17364c92b3ed927a6ca40, type: 3}
-    InstanceId: 27132
+    InstanceId: 28856
     Name: Power Up 20
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 20.prefab
     GO: {fileID: 3064325587269614628, guid: e9cc3e4e49e17364c92b3ed927a6ca40, type: 3}
     Id: 23
   - Obj: {fileID: 9177126579482737267, guid: 3a40dff176855394d9ed8cbebb9151b3, type: 3}
-    InstanceId: 27136
+    InstanceId: 28860
     Name: Power Up 21
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 21.prefab
     GO: {fileID: 3064325587269614628, guid: 3a40dff176855394d9ed8cbebb9151b3, type: 3}
     Id: 24
   - Obj: {fileID: 9177126579482737267, guid: 36ca6c7265011a840a90f53d389b4537, type: 3}
-    InstanceId: 27140
+    InstanceId: 28864
     Name: Power Up 22
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up 22.prefab
     GO: {fileID: 3064325587269614628, guid: 36ca6c7265011a840a90f53d389b4537, type: 3}
     Id: 25
   - Obj: {fileID: 9177126579482737267, guid: 09a0cccbd8f361641bd963785a4b016c, type: 3}
-    InstanceId: 27144
+    InstanceId: 28868
     Name: Power Up
     FileName: Assets/Samples/Bomberman/Network Prefabs/Power Up.prefab
     GO: {fileID: 3064325587269614628, guid: 09a0cccbd8f361641bd963785a4b016c, type: 3}
     Id: 26
   - Obj: {fileID: 5100633453439203130, guid: d66d5a97430d3364890108321123b309, type: 3}
-    InstanceId: 27148
+    InstanceId: 28872
     Name: FPS Player
     FileName: Assets/Samples/First Person Shooter/Network Prefabs/FPS Player.prefab
     GO: {fileID: 7011933354638177272, guid: d66d5a97430d3364890108321123b309, type: 3}
     Id: 27
   - Obj: {fileID: 4918105893464218004, guid: ae62c0f5c4e03fd4480caa5e34d2442c, type: 3}
-    InstanceId: 25006
+    InstanceId: 28876
     Name: Dummy
     FileName: Assets/Tank/Prefabs/Game/Dummy.prefab
     GO: {fileID: 1223005985573300573, guid: ae62c0f5c4e03fd4480caa5e34d2442c, type: 3}
     Id: 28
   - Obj: {fileID: 4070793054831254424, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
-    InstanceId: 24974
+    InstanceId: 28042
     Name: PlayerTank
     FileName: Assets/Tank/Prefabs/Game/PlayerTank.prefab
     GO: {fileID: 7917003752575662290, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
     Id: 29
   - Obj: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
-    InstanceId: 25268
+    InstanceId: 28880
     Name: shot_default_visual
     FileName: Assets/Tank/Prefabs/Shots/shot_default_visual.prefab
     GO: {fileID: 8219689177351906792, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
@@ -199,8 +199,8 @@ MonoBehaviour:
   MaxPlayers: 4
   MaxObjects: 512
   MaxSendableDataSize: 50000
-  AllocatorStateBlockSize: 131072
-  AllocatorMetaBlockSize: 1048576
+  StateAllocatorBlockSize: 131072
+  MetaAllocatorBlockSize: 1048576
   ReceiveBufferSize: 32768
   SendBufferSize: 16384
   Timeout: 10
@@ -212,12 +212,13 @@ MonoBehaviour:
   InvokeRenderInHeadless: 0
   InvokeUpdate: 1
   RenderInvokeOrder: 1
+  MaxAdditiveScenes: 4
   EnableLogging: 1
-  SimServerLoss: 0
-  SimClientLoss: 0
+  ServerSimulatedLossOut: 0
+  ClientSimulatedLossOut: 0
   EnableLagCompensation: 0
   EnableInterestManagement: 0
-  InterestGroupCount: 2
+  CustomGroupCount: 2
   SimulationCulling: 0
   CellSize: 450
   WorldSize: {x: 8000, y: 1, z: 8000}
