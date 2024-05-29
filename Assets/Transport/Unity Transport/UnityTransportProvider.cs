@@ -103,7 +103,7 @@ public unsafe class NetickUnityTransport : NetworkTransport
     public override void Init()
     {
         _bitBuffer = new BitBuffer(createChunks: false);
-        if (_isReylay)
+        if (_isReylay && Engine.IsServer)
         {
             var relayServerData = RelayUtils.HostRelayData(_allocation, RelayServerEndpoint.NetworkOptions.Udp);
             var networkSettings = new NetworkSettings();

@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/Bomberman/Scenes/Bomberman.unity
     guid: b71c088b25b80d84f94a2507d42a689e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tank/Scenes/Level1.unity
     guid: c8e8f95c091b64329b97fba535292c16
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tank/Scenes/Level2.unity
     guid: 6e19821baef78417da7d17a921d05fcb
   - enabled: 1

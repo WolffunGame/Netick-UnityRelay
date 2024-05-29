@@ -9,8 +9,6 @@ namespace Examples.Tank
 	/// </summary>
 	public class App : MonoBehaviour
 	{
-		//[SerializeField] private LevelManager _levelManager;
-		//[SerializeField] private GameManager _gameManagerPrefab;
 		[SerializeField] private TMP_InputField _room;
 		[SerializeField] private TextMeshProUGUI _progress;
 		[SerializeField] private Panel _uiCurtain;
@@ -149,10 +147,6 @@ namespace Examples.Tank
 			
 			if(intro)
 				MusicPlayer.instance.SetLowPassTranstionDirection( -1f);
-		}
-
-		private void OnDisable()
-		{
 		}
 	}
 }
