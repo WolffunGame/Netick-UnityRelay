@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Tank/Scenes/Level2.unity
     guid: 6e19821baef78417da7d17a921d05fcb
   - enabled: 1
-    path: Assets/Tank/Scenes/Level3.unity
+    path: Assets/Tank/Scenes/RelayScene.unity
     guid: 28fd3fb6229c39d499597c2853dd2d40
   m_configObjects: {}
