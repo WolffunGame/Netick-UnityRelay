@@ -1013,14 +1013,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca095dd9b107c4d458708d8469b23ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePlayerScene: Level3
   MaxPlayer: 4
   JoinCode: {fileID: 11400000, guid: 5e0881373df2e7a46a4c46b296aa37bc, type: 2}
   IsHostReady: {fileID: 11400000, guid: 65681c9486a2d574eae499fa0773d83a, type: 2}
   SandboxPrefab: {fileID: 1989827575308856720, guid: cf0a227a4b89d7740bee709ca9cafc40, type: 3}
   Transport: {fileID: 11400000, guid: f476d60ad1cbc48488a893d0832c10ee, type: 2}
   Port: 34567
-  IP: 127.0.0.1
 --- !u!1 &391419501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4393,7 +4391,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 640.1824, y: 526.4}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481557437
 MonoBehaviour:
@@ -4415,7 +4413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e5effe2c91477194abdddb16e09b3336, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db4ce0b7a2b52c94c82ea23cbbe9374c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
