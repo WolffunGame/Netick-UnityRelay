@@ -41,8 +41,6 @@ public static class NetickUnityTransportExt
 
 public unsafe class NetickUnityTransport : NetworkTransport
 {
-    private bool _isReylay;
-    private Allocation _allocation;
     public struct NetickUnityTransportEndPoint : IEndPoint
     {
         private NetworkEndpoint _endPoint;
@@ -53,7 +51,6 @@ public unsafe class NetickUnityTransport : NetworkTransport
 
         public override string ToString() => _endPoint.Address;
     }
-
     private class NetickUnityTransportConnection : TransportConnection
     {
         private readonly NetickUnityTransport _transport;
@@ -75,7 +72,9 @@ public unsafe class NetickUnityTransport : NetworkTransport
             _transport._driver.EndSend(networkWriter);
         }
     }
-
+    
+    private bool _isReylay;
+    private Allocation _allocation;
     private NetworkDriver _driver;
 
     private readonly Dictionary<NetworkConnection, NetickUnityTransportConnection> _connectedPeers = new();
@@ -100,6 +99,7 @@ public unsafe class NetickUnityTransport : NetworkTransport
     public void SetJoinCode(string joinCode) => JoinCode.SetValue(joinCode);
     public void SetRelay(bool isRelay) => _isReylay = isRelay;
     public void SetAllocation(Allocation allocation) => _allocation = allocation;
+    
     public override void Init()
     {
         _bitBuffer = new BitBuffer(createChunks: false);
@@ -142,7 +142,6 @@ public unsafe class NetickUnityTransport : NetworkTransport
         for (var i = 0; i < Engine.Config.MaxPlayers; i++)
             _freeConnections.Enqueue(new NetickUnityTransportConnection(this));
     }
-
 
     public override void Shutdown()
     {
