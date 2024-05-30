@@ -31,21 +31,20 @@ namespace Examples.Tank
 		{
 			if (!Input.GetKeyDown(KeyCode.Escape)) return;
 			_uiStart.SetVisible(true);
-			_uiProgress.SetVisible(false);
+			_uiRoom.SetVisible(false);
 		}
 
 		// What mode to play - Called from the start menu
 		public void OnHostOptions()
 		{
 			if (GateUI(_uiStart))
-				_joinCode.SetVisible(true);
+				_uiProgress.SetVisible(true);
 		}
-		public void OnJoinOptions() => HostRoom();
 
-		private void HostRoom()
+		public void OnJoinOptions()
 		{
 			if (GateUI(_uiStart))
-				_uiProgress.SetVisible(true);
+				_uiRoom.SetVisible(true);
 		}
 
 		/// <summary>

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Netick;
 using Netick.Unity;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Helpers
     {
         public int StartTick { get; set; }
         public int EndTick { get; set; }
+        public float StartLocalTime { get; }
 
         /// <summary>
         /// The extrapolate method should update properties on the state struct using the given local time t
@@ -95,6 +97,9 @@ namespace Helpers
             _prefab = prefab;
         }
 
+
+        private float _curTime;
+
         /// <summary>
         /// Call Render() every frame to update visuals to their associated sparse state.
         /// </summary>
@@ -105,8 +110,6 @@ namespace Helpers
             var sandbox = owner.Sandbox;
             Interpolation interpolation =
                 !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
-            var localRenderTime = interpolation.Time - sandbox.DeltaTime + interpolation.Alpha * sandbox.DeltaTime;
-
             for (var i = 0; i < _entries.Length; i++)
             {
                 var e = _entries[i];
@@ -117,7 +120,7 @@ namespace Helpers
 
                 // Note: t may be less than zero if we're rendering across several ticks and StartTick is somewhere in-between.
                 // (E.g. from=100, to=102 with start=101 and alpha=0.25 will place us ahead of the start tick)
-                var t = localRenderTime - state.StartTick * sandbox.FixedDeltaTime;
+                var t = interpolation.Time - state.StartTick * sandbox.FixedDeltaTime;
                 var t1 = (state.EndTick - state.StartTick) * sandbox.FixedDeltaTime;
 
 

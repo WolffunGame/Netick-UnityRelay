@@ -8,10 +8,20 @@ using UnityEngine;
 [Serializable]
 public struct ShotState : ISparseState<Shot>
 {
+    private int _statTick;
+
     /// <summary>
     /// Generic sparse state properties required by the interface
     /// </summary>
-    public int StartTick { get; set; }
+    public int StartTick
+    {
+        get => _statTick;
+        set
+        {
+            _statLocalTime = Time.time;
+            _statTick = value;
+        }
+    }
 
     public int EndTick { get; set; }
 
@@ -22,6 +32,9 @@ public struct ShotState : ISparseState<Shot>
 
     public Vector3 Direction;
 
+    [NonSerialized] private float _statLocalTime;
+
+    public float StartLocalTime => _statLocalTime;
     // [NonSerialized] private const float Gravity = 9.81f;
     // [NonSerialized] private const float Angle = 75;
     // [NonSerialized] private const float TargetDistanceThreshold = 7;

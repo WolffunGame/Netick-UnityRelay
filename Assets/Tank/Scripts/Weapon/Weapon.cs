@@ -122,7 +122,7 @@ public class Weapon : NetworkBehaviour
         Ammo--;
         BulletID++;
         var position = transform.position + Quaternion.LookRotation( aimDir) * _offset;
-        _bullets.Add(Sandbox, new ShotState()
+        _bullets.Add(Sandbox, new ShotState
         {
             Position = position,
             Direction = aimDir,

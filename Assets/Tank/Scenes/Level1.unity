@@ -4176,6 +4176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 7917003752575662290, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
+  _app: {fileID: 0}
   _spawnPositions:
   - {fileID: 1632523966}
   - {fileID: 1451734453}
@@ -6888,11 +6889,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SandboxPrefab: {fileID: 1989827575308856720, guid: cf0a227a4b89d7740bee709ca9cafc40, type: 3}
-  Transport: {fileID: 11400000, guid: f476d60ad1cbc48488a893d0832c10ee, type: 2}
+  Transport: {fileID: 11400000, guid: 71ee41ef7e4efc949b730b56e34d09df, type: 2}
   Mode: 4
   Clients: 1
   StartServerInMultiplePeersMode: 1
-  AutoStart: 0
+  AutoStart: 1
   AutoConnect: 1
   Port: 36728
   ServerIPAddress: 127.0.0.1
