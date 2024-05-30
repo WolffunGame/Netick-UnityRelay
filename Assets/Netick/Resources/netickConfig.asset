@@ -33,7 +33,7 @@ MonoBehaviour:
     FileName: Assets/Tank/Prefabs/Shots/shot_default_visual.prefab
     GO: {fileID: 8219689177351906792, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
     Id: 3
-  TickRate: 60
+  TickRate: 30
   MaxPlayers: 4
   MaxObjects: 512
   MaxSendableDataSize: 50000
@@ -43,7 +43,7 @@ MonoBehaviour:
   SendBufferSize: 16384
   Timeout: 10
   MaxPredictedTicks: 64
-  ServerDivisor: 1
+  ServerDivisor: 2
   ClientDivisor: 1
   PhysicsPrediction: 0
   PhysicsType: 1
