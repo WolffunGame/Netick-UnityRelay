@@ -21,42 +21,42 @@ public struct ShotState : ISparseState<Shot>
     public Vector3 Position;
 
     public Vector3 Direction;
-    
-    [NonSerialized] private const float Gravity = 9.81f;
-    [NonSerialized] private const float Angle = 75;
-    [NonSerialized] private const float TargetDistanceThreshold = 7;
-    [NonSerialized] private const float TargetHeightThreshold = 1.5f;
 
-    public byte ProjectileMoveType;
-    public int Damage;
+    // [NonSerialized] private const float Gravity = 9.81f;
+    // [NonSerialized] private const float Angle = 75;
+    // [NonSerialized] private const float TargetDistanceThreshold = 7;
+    // [NonSerialized] private const float TargetHeightThreshold = 1.5f;
+    //
+    // public byte ProjectileMoveType;
+    // public int Damage;
+    //
+    // public float CriticalChance;
+    // public float CriticalRatio;
+    //
+    // public byte TeamSide;
+    // public byte Acceleration;
+    // public bool IsPiercing;
+    // public byte ArrowType;
+    // public short AngleDiff;
+    //
+    // public int BaseUnitId;
+    // public int BowId;
+    // public int SkinId;
 
-    public float CriticalChance;
-    public float CriticalRatio;
+    // public Vector2 Destination;
+    // public Vector2 StartPosition;
+    // public Vector2 Velocity;
+    // public float VelocityMag;
+    // public bool IsDestroyed;
+    // public float ZAxis;
+    // [NonSerialized] public Vector2 CurrentPosition;
+    // [NonSerialized] public float ZRotation;
+    // [NonSerialized] public float OffsetX;
 
-    public byte TeamSide;
-    public byte Acceleration;
-    public bool IsPiercing;
-    public byte ArrowType;
-    public short AngleDiff;
-    
-    public int BaseUnitId;
-    public int BowId;
-    public int SkinId;
-
-    public Vector2 Destination;
-    public Vector2 StartPosition;
-    public Vector2 Velocity;
-    public float VelocityMag;
-    public bool IsDestroyed;
-    public float ZAxis;
-    [NonSerialized] public Vector2 CurrentPosition;
-    [NonSerialized] public float ZRotation;
-    [NonSerialized] public float OffsetX;
-    
     public NetworkArrayStruct32<byte> TBytes { get; set; }
-    
+
     public float Speed;
-    
+
 
     public void Extrapolate(float t, Shot prefab)
     {
@@ -75,7 +75,7 @@ public struct ShotState : ISparseState<Shot>
         p.y = 0.05f; // Return the position with a slight y offset to avoid placing target where it will end up z-fighting with the ground;
         return p;
     }
-    
+
     public Vector3 GetPositionAt(float t) => Position + t * Speed * Direction;
 
     private Vector3 GetPositionAt(float t, Shot prefab) =>
@@ -112,7 +112,7 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
     public byte AreaDamage => _areaDamage;
     public float TimeToLive => _timeToLive;
     public bool IsHitScan => _isHitScan;
-    
+
     private bool _isFirstRender;
 
     private Transform _xForm;
@@ -126,13 +126,13 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
 
     private void OnDisable() => _isFirstRender = false;
 
-    public void ApplyStateToVisual(NetworkBehaviour owner, ShotState state, float t, bool isFirstRender,
-        bool isLastRender)
+    public void ApplyStateToVisual(NetworkBehaviour owner, ShotState state, float t, bool isFirstRender, bool isLast)
     {
-        if(_isFirstRender)
-            if(_muzzleFlash)
-                LocalObjectPool.Acquire(_muzzleFlash,  state.Position, Quaternion.LookRotation(state.Direction), owner.transform);
-        if (isLastRender)
+        if (_isFirstRender)
+            if (_muzzleFlash)
+                LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),
+                    owner.transform);
+        if (isLast)
         {
             // Slightly hacky, but we never move the hitScan so its current position is always the muzzle, and target is start + direction
             if (IsHitScan)
@@ -140,11 +140,8 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
             else
                 LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
         }
-        //
-        // if (isFirstRender && _muzzleFlash)
-        //     LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),
-        //         owner.transform);
-        _isFirstRender=false;
+
+        _isFirstRender = false;
         _xForm.forward = state.Direction;
         _xForm.position = state.Position;
     }

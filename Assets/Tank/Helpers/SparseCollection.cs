@@ -43,8 +43,8 @@ namespace Helpers
         /// <param name="state">The current render state of this particular visual</param>
         /// <param name="t">The current local time that the state represents</param>
         /// <param name="isFirstRender">True the first time this is called for a new visual</param>
-        /// <param name="isLastRender">True the last time this is called for a given visual</param>
-        public void ApplyStateToVisual(NetworkBehaviour owner, T state, float t, bool isFirstRender, bool isLastRender);
+        /// <param name="isLast">True the last time this is called for a given visual</param>
+        public void ApplyStateToVisual(NetworkBehaviour owner, T state, float t, bool isFirstRender, bool isLast);
     }
 
     /// <summary>
@@ -120,8 +120,8 @@ namespace Helpers
                 var t = localRenderTime - state.StartTick * sandbox.FixedDeltaTime;
                 var t1 = (state.EndTick - state.StartTick) * sandbox.FixedDeltaTime;
 
-                
-                var isLastRender = t >= t1 && e.Enabled;
+
+                var isLastRender = t >= t1 && e.Enabled && state.StartTick != 0;
                 var isFirstRender = false;
 
                 //e.Enabled =true;

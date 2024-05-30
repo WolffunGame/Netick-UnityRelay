@@ -107,7 +107,6 @@ public unsafe class NetickUnityTransport : NetworkTransport
         {
             var relayServerData = RelayUtils.HostRelayData(_allocation, RelayServerEndpoint.NetworkOptions.Udp);
             var networkSettings = new NetworkSettings();
-            //Initialize relay network
             networkSettings.WithRelayParameters(ref relayServerData);
             _driver = NetworkDriver.Create(networkSettings);
         }
@@ -144,18 +143,6 @@ public unsafe class NetickUnityTransport : NetworkTransport
             _freeConnections.Enqueue(new NetickUnityTransportConnection(this));
     }
 
-    private void ConnectRelayClient(string joinCode)
-    {
-        RelayServiceSDK.AllocationFromJoinCode(joinCode, (joinAllocation) =>
-        {
-            RelayServerData relayServerData =
-                RelayUtils.PlayerRelayData(joinAllocation, RelayServerEndpoint.NetworkOptions.Udp);
-            var networkSettings = new NetworkSettings();
-            networkSettings.WithRelayParameters(ref relayServerData);
-            _driver = NetworkDriver.Create(networkSettings);
-            _serverConnection = _driver.Connect();
-        }, null);
-    }
 
     public override void Shutdown()
     {
@@ -179,6 +166,19 @@ public unsafe class NetickUnityTransport : NetworkTransport
             else
                 _serverConnection = _driver.Connect(endpoint);
         }
+    }
+    
+    private void ConnectRelayClient(string joinCode)
+    {
+        RelayServiceSDK.AllocationFromJoinCode(joinCode, (joinAllocation) =>
+        {
+            RelayServerData relayServerData =
+                RelayUtils.PlayerRelayData(joinAllocation, RelayServerEndpoint.NetworkOptions.Udp);
+            var networkSettings = new NetworkSettings();
+            networkSettings.WithRelayParameters(ref relayServerData);
+            _driver = NetworkDriver.Create(networkSettings);
+            _serverConnection = _driver.Connect();
+        }, null);
     }
 
     public override void Disconnect(TransportConnection connection)

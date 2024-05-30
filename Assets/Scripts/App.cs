@@ -31,20 +31,7 @@ namespace Examples.Tank
 		{
 			if (!Input.GetKeyDown(KeyCode.Escape)) return;
 			_uiStart.SetVisible(true);
-			_uiRoom.SetVisible(false);
-			// if (_uiProgress.isShowing)
-			// {
-			// 	// if (Input.GetKeyUp(KeyCode.Escape))
-			// 	// {
-			// 	// 	NetworkRunner runner = FindObjectOfType<NetworkRunner>();
-			// 	// 	if (runner != null && !runner.IsShutdown)
-			// 	// 	{
-			// 	// 		// Calling with destroyGameObject false because we do this in the OnShutdown callback on FusionLauncher
-			// 	// 		runner.Shutdown(false);
-			// 	// 	}
-			// 	// }
-			// 	UpdateUI();
-			// }
+			_uiProgress.SetVisible(false);
 		}
 
 		// What mode to play - Called from the start menu
@@ -53,20 +40,12 @@ namespace Examples.Tank
 			if (GateUI(_uiStart))
 				_joinCode.SetVisible(true);
 		}
-		public void OnJoinOptions() => SetGameMode();
+		public void OnJoinOptions() => HostRoom();
 
-		private void SetGameMode()
+		private void HostRoom()
 		{
 			if (GateUI(_uiStart))
-				_uiRoom.SetVisible(true);
-		}
-
-		public void OnEnterRoom()
-		{
-			// if (GateUI(_uiRoom))
-			// {
-			// 	FusionLauncher.Launch(_gameMode, _room.text, _gameManagerPrefab, _levelManager, OnConnectionStatusUpdate);
-			// }
+				_uiProgress.SetVisible(true);
 		}
 
 		/// <summary>
@@ -81,72 +60,6 @@ namespace Examples.Tank
 				return false;
 			ui.SetVisible(false);
 			return true;
-		}
-
-		// private void OnConnectionStatusUpdate(NetworkRunner runner, FusionLauncher.ConnectionStatus status, string reason)
-		// {
-		// 	if (!this)
-		// 		return;
-		//
-		// 	Debug.Log(status);
-		//
-		// 	if (status != _status)
-		// 	{
-		// 		switch (status)
-		// 		{
-		// 			case FusionLauncher.ConnectionStatus.Disconnected:
-		// 				ErrorBox.Show("Disconnected!", reason, () => { });
-		// 				break;
-		// 			case FusionLauncher.ConnectionStatus.Failed:
-		// 				ErrorBox.Show("Error!", reason, () => { });
-		// 				break;
-		// 		}
-		// 	}
-		//
-		// 	_status = status;
-		// 	UpdateUI();
-		// }
-
-		private void UpdateUI()
-		{
-			bool intro = false;
-			bool progress = true;
-			bool running = false;
-			intro = true;
-			// switch (_status)
-			// {
-			// 	case FusionLauncher.ConnectionStatus.Disconnected:
-			// 		_progress.text = "Disconnected!";
-			// 		intro = true;
-			// 		break;
-			// 	case FusionLauncher.ConnectionStatus.Failed:
-			// 		_progress.text = "Failed!";
-			// 		intro = true;
-			// 		break;
-			// 	case FusionLauncher.ConnectionStatus.Connecting:
-			// 		_progress.text = "Connecting";
-			// 		progress = true;
-			// 		break;
-			// 	case FusionLauncher.ConnectionStatus.Connected:
-			// 		_progress.text = "Connected";
-			// 		progress = true;
-			// 		break;
-			// 	case FusionLauncher.ConnectionStatus.Loading:
-			// 		_progress.text = "Loading";
-			// 		progress = true;
-			// 		break;
-			// 	case FusionLauncher.ConnectionStatus.Loaded:
-			// 		running = true;
-			// 		break;
-			// }
-
-			_uiCurtain.SetVisible(!running);
-			_uiStart.SetVisible(intro);
-			_uiProgress.SetVisible(progress);
-			_uiGame.SetActive(running);
-			
-			if(intro)
-				MusicPlayer.instance.SetLowPassTranstionDirection( -1f);
 		}
 	}
 }
