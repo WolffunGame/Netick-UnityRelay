@@ -53,9 +53,9 @@ public class TankMoveControl : NetworkBehaviour
     {
         if (_interpolationDir.GetInterpolationData<Quaternion>(InterpolationSource.Auto, out var from, out var to,
                 out var alpha))
-            _turret.rotation = Quaternion.Slerp(from, to, alpha + Time.deltaTime);
+            _turret.rotation = Quaternion.Slerp(from, to, alpha);
         if (_interpolationHub.GetInterpolationData(InterpolationSource.Auto, out from, out to, out alpha))
-            _null.rotation = Quaternion.Slerp(from, to, alpha+ Time.deltaTime);
+            _null.rotation = Quaternion.Slerp(from, to, alpha);
     }
 
     private void RotateTurret(Vector3 aimDir)
