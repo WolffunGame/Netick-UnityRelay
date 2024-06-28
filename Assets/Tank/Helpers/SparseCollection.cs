@@ -108,8 +108,9 @@ namespace Helpers
         public void Render(NetworkBehaviour owner, NetworkArray<T> states)
         {
             var sandbox = owner.Sandbox;
-            Interpolation interpolation =
-                !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
+            // Interpolation interpolation =
+            //     !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
+            Interpolation interpolation = sandbox.Engine.LocalInterpolation;
             for (var i = 0; i < _entries.Length; i++)
             {
                 var e = _entries[i];
@@ -162,9 +163,7 @@ namespace Helpers
                 // Done modifying the entry struct, copy it back to the array
                 _entries[i] = e;
             }
-
             return;
-
             void ApplyState(T state, Entry e, float t, bool isFirstRender, bool isLastRender)
             {
                 // Update state to t
@@ -185,8 +184,6 @@ namespace Helpers
         /// <param name="process">A delegate that will process each (active) sparse state</param>
         public void Process(NetworkBehaviour owner, Processor process)
         {
-            if (owner.IsProxy)
-                return;
             var sandbox = owner.Sandbox;
             for (var i = 0; i < _states.Length; i++)
             {

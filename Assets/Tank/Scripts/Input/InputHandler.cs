@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Netick;
 using Netick.Unity;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class InputHandler : NetworkEventsListener
     public void SetPlayer(Transform player)
     {
         _player = player;
-    } 
+    }
 
     public override void OnInput(NetworkSandbox sandbox)
     {
@@ -31,21 +32,23 @@ public class InputHandler : NetworkEventsListener
         input.SetMoveDirection(_moveDelta.normalized);
         if (_buttonSample != 0)
         {
-            input.Buttons = _buttonSample;
-            input.Buttons = _buttonSample;
-            _buttonReset |= _buttonSample; 
+            input.Buttons = (byte)_buttonSample;
+            input.Buttons = (byte)_buttonSample;
+            _buttonReset |= _buttonSample;
             _buttonSample = 0;
         }
+
+        input.FireTick = sandbox.Tick.TickValue;
         sandbox.SetInput(input);
     }
 
     private void Update()
     {
-        if(!_player || !Sandbox || !Sandbox.IsClient)
+        if (!_player || !Sandbox || !Sandbox.IsClient)
             return;
         _buttonSample &= ~_buttonReset;
-        
-        
+
+
         if (Input.GetMouseButton(0))
             _buttonSample |= InputData.BUTTON_FIRE_PRIMARY;
 
@@ -69,7 +72,7 @@ public class InputHandler : NetworkEventsListener
         if (Input.GetKey(KeyCode.D))
             _moveDelta += Vector2.right;
         var mousePos = Input.mousePosition;
-        
+
         var view = _cam.ScreenToViewportPoint(mousePos);
         var isOutside = view.x < 0 || view.x > 1 || view.y < 0 || view.y > 1;
         if (isOutside) return;
@@ -87,29 +90,21 @@ public class InputHandler : NetworkEventsListener
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public struct InputData : INetworkInput
 {
-    public const uint BUTTON_FIRE_PRIMARY = 1 << 0;
-    public const uint BUTTON_FIRE_SECONDARY = 1 << 1;
-    public const uint BUTTON_TOGGLE_READY = 1 << 2;
-    public byte EncodedMoveDir;
-    public byte EncodedAimDir;
-    public uint Buttons;
+    [NonSerialized] public const byte BUTTON_FIRE_PRIMARY = 1 << 0;
+    [NonSerialized] public const byte BUTTON_FIRE_SECONDARY = 1 << 1;
+    [NonSerialized] public const byte BUTTON_TOGGLE_READY = 1 << 2;
+    public int FireTick;
+    private byte EncodedMoveDir;
+    private byte EncodedAimDir;
+    public byte Buttons;
 
-    public bool IsUp(uint button) => IsDown(button) == false;
     public bool IsDown(uint button) => (Buttons & button) == button;
 
-    public bool WasPressed(uint button, InputData oldInput)
-        => (oldInput.Buttons & button) == 0 && (Buttons & button) == button;
+    public void SetMoveDirection(Vector2 direction) => EncodedMoveDir = EncodeDir.EncodeDirection(direction);
 
-    public void SetMoveDirection(Vector2 direction) => EncodedMoveDir =  EncodeDir.EncodeDirection(direction);
-
-    public Vector2 GetMoveDirection() => EncodeDir.DecodeDirection(this.EncodedMoveDir);
+    public Vector2 GetMoveDirection() => EncodeDir.DecodeDirection(EncodedMoveDir);
 
     public void SetAimDirection(Vector2 direction) => EncodedAimDir = EncodeDir.EncodeDirection(direction);
 
-    public  Vector2 GetAimDirection() => EncodeDir.DecodeDirection(EncodedAimDir);
-}
-
-public static class PlayerInputExtensions
-{
-    
+    public Vector2 GetAimDirection() => EncodeDir.DecodeDirection(EncodedAimDir);
 }

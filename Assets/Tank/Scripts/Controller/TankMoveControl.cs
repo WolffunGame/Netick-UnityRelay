@@ -1,5 +1,4 @@
-﻿using System;
-using Netick;
+﻿using Netick;
 using Netick.Unity;
 using Tank.Scripts.Utility;
 using UnityEngine;
@@ -9,7 +8,7 @@ public class TankMoveControl : NetworkBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _hullRotationSpeed = 5;
     [SerializeField] private float _turretRotationSpeed = 10;
-
+    [SerializeField] private InputDelay _inputDelay;
     [SerializeField] private CharacterController _cc;
     [SerializeField] private Transform _turret;
     [SerializeField] private Transform _null;
@@ -36,8 +35,9 @@ public class TankMoveControl : NetworkBehaviour
 
     public override void NetworkFixedUpdate()
     {
-        if (!FetchInput(out InputData input))
-            return;
+        // if (!FetchInput(out InputData input))
+        //     return;
+        var input = _inputDelay.GetInput();
         var moveDir = input.GetMoveDirection().XOY();
         var aimDir = input.GetAimDirection().XOY();
         RotateTurret(aimDir);
@@ -77,4 +77,6 @@ public class TankMoveControl : NetworkBehaviour
             _hullRotationSpeed * Sandbox.FixedDeltaTime);
         _null.rotation = hullRotation;
     }
+
+    private void OnValidate() => _inputDelay ??= GetComponent<InputDelay>();
 }

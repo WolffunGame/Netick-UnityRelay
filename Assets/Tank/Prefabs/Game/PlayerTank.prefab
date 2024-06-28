@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 6430651140651163753}
   - component: {fileID: -2680542678223487224}
   - component: {fileID: 3048040486929872768}
+  - component: {fileID: 5240678188638201572}
   m_Layer: 6
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -633,7 +634,7 @@ MonoBehaviour:
   CorrectionMaxBlendAlpha: 0.7
   PositionTeleportThreshold: 50
   RotationTeleportThreshold: 10
-  _interpolationSource: 0
+  _interpolationSource: 1
 --- !u!114 &6430651140651163753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,6 +650,7 @@ MonoBehaviour:
   _moveSpeed: 8
   _hullRotationSpeed: 8
   _turretRotationSpeed: 14
+  _inputDelay: {fileID: 5240678188638201572}
   _cc: {fileID: 1723606642065551448}
   _turret: {fileID: 1185371072849741531}
   _null: {fileID: 8452678108642866672}
@@ -691,12 +693,26 @@ MonoBehaviour:
   _fireInterval: 0.1
   _bulletPrefab: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
   _bulletShotPrefab: {fileID: 3579653652657372702, guid: 3d498f93f682235428e38adaf523667f, type: 3}
+  _inputDelay: {fileID: 5240678188638201572}
   <Ammo>k__BackingField: 0
   <CurrentReloadTime>k__BackingField: 0
   <FireTime>k__BackingField: 0
   <BulletID>k__BackingField: 0
   FromStates:
     _originalBuffer: []
+--- !u!114 &5240678188638201572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917003752575662290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491c6ea116f10410fa3eaad9250d9573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delayTick: 4
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0

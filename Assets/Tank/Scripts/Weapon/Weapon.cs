@@ -1,4 +1,5 @@
-﻿using Helpers;
+﻿using System;
+using Helpers;
 using Netick;
 using Netick.Unity;
 using Tank.Scripts.Utility;
@@ -6,14 +7,14 @@ using UnityEngine;
 
 public class Weapon : NetworkBehaviour
 {
-     private const byte MaxAmmo = 254;
+    private const byte MaxAmmo = 254;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _reloadTime;
     [SerializeField] private byte _maxAmmo = 5;
     [SerializeField] private float _fireInterval = .4f;
     [SerializeField] private NetworkObject _bulletPrefab;
     [SerializeField] private Shot _bulletShotPrefab;
-    private Vector3 _offset;
+    [SerializeField] private InputDelay _inputDelay;
 
     [Networked] private byte Ammo { get; set; }
     [Networked] private float CurrentReloadTime { get; set; }
@@ -21,13 +22,15 @@ public class Weapon : NetworkBehaviour
     [Networked] private byte BulletID { get; set; }
 
 
-    [Networked(size: MaxAmmo)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
+    [Networked(size: MaxAmmo)] [Smooth(false)]
+    private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
 
     public NetworkArray<ShotState> FromStates;
 
     private SparseCollection<ShotState, Shot> _bullets;
 
     private Interpolator _interpolation;
+    private Vector3 _offset;
 
     private void Awake() => _offset = _firePoint.position - transform.position;
     public void Start() => _bullets = new SparseCollection<ShotState, Shot>(_bulletStates, _bulletShotPrefab);
@@ -51,8 +54,7 @@ public class Weapon : NetworkBehaviour
         if (FireTime > 0)
             FireTime -= Sandbox.FixedDeltaTime;
 
-        if (!FetchInput(out InputData input))
-            return;
+        var input = _inputDelay.GetInput();
         if (!input.IsDown(InputData.BUTTON_FIRE_PRIMARY) || FireTime > 0 || Ammo <= 0)
             return;
         Fire(input.GetAimDirection().XOY());
@@ -101,8 +103,8 @@ public class Weapon : NetworkBehaviour
             FromStates[i] = from;
         }
 
-        if (!IsServer)
-            _bullets?.Render(this, _bulletStates);
+        //if (!IsServer)
+            _bullets?.Render(this, FromStates);
     }
 
     private void AutoReloadAmmo()
@@ -121,7 +123,7 @@ public class Weapon : NetworkBehaviour
         FireTime = _fireInterval;
         Ammo--;
         BulletID++;
-        var position = transform.position + Quaternion.LookRotation( aimDir) * _offset;
+        var position = transform.position + Quaternion.LookRotation(aimDir) * _offset;
         _bullets.Add(Sandbox, new ShotState
         {
             Position = position,
@@ -133,4 +135,10 @@ public class Weapon : NetworkBehaviour
     }
 
     public override void NetworkDestroy() => _bullets.Clear();
+
+    private void OnValidate()
+    {
+        _inputDelay ??= GetComponent<InputDelay>();
+        _inputDelay ??= GetComponentInParent<InputDelay>();
+    }
 }

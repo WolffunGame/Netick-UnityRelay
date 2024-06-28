@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18154576, g: 0.22718874, b: 0.3074065, a: 1}
+  m_IndirectSpecularColor: {r: 0.18154523, g: 0.22718807, b: 0.30740547, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6890,7 +6890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandboxPrefab: {fileID: 1989827575308856720, guid: cf0a227a4b89d7740bee709ca9cafc40, type: 3}
   Transport: {fileID: 11400000, guid: 71ee41ef7e4efc949b730b56e34d09df, type: 2}
-  Mode: 4
+  Mode: 2
   Clients: 1
   StartServerInMultiplePeersMode: 1
   AutoStart: 1
