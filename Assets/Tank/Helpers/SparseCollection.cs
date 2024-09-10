@@ -108,8 +108,9 @@ namespace Helpers
         public void Render(NetworkBehaviour owner, NetworkArray<T> states)
         {
             var sandbox = owner.Sandbox;
-            Interpolation interpolation =
-                !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
+            // Interpolation interpolation =
+            //     !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
+            Interpolation interpolation = sandbox.Engine.LocalInterpolation;
             for (var i = 0; i < _entries.Length; i++)
             {
                 var e = _entries[i];

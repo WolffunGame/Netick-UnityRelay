@@ -1,8 +1,8 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Netick;
 using Netick.Unity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Tank.Scripts
 {
@@ -11,16 +11,18 @@ namespace Tank.Scripts
     public class Tank : NetworkBehaviour
     {
         private static readonly int EnergyColor = Shader.PropertyToID("_EnergyColor");
-        
+
         [Networked] public byte TankIndex { get; set; }
         [SerializeField] private Material[] _tankMaterials;
         [SerializeField] private TankMoveControl _moveControl;
+        [FormerlySerializedAs("_inputHandle")] [SerializeField] private InputDelayHandle _inputDelayHandle;
 
         public Material PlayerMaterial { get; set; }
         public Color PlayerColor { get; set; }
-        
+
         public TankMoveControl MoveControl => _moveControl;
-        
+        public InputDelayHandle InputDelayHandle => _inputDelayHandle;
+
         [OnChanged(nameof(TankIndex))]
         private void OnIndexChange(OnChangedData onChangedData)
         {
@@ -32,6 +34,11 @@ namespace Tank.Scripts
             foreach (var part in tankParts)
                 part.SetMaterial(PlayerMaterial);
         }
-        private void OnValidate()=> _moveControl??=GetComponent<TankMoveControl>();
+
+        private void OnValidate()
+        {
+            _moveControl ??= GetComponent<TankMoveControl>();
+            _inputDelayHandle ??= GetComponentInChildren<InputDelayHandle>();
+        }
     }
 }

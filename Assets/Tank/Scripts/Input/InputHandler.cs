@@ -29,6 +29,7 @@ public class InputHandler : NetworkEventsListener
         var input = sandbox.GetInput<InputData>();
         input.SetAimDirection(_aimDelta.normalized);
         input.SetMoveDirection(_moveDelta.normalized);
+        input.Tick = sandbox.Tick.TickValue;
         if (_buttonSample != 0)
         {
             input.Buttons = _buttonSample;
@@ -93,6 +94,7 @@ public struct InputData : INetworkInput
     public byte EncodedMoveDir;
     public byte EncodedAimDir;
     public uint Buttons;
+    public int Tick;
 
     public bool IsUp(uint button) => IsDown(button) == false;
     public bool IsDown(uint button) => (Buttons & button) == button;
@@ -102,7 +104,7 @@ public struct InputData : INetworkInput
 
     public void SetMoveDirection(Vector2 direction) => EncodedMoveDir =  EncodeDir.EncodeDirection(direction);
 
-    public Vector2 GetMoveDirection() => EncodeDir.DecodeDirection(this.EncodedMoveDir);
+    public Vector2 GetMoveDirection() => EncodeDir.DecodeDirection(EncodedMoveDir);
 
     public void SetAimDirection(Vector2 direction) => EncodedAimDir = EncodeDir.EncodeDirection(direction);
 

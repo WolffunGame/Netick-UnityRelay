@@ -1,16 +1,14 @@
-﻿using System;
-using Netick;
-using Netick.Unity;
+﻿using Netick;
 using Tank.Scripts.Utility;
 using UnityEngine;
 
-public class TankMoveControl : NetworkBehaviour
+public class TankMoveControl : TankComponent
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _hullRotationSpeed = 5;
     [SerializeField] private float _turretRotationSpeed = 10;
 
-    [SerializeField] private CharacterController _cc;
+    [SerializeField] private CharacterController  _cc;
     [SerializeField] private Transform _turret;
     [SerializeField] private Transform _null;
 
@@ -36,10 +34,8 @@ public class TankMoveControl : NetworkBehaviour
 
     public override void NetworkFixedUpdate()
     {
-        if (!FetchInput(out InputData input))
-            return;
-        var moveDir = input.GetMoveDirection().XOY();
-        var aimDir = input.GetAimDirection().XOY();
+        var moveDir = EncodeDir.DecodeDirection(Tank.InputDelayHandle.InputData.EncodedMoveDir).XOY();
+        var aimDir = EncodeDir.DecodeDirection(Tank.InputDelayHandle.InputData.EncodedAimDir).XOY();
         RotateTurret(aimDir);
         RotateHull(moveDir);
         if (!_cc.isGrounded)

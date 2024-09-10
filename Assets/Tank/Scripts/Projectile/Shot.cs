@@ -142,16 +142,19 @@ public class Shot : MonoBehaviour, ISparseVisual<ShotState, Shot>
     public void ApplyStateToVisual(NetworkBehaviour owner, ShotState state, float t, bool isFirstRender, bool isLast)
     {
         if (_isFirstRender)
-            if (_muzzleFlash)
-                LocalObjectPool.Acquire(_muzzleFlash, state.Position, Quaternion.LookRotation(state.Direction),
-                    owner.transform);
+            if (_muzzleFlash&& owner.TryGetComponent<Weapon>(out var weapon))
+            {
+                var muzzle = LocalObjectPool.Acquire(_muzzleFlash);
+                muzzle.transform.SetParent(weapon.FirePoint);
+                muzzle.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            }
+        
         if (isLast)
         {
-            // Slightly hacky, but we never move the hitScan so its current position is always the muzzle, and target is start + direction
-            if (IsHitScan)
-                LocalObjectPool.Acquire(_detonationPrefab, state.Position + state.Direction, Quaternion.identity);
-            else
-                LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
+            var x= IsHitScan
+                ? LocalObjectPool.Acquire(_detonationPrefab, state.Position + state.Direction, Quaternion.identity)
+                : LocalObjectPool.Acquire(_detonationPrefab, state.Position, Quaternion.identity);
+ 
         }
 
         _isFirstRender = false;

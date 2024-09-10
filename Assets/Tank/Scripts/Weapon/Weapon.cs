@@ -4,7 +4,7 @@ using Netick.Unity;
 using Tank.Scripts.Utility;
 using UnityEngine;
 
-public class Weapon : NetworkBehaviour
+public class Weapon  : TankComponent
 {
      private const byte MaxAmmo = 254;
     [SerializeField] private Transform _firePoint;
@@ -23,11 +23,10 @@ public class Weapon : NetworkBehaviour
 
     [Networked(size: MaxAmmo)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
 
-    public NetworkArray<ShotState> FromStates;
 
     private SparseCollection<ShotState, Shot> _bullets;
 
-    private Interpolator _interpolation;
+    public Transform FirePoint =>_firePoint;
 
     private void Awake() => _offset = _firePoint.position - transform.position;
     public void Start() => _bullets = new SparseCollection<ShotState, Shot>(_bulletStates, _bulletShotPrefab);
@@ -36,23 +35,15 @@ public class Weapon : NetworkBehaviour
     {
         base.NetworkStart();
         Sandbox.InitializePool(_bulletPrefab.gameObject, 20);
-        _interpolation = FindInterpolator(nameof(_bulletStates));
-        FromStates = new NetworkArray<ShotState>(MaxAmmo);
     }
-
-    private void OnDestroy() => FromStates = null;
 
     public override void NetworkFixedUpdate()
     {
         AutoReloadAmmo();
-
         ProcessBullets();
-
         if (FireTime > 0)
             FireTime -= Sandbox.FixedDeltaTime;
-
-        if (!FetchInput(out InputData input))
-            return;
+        var input = Tank.InputDelayHandle.InputData;
         if (!input.IsDown(InputData.BUTTON_FIRE_PRIMARY) || FireTime > 0 || Ammo <= 0)
             return;
         Fire(input.GetAimDirection().XOY());
@@ -65,7 +56,7 @@ public class Weapon : NetworkBehaviour
             for (var i = 0; i < _bulletStates.Length; i++)
             {
                 var temp = _bulletStates[i];
-                var t = (Sandbox.Tick.TickValue - temp.StartTick) * Sandbox.FixedDeltaTime;
+                var t = (Sandbox.Tick.TickValue - temp.StartTick + 1) * Sandbox.FixedDeltaTime;
                 temp.Position = temp.GetPositionAt(t);
                 temp.StartTick = Sandbox.Tick.TickValue;
                 temp.Speed = temp.Speed == 0 ? _bulletShotPrefab.Speed : 0;
@@ -87,20 +78,10 @@ public class Weapon : NetworkBehaviour
             bullet.EndTick = Sandbox.Tick.TickValue;
             return true;
         });
-        for (var i = 0; i < FromStates.Length; i++)
-            FromStates[i] = _bulletStates[i];
     }
 
     public override void NetworkRender()
     {
-        for (var i = 0; i < _bulletStates.Length; i++)
-        {
-            if (!_interpolation.GetInterpolationData<ShotState>(InterpolationSource.Auto, i, out var from, out _,
-                    out _))
-                continue;
-            FromStates[i] = from;
-        }
-
         if (!IsServer)
             _bullets?.Render(this, _bulletStates);
     }
