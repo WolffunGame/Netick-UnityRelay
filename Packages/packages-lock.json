@@ -14,7 +14,7 @@
       "dependencies": {
         "com.unity.nuget.mono-cecil": "1.11.4"
       },
-      "hash": "ee24789791653864c6348162d858dd929d8847ca"
+      "hash": "0d7aae9437f914a4a11f9fe3a657976f17f2e56b"
     },
     "com.unity.barracuda": {
       "version": "3.0.0",
@@ -155,15 +155,6 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.postprocessing": {
-      "version": "3.4.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.physics": "1.0.0"
-      },
       "url": "https://packages.unity.com"
     },
     "com.unity.services.authentication": {

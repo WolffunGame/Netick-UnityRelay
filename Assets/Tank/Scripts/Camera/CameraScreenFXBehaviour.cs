@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 namespace Examples.Tank
 {
@@ -13,11 +12,11 @@ namespace Examples.Tank
 		bool active = false;
 		private float maxGlitch = 1;
 
-		private void Awake()
-		{
-			GetComponent<PostProcessLayer>().enabled = !Application.isMobilePlatform;
-			GetComponent<PostProcessVolume>().enabled = !Application.isMobilePlatform;
-		}
+		// private void Awake()
+		// {
+		// 	GetComponent<PostProcessLayer>().enabled = !Application.isMobilePlatform;
+		// 	GetComponent<PostProcessVolume>().enabled = !Application.isMobilePlatform;
+		// }
 
 		void Start()
 		{

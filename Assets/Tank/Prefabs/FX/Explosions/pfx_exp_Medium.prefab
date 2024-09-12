@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8441284345584751675}
   - component: {fileID: 8868033614030046511}
   - component: {fileID: -5523155156233489195}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: pfx_exp_Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5073,7 +5073,7 @@ GameObject:
   - component: {fileID: 6528793885520754115}
   - component: {fileID: 6528793885520754620}
   - component: {fileID: 6528793885520754983}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: smokeRing medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10009,7 +10009,7 @@ GameObject:
   - component: {fileID: 6528793885520754107}
   - component: {fileID: 6528793885520754285}
   - component: {fileID: 6528793885520754366}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: flashGlow flat medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14909,7 +14909,7 @@ GameObject:
   - component: {fileID: 6528793885520754046}
   - component: {fileID: 6528793885520754495}
   - component: {fileID: 6528793885520755062}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: shockwave medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19818,7 +19818,7 @@ GameObject:
   - component: {fileID: 6528793885520753945}
   - component: {fileID: 6528793885520754643}
   - component: {fileID: 6528793885520755051}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: lingerSparks medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24718,7 +24718,7 @@ GameObject:
   - component: {fileID: 6528793885520754039}
   - component: {fileID: 6528793885520754487}
   - component: {fileID: 6528793885520754969}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: flyingSparks medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29627,7 +29627,7 @@ GameObject:
   - component: {fileID: 6528793885520754017}
   - component: {fileID: 6528793885520754476}
   - component: {fileID: 6528793885520754336}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: blastBall medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34527,7 +34527,7 @@ GameObject:
   - component: {fileID: 6528793885520754009}
   - component: {fileID: 6528793885520754241}
   - component: {fileID: 6528793885520755035}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: smokePillar medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39454,7 +39454,7 @@ GameObject:
   - component: {fileID: 6528793885520754103}
   - component: {fileID: 6528793885520754257}
   - component: {fileID: 6528793885520754383}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: flashCone medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44363,7 +44363,7 @@ GameObject:
   - component: {fileID: 6528793885520753292}
   - component: {fileID: 6528793885520754590}
   - component: {fileID: 6528793885520754313}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: flashGlow tall medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49272,7 +49272,7 @@ GameObject:
   - component: {fileID: 6528793885520753981}
   - component: {fileID: 6528793885520754459}
   - component: {fileID: 6528793885520754415}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: lingerGlow medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54172,7 +54172,7 @@ GameObject:
   - component: {fileID: 6528793885520753977}
   - component: {fileID: 6528793885520754580}
   - component: {fileID: 6528793885520754387}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: glowing scorchmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
