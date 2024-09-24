@@ -1,6 +1,7 @@
 ﻿using Netick;
 using Netick.Unity;
 using UnityEngine;
+[ExecutionOrder(-10000)]
 
 public class InputDelayHandle : NetworkBehaviour
 {
@@ -10,10 +11,13 @@ public class InputDelayHandle : NetworkBehaviour
     [Networked] public InputData InputData { get; set; }
 
     [SerializeField] private int _tickDelay;
+    [SerializeField] private int _tickValue;
+
     public override void NetworkStart() => _tickDelay = _tickDelay30Fps * (int)Sandbox.Config.TickRate / 30;
 
     public override void NetworkFixedUpdate()
     {
+        _tickValue = Sandbox.Tick.TickValue;
         if (FetchInput(out InputData input))
         {
             Index++;

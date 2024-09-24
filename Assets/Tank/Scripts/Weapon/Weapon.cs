@@ -100,7 +100,6 @@ public class Weapon : TankComponent
 
     private void Fire(Vector3 aimDir)
     {
-        Debug.LogError($"Fire at {Sandbox.Tick.TickValue}");
         FireTime = _fireInterval;
         Ammo--;
         BulletID++;
