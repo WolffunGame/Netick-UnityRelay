@@ -17,10 +17,7 @@ public class InputHandler : NetworkEventsListener
 
     private void Start() => _cam ??= Camera.main;
 
-    public void SetPlayer(Transform player)
-    {
-        _player = player;
-    } 
+    public void SetPlayer(Transform player) => _player = player;
 
     public override void OnInput(NetworkSandbox sandbox)
     {
@@ -34,19 +31,20 @@ public class InputHandler : NetworkEventsListener
         {
             input.Buttons = _buttonSample;
             input.Buttons = _buttonSample;
-            _buttonReset |= _buttonSample; 
+            _buttonReset |= _buttonSample;
             _buttonSample = 0;
         }
+
         sandbox.SetInput(input);
     }
 
     private void Update()
     {
-        if(!_player || !Sandbox || !Sandbox.IsClient)
+        if (!_player || !Sandbox || !Sandbox.IsClient)
             return;
         _buttonSample &= ~_buttonReset;
-        
-        
+
+
         if (Input.GetMouseButton(0))
             _buttonSample |= InputData.BUTTON_FIRE_PRIMARY;
 
@@ -70,7 +68,7 @@ public class InputHandler : NetworkEventsListener
         if (Input.GetKey(KeyCode.D))
             _moveDelta += Vector2.right;
         var mousePos = Input.mousePosition;
-        
+
         var view = _cam.ScreenToViewportPoint(mousePos);
         var isOutside = view.x < 0 || view.x > 1 || view.y < 0 || view.y > 1;
         if (isOutside) return;
@@ -102,16 +100,11 @@ public struct InputData : INetworkInput
     public bool WasPressed(uint button, InputData oldInput)
         => (oldInput.Buttons & button) == 0 && (Buttons & button) == button;
 
-    public void SetMoveDirection(Vector2 direction) => EncodedMoveDir =  EncodeDir.EncodeDirection(direction);
+    public void SetMoveDirection(Vector2 direction) => EncodedMoveDir = EncodeDir.EncodeDirection(direction);
 
     public Vector2 GetMoveDirection() => EncodeDir.DecodeDirection(EncodedMoveDir);
 
     public void SetAimDirection(Vector2 direction) => EncodedAimDir = EncodeDir.EncodeDirection(direction);
 
-    public  Vector2 GetAimDirection() => EncodeDir.DecodeDirection(EncodedAimDir);
-}
-
-public static class PlayerInputExtensions
-{
-    
+    public Vector2 GetAimDirection() => EncodeDir.DecodeDirection(EncodedAimDir);
 }

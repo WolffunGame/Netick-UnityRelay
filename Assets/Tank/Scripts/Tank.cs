@@ -2,7 +2,6 @@
 using Netick;
 using Netick.Unity;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Tank.Scripts
 {
@@ -15,7 +14,7 @@ namespace Tank.Scripts
         [Networked] public byte TankIndex { get; set; }
         [SerializeField] private Material[] _tankMaterials;
         [SerializeField] private TankMoveControl _moveControl;
-        [FormerlySerializedAs("_inputHandle")] [SerializeField] private InputDelayHandle _inputDelayHandle;
+        [SerializeField] private InputDelayHandle _inputDelayHandle;
 
         public Material PlayerMaterial { get; set; }
         public Color PlayerColor { get; set; }

@@ -4,9 +4,9 @@ using Netick.Unity;
 using Tank.Scripts.Utility;
 using UnityEngine;
 
-public class Weapon  : TankComponent
+public class Weapon : TankComponent
 {
-     private const byte MaxAmmo = 254;
+    private const byte MaxAmmo = 254;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _reloadTime;
     [SerializeField] private byte _maxAmmo = 5;
@@ -21,12 +21,13 @@ public class Weapon  : TankComponent
     [Networked] private byte BulletID { get; set; }
 
 
-    [Networked(size: MaxAmmo)] [Smooth(false)] private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
+    [Networked(size: MaxAmmo)] [Smooth(false)]
+    private readonly NetworkArray<ShotState> _bulletStates = new(MaxAmmo);
 
 
     private SparseCollection<ShotState, Shot> _bullets;
 
-    public Transform FirePoint =>_firePoint;
+    public Transform FirePoint => _firePoint;
 
     private void Awake() => _offset = _firePoint.position - transform.position;
     public void Start() => _bullets = new SparseCollection<ShotState, Shot>(_bulletStates, _bulletShotPrefab);
@@ -99,10 +100,11 @@ public class Weapon  : TankComponent
 
     private void Fire(Vector3 aimDir)
     {
+        Debug.LogError($"Fire at {Sandbox.Tick.TickValue}");
         FireTime = _fireInterval;
         Ammo--;
         BulletID++;
-        var position = transform.position + Quaternion.LookRotation( aimDir) * _offset;
+        var position = transform.position + Quaternion.LookRotation(aimDir) * _offset;
         _bullets.Add(Sandbox, new ShotState
         {
             Position = position,

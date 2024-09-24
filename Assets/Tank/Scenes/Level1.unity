@@ -886,90 +886,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 99898736}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &254944873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 254944874}
-  - component: {fileID: 254944875}
-  - component: {fileID: 254944877}
-  - component: {fileID: 254944876}
-  m_Layer: 0
-  m_Name: RPC
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &254944874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254944873}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &254944875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254944873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1923973434, guid: da78c2c9df60edc4fb5f65b59fa57c41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _BroadPhaseFilter: 0
-  _SpatialPrioritization: 0
-  _NarrowPhaseFilter: 0
-  AddToNetworkLoop: 1
-  GlobalObjectIdHash: 0
-  SceneId: 1
-  _PrefabId: -1
-  PrefabRoot: {fileID: 0}
-  Children: []
-  PrefabIndex: -1
-  Persistent: 0
-  _predictionMode: 0
---- !u!114 &254944876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254944873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688fc9496ae084b43ab82a522c1187f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _delayTick: 120
---- !u!114 &254944877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254944873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0444ab593e764658b1b06d321c8edde2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _delayTick: 120
 --- !u!1 &269350658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,37 +1673,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500481820}
   m_Mesh: {fileID: -5651847107917072894, guid: 933da50382a4aa74faf3c437e706d89b, type: 3}
---- !u!1 &515894513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 515894514}
-  m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &515894514
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515894513}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &555730911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,7 +2290,7 @@ MonoBehaviour:
   _bloomDepthAtten: 0
   _bloomNearAtten: 0
   _bloomLayerZBias: 0.0001
-  _preRenderCameraEvent: 0
+  _preRenderCameraEvent: 1
   _anamorphicFlares: 0
   _anamorphicFlaresCullingMask:
     serializedVersion: 2
@@ -7200,7 +7085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SandboxPrefab: {fileID: 1989827575308856720, guid: cf0a227a4b89d7740bee709ca9cafc40, type: 3}
-  Transport: {fileID: 11400000, guid: 71ee41ef7e4efc949b730b56e34d09df, type: 2}
+  Transport: {fileID: 11400000, guid: a17da1bc40a3749499b42302d7644d46, type: 2}
   Mode: 4
   Clients: 1
   StartServerInMultiplePeersMode: 1
@@ -7917,5 +7802,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 99898736}
   - {fileID: 1803961419}
-  - {fileID: 515894514}
-  - {fileID: 254944874}

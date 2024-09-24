@@ -674,7 +674,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7e453c08f65900e45ac5cc243a9aef54, type: 2}
   - {fileID: 2100000, guid: c0b5a8092855bc640a66a3f25c3718ef, type: 2}
   _moveControl: {fileID: 6430651140651163753}
-  _inputHandle: {fileID: 3712788100565424677}
+  _inputDelayHandle: {fileID: 3712788100565424677}
 --- !u!114 &3048040486929872768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ef5d4fc6814d7ba42b661bf5725287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tickDelay: 3
+  _tickDelay: 10
+  _tickValue: 0
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0

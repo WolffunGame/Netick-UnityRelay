@@ -14,7 +14,7 @@
       "dependencies": {
         "com.unity.nuget.mono-cecil": "1.11.4"
       },
-      "hash": "0d7aae9437f914a4a11f9fe3a657976f17f2e56b"
+      "hash": "20160dcd211eb5b14d2ba11e032ce2f59f55cd9c"
     },
     "com.unity.barracuda": {
       "version": "3.0.0",
@@ -65,7 +65,7 @@
     },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -85,8 +85,8 @@
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.28",
-      "depth": 1,
+      "version": "3.0.31",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6"
