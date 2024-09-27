@@ -18,7 +18,6 @@ public class TankMoveControl : TankComponent
     private Interpolator _interpolationDir;
     private Interpolator _interpolationHub;
 
-
     public override void NetworkStart()
     {
         _interpolationDir = FindInterpolator(nameof(TurretDir));
@@ -47,10 +46,10 @@ public class TankMoveControl : TankComponent
 
     public override void NetworkRender()
     {
-        if (_interpolationDir.GetInterpolationData<Quaternion>(InterpolationSource.Auto, out var from, out var to,
+        if (_interpolationDir.GetInterpolationData<Quaternion>(InterpolationSource.PredictedSnapshot, out var from, out var to,
                 out var alpha))
             _turret.rotation = Quaternion.Slerp(from, to, alpha);
-        if (_interpolationHub.GetInterpolationData(InterpolationSource.Auto, out from, out to, out alpha))
+        if (_interpolationHub.GetInterpolationData(InterpolationSource.PredictedSnapshot, out from, out to, out alpha))
             _null.rotation = Quaternion.Slerp(from, to, alpha);
     }
 

@@ -14,24 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Prefabs:
   - Obj: {fileID: 4918105893464218004, guid: ae62c0f5c4e03fd4480caa5e34d2442c, type: 3}
-    InstanceId: 27346
+    InstanceId: 27336
     Name: Dummy
     FileName: Assets/Tank/Prefabs/Game/Dummy.prefab
     GO: {fileID: 1223005985573300573, guid: ae62c0f5c4e03fd4480caa5e34d2442c, type: 3}
     Id: 1
   - Obj: {fileID: 4070793054831254424, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
-    InstanceId: 25354
+    InstanceId: 25340
     Name: PlayerTank
     FileName: Assets/Tank/Prefabs/Game/PlayerTank.prefab
     GO: {fileID: 7917003752575662290, guid: e0684f2c29d615d4d8e7a6ddae619457, type: 3}
     Id: 2
   - Obj: {fileID: 4540109828252303289, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
-    InstanceId: 25478
+    InstanceId: 25464
     Name: shot_default_visual
     FileName: Assets/Tank/Prefabs/Shots/shot_default_visual.prefab
     GO: {fileID: 8219689177351906792, guid: a63c5462955c3434b9fae291b57bde73, type: 3}
     Id: 3
-  TickRate: 30
+  TickRate: 60
   MaxPlayers: 4
   MaxObjects: 512
   MaxSendableDataSize: 50000

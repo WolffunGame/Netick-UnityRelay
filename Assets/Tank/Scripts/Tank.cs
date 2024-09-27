@@ -19,7 +19,6 @@ namespace Tank.Scripts
         public Material PlayerMaterial { get; set; }
         public Color PlayerColor { get; set; }
 
-        public TankMoveControl MoveControl => _moveControl;
         public InputDelayHandle InputDelayHandle => _inputDelayHandle;
 
         [OnChanged(nameof(TankIndex))]

@@ -1,4 +1,3 @@
-using System.Globalization;
 using Netick;
 using Netick.Unity;
 using UnityEngine;
@@ -108,8 +107,6 @@ namespace Helpers
         public void Render(NetworkBehaviour owner, NetworkArray<T> states)
         {
             var sandbox = owner.Sandbox;
-            // Interpolation interpolation =
-            //     !owner.IsProxy ? sandbox.Engine.LocalInterpolation : sandbox.Engine.RemoteInterpolation;
             Interpolation interpolation = sandbox.Engine.LocalInterpolation;
             for (var i = 0; i < _entries.Length; i++)
             {
@@ -130,7 +127,7 @@ namespace Helpers
 
                 //e.Enabled =true;
                 // We delay disabling of the object one frame since "last render" isn't really a last render if the object is immediately hidden.
-                e.Enabled = t >= -.2f && t <= t1;
+                e.Enabled = t >= 0 && t <= t1;
                 // Make sure we have a valid enabled GameObject if this state represents an active instance
                 if (e.Enabled || isLastRender)
                 {
@@ -186,8 +183,6 @@ namespace Helpers
         /// <param name="process">A delegate that will process each (active) sparse state</param>
         public void Process(NetworkBehaviour owner, Processor process)
         {
-            if (owner.IsProxy)
-                return;
             var sandbox = owner.Sandbox;
             for (var i = 0; i < _states.Length; i++)
             {

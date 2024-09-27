@@ -64,7 +64,6 @@ public class Weapon : TankComponent
                 temp.Speed = temp.Speed == 0 ? _bulletShotPrefab.Speed : 0;
                 _bulletStates[i] = temp;
             }
-
             return;
         }
 
@@ -78,6 +77,7 @@ public class Weapon : TankComponent
                     _bulletShotPrefab.HitMask.value, QueryTriggerInteraction.Ignore)) return false;
             bullet.Position = hitInfo.point;
             bullet.EndTick = Sandbox.Tick.TickValue;
+            Debug.DrawLine(hitInfo.point, hitInfo.point+ Vector3.up*5, Color.red, 1f);
             return true;
         });
     }

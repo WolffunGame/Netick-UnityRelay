@@ -629,7 +629,7 @@ MonoBehaviour:
   Settings: 1
   TransformSpace: 1
   EnablePredictionErrorCorrectionSmoothing: 1
-  InterpolationMultiplier: 20
+  InterpolationMultiplier: 15
   CorrectionMultiplier: 3
   CorrectionMaxBlendAlpha: 0.7
   TeleportErrorThreshold: 50
@@ -710,10 +710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ef5d4fc6814d7ba42b661bf5725287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tickDelay30Fps: 4
+  _tickDelay30Fps: 3
   <Index>k__BackingField: 0
   _tickDelay: 10
-  _tickValue: 0
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0

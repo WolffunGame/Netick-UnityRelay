@@ -7086,7 +7086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandboxPrefab: {fileID: 1989827575308856720, guid: cf0a227a4b89d7740bee709ca9cafc40, type: 3}
   Transport: {fileID: 11400000, guid: a17da1bc40a3749499b42302d7644d46, type: 2}
-  Mode: 4
+  Mode: 2
   Clients: 1
   StartServerInMultiplePeersMode: 1
   AutoStart: 1
