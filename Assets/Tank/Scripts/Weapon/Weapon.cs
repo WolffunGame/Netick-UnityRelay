@@ -52,7 +52,8 @@ public class Weapon : TankComponent
 
     private void ProcessBullets()
     {
-        if (FetchInput(out InputData input) && input.IsDown(InputData.BUTTON_FIRE_SECONDARY))
+        var input = Tank.InputDelayHandle.InputData;
+        if (input.IsDown(InputData.BUTTON_FIRE_SECONDARY))
         {
             for (var i = 0; i < _bulletStates.Length; i++)
             {
