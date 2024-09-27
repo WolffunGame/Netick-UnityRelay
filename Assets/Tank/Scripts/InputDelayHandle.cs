@@ -10,7 +10,7 @@ public class InputDelayHandle : NetworkBehaviour
     [Networked] private int Index { get; set; }
     [Networked] public InputData InputData { get; private set; }
 
-    [SerializeField] private int _tickDelay;
+    private int _tickDelay;
 
     public override void NetworkStart() => _tickDelay = _tickDelay30Fps * (int)Sandbox.Config.TickRate / 30;
 
