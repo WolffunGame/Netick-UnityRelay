@@ -201,7 +201,7 @@ MonoBehaviour:
   _duration: 0.5
   _collisionMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   _sightImpact: {fileID: 8894657917348440164}
 --- !u!1001 &8898801067888905554
 PrefabInstance:

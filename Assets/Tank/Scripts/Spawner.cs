@@ -8,9 +8,10 @@ namespace Tank.Scripts
     public class Spawner : NetworkEventsListener
     {
         [SerializeField] private GameObject _playerPrefab;
+        
         [SerializeField] private GameObject _app;
         [SerializeField] private Transform[] _spawnPositions = new Transform[4];
-
+        
         public override void OnClientConnected(NetworkSandbox sandbox, NetworkConnection client)
         {
             var position = Random.insideUnitCircle * 4;

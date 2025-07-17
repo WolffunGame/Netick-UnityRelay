@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746ed8cf108dfcb409d5ea62d80516c1, type: 3}
+  m_Name: ShotConfig
+  m_EditorClassIdentifier: 
+  _projectileDatas:
+  - Type: 0
+    MovementType: 0
+    Speed: 15
+    Damage: 0
+    LifeTime: 2
+    Radius: 0
+    Range: 0
+    AreaRadius: 0
+    AreaImpulse: 0
+    AreaDamage: 0
+    _movementData:
+      Gravity: {x: 0, y: 9.8, z: 0}
+      ZigZagAmplitude: 3
+      ZigZagFrequency: 4
+    DetonationPrefab: {fileID: 5974986753548891422, guid: 1be5a805225d53645826793b190514c4, type: 3}
+    MuzzleFlash: {fileID: 8565631724367042892, guid: 7d01ea3d7489caf45af46db5d0da9098, type: 3}
+  - Type: 1
+    MovementType: 0
+    Speed: 50
+    Damage: 0
+    LifeTime: 2.5
+    Radius: 0
+    Range: 0
+    AreaRadius: 0
+    AreaImpulse: 0
+    AreaDamage: 0
+    _movementData:
+      Gravity: {x: 0, y: -9.81, z: 0}
+      ZigZagAmplitude: 2
+      ZigZagFrequency: 3
+    DetonationPrefab: {fileID: 2299754235660744172, guid: e68cc0bdd8fda4c49ad9e22247c67275, type: 3}
+    MuzzleFlash: {fileID: -7642452178246755936, guid: 34e20a7531db8ad45a153155c585cc55, type: 3}
+  - Type: 2
+    MovementType: 0
+    Speed: 4
+    Damage: 0
+    LifeTime: 0.5
+    Radius: 0
+    Range: 0
+    AreaRadius: 0
+    AreaImpulse: 0
+    AreaDamage: 0
+    _movementData:
+      Gravity: {x: 0, y: -9.81, z: 0}
+      ZigZagAmplitude: 2
+      ZigZagFrequency: 3
+    DetonationPrefab: {fileID: 8105653526625900372, guid: 8d706a7da9499d649a0290f15bcaf1d3, type: 3}
+    MuzzleFlash: {fileID: 339828567419153696, guid: 70a6bb2bd4d7743c8825efe760c41754, type: 3}
+  - Type: 3
+    MovementType: 1
+    Speed: 12
+    Damage: 0
+    LifeTime: 3
+    Radius: 0
+    Range: 0
+    AreaRadius: 0
+    AreaImpulse: 0
+    AreaDamage: 0
+    _movementData:
+      Gravity: {x: 0, y: -9.81, z: 0}
+      ZigZagAmplitude: 3
+      ZigZagFrequency: 4
+    DetonationPrefab: {fileID: 3726879629887449942, guid: bf78dc043967d5e4e9cbc4f2c1213d05, type: 3}
+    MuzzleFlash: {fileID: 8565631724367042892, guid: c88f27234dde84158b96bcf7464a4f11, type: 3}
