@@ -29,7 +29,6 @@ public class WeaponInstaller : MonoBehaviour, IInstaller
         builder.AddSingleton(shotConfig, typeof(ShotConfig));
         
         // Bind service implementations as singletons 
-        builder.AddSingleton(typeof(WeaponService), typeof(IWeaponService));
         builder.AddSingleton(typeof(DamageService), typeof(IDamageService));
         
         // Bind data providers as singletons

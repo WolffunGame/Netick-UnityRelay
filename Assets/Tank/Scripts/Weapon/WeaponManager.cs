@@ -28,7 +28,6 @@ public class WeaponManager : NetworkBehaviour, IWeaponManager
     private BaseWeapon _currentPrimaryWeapon;
     private BaseWeapon _currentSecondaryWeapon;
 
-    [Inject] protected IWeaponService _weaponService;
     [Inject] protected IDamageService _damageService;
     [Inject] protected WeaponDataProvider _weaponDataProvider;
     [Inject] protected IShotFactory _shotFactory;
@@ -59,7 +58,7 @@ public class WeaponManager : NetworkBehaviour, IWeaponManager
 
             // Inject dependencies into weapons
             var weaponData = _weaponDataProvider.GetWeaponData(weapon.PowerupType);
-            weapon.InjectDependencies(_weaponService, _damageService, _shotFactory);
+            weapon.InjectDependencies(_damageService, _shotFactory);
             weapon.Initialize(this, weaponData);
             weapon.gameObject.SetActive(false);
         }
@@ -180,16 +179,14 @@ public class WeaponManager : NetworkBehaviour, IWeaponManager
         {
             try
             {
-                _weaponService = sceneContainer.Resolve<IWeaponService>();
                 _damageService = sceneContainer.Resolve<IDamageService>();
                 _weaponDataProvider = sceneContainer.Resolve<WeaponDataProvider>();
                 _shotFactory = sceneContainer.Resolve<IShotFactory>();
-                if (_weaponDataProvider == null || _weaponService == null || _damageService == null ||
+                if (_weaponDataProvider == null || _damageService == null ||
                     _shotFactory == null)
                 {
                     Debug.LogWarning($"{name}: Some dependencies are not resolved properly. " +
                                      $"WeaponDataProvider: {_weaponDataProvider != null}, " +
-                                     $"WeaponService: {_weaponService != null}, " +
                                      $"DamageService: {_damageService != null}, " +
                                      $"ShotFactory: {_shotFactory != null}");
                 }

@@ -8,7 +8,7 @@ public interface IWeapon
     WeaponInstallationType InstallationType { get; }
     Transform FirePoint { get; }
     
-    void InjectDependencies(IWeaponService weaponService, IDamageService damageService, IShotFactory shotFactory);
+    void InjectDependencies(IDamageService damageService, IShotFactory shotFactory);
     void Initialize(IWeaponManager weaponManager, WeaponData weaponData);
     void Activate();
     void Deactivate();

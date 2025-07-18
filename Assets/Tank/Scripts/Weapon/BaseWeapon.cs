@@ -20,7 +20,6 @@ public abstract class BaseWeapon : TankComponent, IWeapon
 
     // Reflex injection attributes
     protected IShotFactory _shotFactory;
-    protected IWeaponService _weaponService;
     protected IDamageService _damageService;
 
     [Networked] protected float FireTime { get; set; }
@@ -40,12 +39,10 @@ public abstract class BaseWeapon : TankComponent, IWeapon
     {
         base.NetworkStart();
         SetupShotData();
-        _weaponService?.RegisterWeapon(this);
     }
 
     public override void NetworkDestroy()
     {
-        _weaponService?.UnregisterWeapon(this);
         base.NetworkDestroy();
     }
 
@@ -71,9 +68,8 @@ public abstract class BaseWeapon : TankComponent, IWeapon
         SwitchToDefault();
     }
     protected abstract void SwitchToDefault();
-    public void InjectDependencies(IWeaponService weaponService, IDamageService damageService, IShotFactory shotFactory)
+    public void InjectDependencies(IDamageService damageService, IShotFactory shotFactory)
     {
-        _weaponService = weaponService;
         _damageService = damageService;
         _shotFactory = shotFactory;
     }
