@@ -1,9 +1,9 @@
 using Netick;
-using Netick.Unity;
 using UnityEngine;
 
 namespace UnitComponents
 {
+    [ExecutionOrder(10000)]
     public class PlayerVelocity : PlayerBaseComp
     {
         [SerializeField] private bool _isKinematic;

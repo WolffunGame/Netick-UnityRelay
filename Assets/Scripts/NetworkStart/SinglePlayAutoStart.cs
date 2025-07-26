@@ -9,7 +9,7 @@ public class SinglePlayAutoStart: MonoBehaviour
 
     private void Start()
     {
-        if (Network.Instance != null && Network.IsRunning)
+        if ((Network.Instance != null && Network.IsRunning) || !enabled)
             return;
         Network.StartAsSinglePlayer(_sandboxPrefab);
     }
