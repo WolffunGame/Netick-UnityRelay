@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1478977865463309806}
-  _force: 1700
-  _extraDrag: 0
-  _extraAngularDrag: 0
+  _force: 15000
+  _extraDrag: 200
 --- !u!114 &8961995139818351067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1478977865463309806}
   _isKinematic: 0
+  _tranMove: {fileID: 4301714540090018444}
   <Mass>k__BackingField: 100
   <Velocity>k__BackingField: {x: 0, y: 0}
 --- !u!1 &3428625202868440825
@@ -260,18 +260,19 @@ MonoBehaviour:
   m_Script: {fileID: -1923973434, guid: da78c2c9df60edc4fb5f65b59fa57c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _AoILayer: 0
   _BroadPhaseFilter: 0
-  _SpatialPrioritization: 0
   _NarrowPhaseFilter: 0
-  AddToNetworkLoop: 1
-  GlobalObjectIdHash: 0
-  SceneId: -1
-  _PrefabId: 2
+  _SpatialPrioritization: 0
+  _PredictionMode: 1
+  _AddToNetworkLoop: 1
+  _IsPersistent: 0
   PrefabRoot: {fileID: 0}
   Children: []
   PrefabIndex: -1
-  Persistent: 0
-  _predictionMode: 1
+  _PrefabId: 2
+  _SceneId: -1
+  _RuntimeSceneId: -1
 --- !u!114 &273266007730244824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,10 +290,9 @@ MonoBehaviour:
   PositionPrecision: 3
   Settings: 1
   TransformSpace: 1
+  UseForAOIPosition: 1
   EnablePredictionErrorCorrectionSmoothing: 1
-  InterpolationMultiplier: 15
   CorrectionMultiplier: 3
-  CorrectionMaxBlendAlpha: 0.7
   TeleportErrorThreshold: 50
   _interpolationSource: 0
 --- !u!114 &8101294076187326839
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ef5d4fc6814d7ba42b661bf5725287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tickDelay30Fps: 3
+  _tickDelay30Fps: 2
   <Index>k__BackingField: 0
 --- !u!58 &7291169181563058764
 CircleCollider2D:

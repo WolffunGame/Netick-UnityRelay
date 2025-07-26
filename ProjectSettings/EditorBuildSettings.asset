@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Tank/Scenes/RelayScene.unity
     guid: 28fd3fb6229c39d499597c2853dd2d40
+  - enabled: 1
+    path: Assets/Scenes/PlayerGround.unity
+    guid: ad7c889628dd14dd89ccda42b7b468bc
   m_configObjects: {}

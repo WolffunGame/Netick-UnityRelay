@@ -21,8 +21,8 @@ public class InputHandler : NetworkEventsListener
 
     public override void OnInput(NetworkSandbox sandbox)
     {
-        if (!_player)
-            return;
+        /*if (!_player)
+            return;*/
         var input = sandbox.GetInput<InputData>();
         input.SetAimDirection(_aimDelta.normalized);
         input.SetMoveDirection(_moveDelta.normalized);
@@ -34,16 +34,14 @@ public class InputHandler : NetworkEventsListener
             _buttonReset |= _buttonSample;
             _buttonSample = 0;
         }
-
         sandbox.SetInput(input);
     }
 
     private void Update()
     {
-        if (!_player || !Sandbox || !Sandbox.IsClient)
+        if (!Sandbox || !Sandbox.IsPlayer)
             return;
         _buttonSample &= ~_buttonReset;
-
 
         if (Input.GetMouseButton(0))
             _buttonSample |= InputData.BUTTON_FIRE_PRIMARY;
@@ -68,18 +66,17 @@ public class InputHandler : NetworkEventsListener
         if (Input.GetKey(KeyCode.D))
             _moveDelta += Vector2.right;
         var mousePos = Input.mousePosition;
-
         var view = _cam.ScreenToViewportPoint(mousePos);
         var isOutside = view.x < 0 || view.x > 1 || view.y < 0 || view.y > 1;
         if (isOutside) return;
         var ray = _cam.ScreenPointToRay(mousePos);
-        var mouseCollisionPoint = Vector3.zero;
+        //var mouseCollisionPoint = Vector3.zero;
         // RayCast towards the mouse collider box in the world
-        if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _mouseRayMask))
-            if (hit.collider != null)
-                mouseCollisionPoint = hit.point;
-        var aimDirection = mouseCollisionPoint - _player.position;
-        _aimDelta = new Vector2(aimDirection.x, aimDirection.z);
+        // if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _mouseRayMask))
+        //     if (hit.collider)
+        //         mouseCollisionPoint = hit.point;
+        // var aimDirection = mouseCollisionPoint - _player.position;
+        // _aimDelta = new Vector2(aimDirection.x, aimDirection.z);
     }
 }
 

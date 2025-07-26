@@ -7,8 +7,9 @@ namespace UnitComponents
     public class PlayerVelocity : PlayerBaseComp
     {
         [SerializeField] private bool _isKinematic;
-        [Networked] internal float Mass { get; set; }= 100f;
-        [Networked] internal Vector2 Velocity { get; set; }
+        [SerializeField] private Transform _tranMove;
+        [Networked] public float Mass { get; internal set; }= 100f;
+        [Networked] public Vector2 Velocity { get; internal set; }
 
         public override void NetworkFixedUpdate()
         {
@@ -17,9 +18,9 @@ namespace UnitComponents
                 Velocity *= 0f;
                 return;
             }
-            Velocity += Vector2.down * (Time.fixedDeltaTime * TimeHandler.timeScale * 20f);
-            transform.position += Sandbox.FixedDeltaTime * TimeHandler.timeScale * (Vector3)Velocity;
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+            //Velocity += Vector2.down * (Time.fixedDeltaTime * TimeHandler.timeScale * 20f);
+            _tranMove.position += Sandbox.FixedDeltaTime * TimeHandler.timeScale * (Vector3)Velocity;
+            _tranMove.position = new Vector3(transform.position.x, transform.position.y, 0f);
         }
         internal void AddForce(Vector2 force, ForceMode2D forceMode)
         {
