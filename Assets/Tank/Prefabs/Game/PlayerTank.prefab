@@ -605,7 +605,7 @@ MonoBehaviour:
   AddToNetworkLoop: 1
   GlobalObjectIdHash: 0
   SceneId: -1
-  _PrefabId: 2
+  _PrefabId: 3
   PrefabRoot: {fileID: 0}
   Children: []
   PrefabIndex: -1
@@ -712,7 +712,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tickDelay30Fps: 3
   <Index>k__BackingField: 0
-  _tickDelay: 10
 --- !u!1 &8041608635261517176
 GameObject:
   m_ObjectHideFlags: 0

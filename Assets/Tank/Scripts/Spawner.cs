@@ -1,29 +1,20 @@
 ﻿using Netick;
 using Netick.Unity;
-using Tank.Scripts.Utility;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Tank.Scripts
 {
     public class Spawner : NetworkEventsListener
     {
         [SerializeField] private GameObject _playerPrefab;
-        [SerializeField] private GameObject _app;
-        [SerializeField] private Transform[] _spawnPositions = new Transform[4];
-
         public override void OnClientConnected(NetworkSandbox sandbox, NetworkConnection client)
         {
+            Debug.LogError( $"Client {client.Id} connected to the server. Spawning player...");
             var position = Random.insideUnitCircle * 4;
-            var player = sandbox.NetworkInstantiate(_playerPrefab, position.XOY(), Quaternion.identity, client);
-            client.PlayerObject = player.gameObject;
+            var player = sandbox.NetworkInstantiate(_playerPrefab, position, Quaternion.identity, client);
             if (player.TryGetComponent(out Tank tank))
-                tank.TankIndex = (byte)Sandbox.ConnectedClients.Count;
-        }
-
-        public override void OnStartup(NetworkSandbox sandbox)
-        {
-            if (_app)
-                _app.SetActive(false);
+                tank.TankIndex = (byte)Sandbox.Players.Count;
         }
     }
 }
