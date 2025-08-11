@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_GT_Walk
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Visuals
+    pos: {x: 0, y: -1.5000001, z: 0}
+    rot: {x: -0, y: -0, z: 2.0372681E-10, w: 1}
+    scale: {x: 1.5, y: 1.5, z: 1.5}
+  - boneName: Bone_Hip
+    pos: {x: -0, y: 0.5, z: 0.33}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Bone_Top
+    pos: {x: -0, y: 0.289, z: -1.32}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Bone_Barrel
+    pos: {x: 0, y: 0.4147685, z: 0.28655994}
+    rot: {x: -0.14363074, y: 2.8232292E-09, z: 3.8046216E-10, w: 0.9896314}
+    scale: {x: 0.84999985, y: 0.85, z: 0.84999985}
+  - boneName: Bone_Key
+    pos: {x: -0, y: 0.78, z: 1.876}
+    rot: {x: -0.14337803, y: 4.685823E-09, z: 4.3967834E-09, w: 0.989668}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Bone_Front_Wheel
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0.5309772, y: 0, z: 0, w: -0.8473861}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: wheelBackAxis
+    pos: {x: 0, y: -0.026375532, z: -0.06745252}
+    rot: {x: -7.748604E-07, y: 1.5785984E-16, z: 5.820766E-11, w: 1}
+    scale: {x: 0.8499999, y: 0.84999996, z: 0.84999996}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

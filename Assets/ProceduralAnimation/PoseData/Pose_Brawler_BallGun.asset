@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: Pose_Brawler_BallGun
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Arms
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 1.368398E-08, y: 0.34202012, z: -5.971654E-09, w: 0.9396926}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: Legs
+    pos: {x: 0, y: -0.3000002, z: -0.27999878}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: Hip_01
+    pos: {x: 0, y: 1.4, z: -0.6}
+    rot: {x: -5.9604645E-08, y: -1.8626451E-09, z: -2.3283064E-09, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Spine_01
+    pos: {x: 0.01, y: 0.13, z: 0.04}
+    rot: {x: -0.7456447, y: -9.888235E-11, z: 2.586399E-09, w: 0.66634387}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Spine_02
+    pos: {x: -0.01, y: 0.12, z: 0.38}
+    rot: {x: -0.40482998, y: -5.920507E-10, z: 1.3372687E-09, w: 0.91439205}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Spine_03
+    pos: {x: -0, y: 0.349, z: -0.121}
+    rot: {x: -0.29807207, y: -3.6082235E-16, z: 1.1102226E-16, w: 0.95454335}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Spine_04
+    pos: {x: -0.009, y: 0.452, z: 0.08}
+    rot: {x: -0.008945375, y: 8.33104E-12, z: -9.312853E-10, w: 0.99996}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Tail_01
+    pos: {x: 0, y: 0.156, z: 0.774}
+    rot: {x: 0.7281202, y: 1.6456082E-10, z: -4.9676387E-12, w: 0.68544954}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Tail_02
+    pos: {x: 0.025850302, y: -0.66884905, z: 0.46035385}
+    rot: {x: 0.3346775, y: -2.2658658E-10, z: -2.9014333E-10, w: 0.94233274}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Tail_03
+    pos: {x: 0.0003318808, y: -0.07660019, z: 0.8542137}
+    rot: {x: 0.9261975, y: 7.251144E-16, z: 1.5265567E-16, w: 0.37703875}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bodyPart01
+    pos: {x: -0.05653805, y: 1.4070706, z: -0.18211365}
+    rot: {x: 0.13191107, y: -0.010508371, z: 6.880656E-05, w: 0.9912059}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: backPlate1
+    pos: {x: -0.05653411, y: 0.5431278, z: -0.10600838}
+    rot: {x: 0.68822217, y: 0.16231863, z: 0.6882262, w: 0.16231953}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: backPlate2
+    pos: {x: 0.00062473665, y: -0.9702974, z: 0.18024522}
+    rot: {x: 0.62087953, y: -0.3534314, z: 0.60909355, w: -0.3443836}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bellyPlates5
+    pos: {x: -0.00327831, y: -0.65262765, z: 0.004120335}
+    rot: {x: 0.62087953, y: -0.3534314, z: 0.60909355, w: -0.3443836}
+    scale: {x: 0.74267745, y: 0.74267745, z: 0.74267745}
+  - boneName: headSegment
+    pos: {x: -0.049001757, y: 0.077998, z: -0.24454628}
+    rot: {x: 0.45321333, y: 2.5993047E-06, z: 1.3153577E-06, w: -0.8914021}
+    scale: {x: 0.6765246, y: 0.6765246, z: 0.6765246}
+  - boneName: eye
+    pos: {x: -4.1695422E-08, y: -0.34647158, z: -0.024585977}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: eye1
+    pos: {x: -4.1695422E-08, y: -0.34647158, z: -0.024585977}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: glassShield
+    pos: {x: 6.893692E-08, y: 0.10968129, z: -0.5277156}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: helmetPlates
+    pos: {x: 9.494161E-08, y: 0.34016407, z: -0.33653685}
+    rot: {x: 0.6928728, y: 0.14116406, z: 0.6928728, w: 0.14116414}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: helmetPlates1
+    pos: {x: 0.0013865596, y: 0.5371841, z: 0.006813713}
+    rot: {x: 0.6928728, y: 0.14116406, z: 0.6928728, w: 0.14116414}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: mask
+    pos: {x: 1.9543712E-07, y: -0.05087884, z: -1.2286386}
+    rot: {x: -0.04270452, y: -8.619735E-10, z: -4.2254097E-08, w: 0.9990878}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bodyPart02
+    pos: {x: -0.058005303, y: 0.49312153, z: 0.31737942}
+    rot: {x: 0.62056273, y: -8.144919E-07, z: 2.851592E-06, w: 0.7841568}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: backPlate3
+    pos: {x: 9.688847E-09, y: -0.6775706, z: 0.14183557}
+    rot: {x: 0.47257137, y: -0.52600026, z: -0.47257143, w: 0.5260003}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bloomArrow3
+    pos: {x: 0.5310827, y: 0.6460018, z: -0.008770883}
+    rot: {x: 0.8631798, y: 0.5048967, z: 5.9604623E-08, w: -1.11758666E-07}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bellyPlates7
+    pos: {x: 6.044502E-09, y: -0.4529558, z: -0.06638673}
+    rot: {x: -2.9802319E-08, y: -1.13686824E-13, z: -0, w: 1}
+    scale: {x: 0.74267745, y: 0.74267745, z: 0.74267745}
+  - boneName: bodyPart04
+    pos: {x: -0.07728727, y: -0.070833854, z: -0.04978597}
+    rot: {x: -0.34407508, y: 8.5798104E-07, z: -2.842244E-06, w: 0.9389422}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: backPlate5
+    pos: {x: -1.962917E-09, y: -0.67523146, z: 0.120045066}
+    rot: {x: 0.47296795, y: -0.52564365, z: -0.47296798, w: 0.52564377}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bellyPlates4
+    pos: {x: 0.019290129, y: -0.3460123, z: 0.028469458}
+    rot: {x: 0.47296795, y: -0.52564365, z: -0.47296798, w: 0.52564377}
+    scale: {x: 0.74267745, y: 0.74267745, z: 0.74267745}
+  - boneName: bodyPart05
+    pos: {x: -0.08384901, y: 0.3418119, z: -0.16457677}
+    rot: {x: -0.31708735, y: -1.2050361E-06, z: -2.712236E-06, w: 0.9483963}
+    scale: {x: 0.91230524, y: 0.91230524, z: 0.91230524}
+  - boneName: backPlate6
+    pos: {x: 5.09027E-09, y: -0.68928653, z: 0.11428667}
+    rot: {x: 0.467264, y: -0.53072053, z: -0.46726406, w: 0.53072053}
+    scale: {x: 1.0961244, y: 1.0961244, z: 1.0961244}
+  - boneName: tail
+    pos: {x: -0.08418599, y: -0.15335643, z: 0.43733692}
+    rot: {x: -0.89620394, y: -2.6153316E-06, z: -1.4025529E-06, w: -0.44364217}
+    scale: {x: 0.4022706, y: 0.4022706, z: 0.4022706}
+  - boneName: bodyPart03
+    pos: {x: -0.058001064, y: 0.60702765, z: 0.046587836}
+    rot: {x: -0.05924222, y: 2.9627438E-06, z: 1.8274297E-07, w: 0.9982437}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: backPlate4
+    pos: {x: -2.500542E-09, y: -0.67184937, z: 0.12993824}
+    rot: {x: 0.47785202, y: -0.5212076, z: -0.47785205, w: 0.5212077}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bellyPlates3
+    pos: {x: 3.202416E-09, y: -0.38362783, z: -0.004159786}
+    rot: {x: 0.47785202, y: -0.5212076, z: -0.47785205, w: 0.5212077}
+    scale: {x: 0.74267745, y: 0.74267745, z: 0.74267745}
+  - boneName: Body
+    pos: {x: 0, y: -1.5, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1.25, y: 1.25, z: 1.25}
+  - boneName: GunHolder
+    pos: {x: 0, y: 1, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: GunHolder
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: GunHolder
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: GunHolder
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: GunHolder
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

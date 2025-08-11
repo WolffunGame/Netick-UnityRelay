@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_RollerShooter_Attack
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Head
+    pos: {x: 0, y: 1.5, z: -0.5}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Gun
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 0.85, y: 0.85, z: 0.85}
+  - boneName: GunBarrel
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: -0.008802043, y: -0.008649743, z: -0.008649744, w: 0.99988645}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

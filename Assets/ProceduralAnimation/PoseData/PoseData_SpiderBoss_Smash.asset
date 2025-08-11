@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_SpiderBoss_Smash
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Visuals
+    pos: {x: 0, y: 1, z: -2}
+    rot: {x: 0.42261833, y: -1.2246473E-09, z: -2.626264E-09, w: -0.90630776}
+    scale: {x: 1.25, y: 1.25, z: 1.25}
+  - boneName: Body
+    pos: {x: 0, y: 1, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Neck
+    pos: {x: 0, y: 1.25, z: 0}
+    rot: {x: 0, y: 4.575163E-11, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Butt
+    pos: {x: 0, y: 1.75, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveToTarget
+    pos: {x: 0.5, y: 4, z: 3}
+    rot: {x: -0, y: 2.9802315E-08, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveToTarget
+    pos: {x: -0.5, y: 4, z: 3}
+    rot: {x: -0, y: 2.9802315E-08, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveToTarget
+    pos: {x: -6, y: 0, z: 0}
+    rot: {x: -0, y: 2.9802315E-08, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveToTarget
+    pos: {x: 6, y: 0, z: 0}
+    rot: {x: -0, y: 2.9802315E-08, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveToTarget
+    pos: {x: 6, y: 0, z: -6}
+    rot: {x: -0, y: 2.9802315E-08, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveToTarget
+    pos: {x: -6, y: 0, z: -6}
+    rot: {x: -0, y: 2.9802315E-08, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: frontPlateHead1
+    pos: {x: -0, y: -0.1141671, z: 0}
+    rot: {x: 0.4197446, y: -1.0408343E-16, z: 1.387779E-16, w: 0.9076423}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: topPlateHead1
+    pos: {x: 2.0622914E-16, y: -0.2028734, z: -0.92877346}
+    rot: {x: -0.28353995, y: -3.2265857E-16, z: -9.627716E-17, w: 0.9589604}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.002029419
+      value: 0
+      inSlope: 0.00874821
+      outSlope: 0.00874821
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.104403995
+      value: -0.057840966
+      inSlope: 0.60387534
+      outSlope: 0.60387534
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.66073513
+      value: 1.173436
+      inSlope: 0.0065123397
+      outSlope: 0.0065123397
+      weightedMode: 0
+      inWeight: 0.16779406
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.86867696
+      value: 0.9694167
+      inSlope: -0.0054542744
+      outSlope: -0.0054542744
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.72197425
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

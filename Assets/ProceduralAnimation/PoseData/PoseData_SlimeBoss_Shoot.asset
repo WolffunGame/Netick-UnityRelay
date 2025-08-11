@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_SlimeBoss_Shoot
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: World2BossModel
+    pos: {x: 0, y: -3, z: -0.38}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1.25, y: 1.25, z: 1.25}
+  - boneName: Hip
+    pos: {x: 0, y: 3, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Head
+    pos: {x: 0, y: 0, z: 1}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MainBody_Left
+    pos: {x: -2.51799, y: 2.2658358, z: -0.042270362}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MainBody_Right
+    pos: {x: 2.5154114, y: 2.2658358, z: -0.042270362}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: barrelBody
+    pos: {x: 0, y: 2.5, z: 0.88}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: goo_barrel
+    pos: {x: -8.5265126E-16, y: 6.82121E-15, z: 2.474651}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Teeth_Left
+    pos: {x: 1.8, y: 0.059012488, z: -0.0077550886}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Teeth_Right
+    pos: {x: -1.8, y: 0.078956224, z: -0.009472274}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: eyeJoint_Right
+    pos: {x: -0.38730645, y: 0.39469004, z: 2.298029}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Eye_Right
+    pos: {x: 0.26733416, y: -0.09731536, z: 0.9044714}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: eyeJoint_Left
+    pos: {x: 0.38989115, y: 0.39469004, z: 2.298029}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Eye_Left
+    pos: {x: -0.26733416, y: -0.09731536, z: 0.9044714}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: interiorWheel
+    pos: {x: -0.033569336, y: 3.5, z: -0.50302064}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveTarget_Right
+    pos: {x: 6, y: 0.5, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: MoveTarget_Left
+    pos: {x: -6, y: 0.5, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: IK_Pole_Left
+    pos: {x: -8, y: 5, z: -14.091291}
+    rot: {x: 0.38268274, y: -1.3061824E-11, z: 3.1534098E-11, w: 0.9238798}
+    scale: {x: 5.5, y: 5.5, z: 5.5}
+  - boneName: IK_Pole_Right
+    pos: {x: 8, y: 5, z: -14.091291}
+    rot: {x: 0.38268274, y: -1.3061824E-11, z: 3.1534098E-11, w: 0.9238798}
+    scale: {x: 5.5, y: 5.5, z: 5.5}
+  - boneName: Lasers
+    pos: {x: 0, y: 1.5, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 1, z: 0}
+  - boneName: Hatch_Left
+    pos: {x: 2.5179887, y: -4.5458355, z: 0.042270355}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Hatch_Right
+    pos: {x: -2.5154114, y: -4.5458355, z: 0.042273104}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

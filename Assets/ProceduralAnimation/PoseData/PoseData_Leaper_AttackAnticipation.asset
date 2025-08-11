@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_Leaper_AttackAnticipation
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Visuals
+    pos: {x: 0, y: -2, z: 0}
+    rot: {x: -0, y: -0, z: 2.0372681E-10, w: 1}
+    scale: {x: 1.2, y: 1.2, z: 1.2}
+  - boneName: Bone_Hip
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1.25, y: 0.75, z: 1.25}
+  - boneName: Bone_Belly
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Bone_Head
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Bone_Hat
+    pos: {x: -0, y: 0, z: -0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0.8, y: 0.8, z: 0.8}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.002029419
+      value: 0
+      inSlope: 0.00874821
+      outSlope: 0.00874821
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.104403995
+      value: -0.057840966
+      inSlope: 0.60387534
+      outSlope: 0.60387534
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.71945095
+      value: 1.0534333
+      inSlope: 0.0065123397
+      outSlope: 0.0065123397
+      weightedMode: 0
+      inWeight: 0.16779406
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.86867696
+      value: 0.9694167
+      inSlope: -0.0054542744
+      outSlope: -0.0054542744
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.72197425
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

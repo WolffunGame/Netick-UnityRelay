@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_Pusher_Attack
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Visuals
+    pos: {x: 0, y: -1.5000001, z: 0}
+    rot: {x: 0, y: 0, z: 2.0372681E-10, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: hinge3
+    pos: {x: 0.19607553, y: 2.2377758, z: -1.3159816}
+    rot: {x: -5.7963095E-10, y: 0.9170601, z: -4.0470216E-10, w: 0.39874908}
+    scale: {x: 0.75000006, y: 0.75000006, z: 0.74999976}
+  - boneName: hinge4
+    pos: {x: -0.14773254, y: 2.2377753, z: -1.3159817}
+    rot: {x: 0, y: -0.38268346, z: 0, w: 0.9238795}
+    scale: {x: 0.74999976, y: 0.75000006, z: 0.75000006}
+  - boneName: mainCore
+    pos: {x: 0.02, y: 2.5, z: 0.04}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0.74999976, y: 0.75000006, z: 0.75000006}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

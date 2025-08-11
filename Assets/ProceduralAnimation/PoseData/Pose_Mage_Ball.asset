@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: Pose_Mage_Ball
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: PlayerVisuals
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Head
+    pos: {x: 0, y: -1.3, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Legs
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0.1, y: 0.1, z: 0.1}
+  - boneName: mouth2Joint
+    pos: {x: 0.2957147, y: 4.0359178, z: -0.003803442}
+    rot: {x: -0.6979681, y: 0.11093184, z: -0.112127334, w: 0.69854283}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: mouthJoint
+    pos: {x: -0.2877787, y: 4.0359178, z: 2.7779333E-05}
+    rot: {x: -0.2494449, y: 0.66162825, z: 0.66163814, w: -0.24952032}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: PilotMecha02Model
+    pos: {x: 0, y: 2.6, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 1, z: 1}
+  - boneName: SpineJoint
+    pos: {x: 0, y: 1.3262855, z: 0.16043763}
+    rot: {x: 0.42491052, y: 0, z: 0, w: 0.90523535}
+    scale: {x: 0.5, y: 0.5, z: 0.5}
+  - boneName: SpineJoint2
+    pos: {x: 0, y: 1.2539427, z: 0.27542487}
+    rot: {x: -0.38816616, y: -0.38816616, z: 0.59103894, w: -0.59103894}
+    scale: {x: 0.5, y: 1, z: 1}
+  - boneName: NeckJoint
+    pos: {x: -1.3276566, y: 2.94799E-16, z: 0.18658414}
+    rot: {x: 0.42232132, y: -0.015839687, z: 0.033968315, w: 0.90567094}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: ShoulderJoint1
+    pos: {x: -0.34378347, y: -0.99218476, z: 0.10248066}
+    rot: {x: 0, y: 0, z: 0.7434612, w: 0.6687791}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: elbowJoint1
+    pos: {x: -0.8144361, y: -3.5675924E-16, z: 0.28161204}
+    rot: {x: 0, y: 0, z: 0.00029964038, w: 0.99999994}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: wristJoint1
+    pos: {x: -0.9255546, y: -1.6034236E-13, z: 0.47119495}
+    rot: {x: 0, y: 0, z: 0.020023875, w: 0.9997995}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: ShoulderJoint2
+    pos: {x: -0.32856828, y: 0.986299, z: 0.10248066}
+    rot: {x: 0, y: 0, z: 0.7434612, w: 0.6687791}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: elbowJoint1
+    pos: {x: 0.705567, y: -0.12452731, z: 0.28161204}
+    rot: {x: 0, y: 0, z: 0.00029964038, w: 0.99999994}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: wristJoint1
+    pos: {x: 0.8212709, y: -0.19846462, z: 0.47119495}
+    rot: {x: 0, y: 0, z: 0.020023875, w: 0.9997995}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: HairJoints
+    pos: {x: -1.9421088, y: 5.32907E-16, z: 1.9082072}
+    rot: {x: 0.9991037, y: -0.04233024, z: -2.5919795E-18, w: 6.1177464E-17}
+    scale: {x: 0.5, y: 0.5, z: 0.5}
+  - boneName: GunAim
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: Arm_Left
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  - boneName: Arm_Right
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0, y: 0, z: 0}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

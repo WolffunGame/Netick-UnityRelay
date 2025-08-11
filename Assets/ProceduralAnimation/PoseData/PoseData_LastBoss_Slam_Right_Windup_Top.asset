@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_LastBoss_Slam_Right_Windup_Top
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: MainBody
+    pos: {x: 4, y: 4, z: -4}
+    rot: {x: -0.5589134, y: 0.0427735, z: 0.2093148, w: 0.80123246}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: FinalBoss4VisualPrefab
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Legs
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Leg_Pole
+    pos: {x: -14, y: 16, z: 10}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Leg_Pole
+    pos: {x: 14, y: 16, z: 10}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Leg_Pole
+    pos: {x: 14, y: 16, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Leg_Pole
+    pos: {x: -14, y: 16, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: ProxyRig
+    pos: {x: 0, y: 5, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: ProxyRig
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: ProxyRig
+    pos: {x: 10, y: 6.09, z: 3.44}
+    rot: {x: 0, y: 0.6961634, z: 0, w: 0.71788335}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: ProxyRig
+    pos: {x: 10, y: 6, z: 3.5}
+    rot: {x: 0, y: 0.71806556, z: 0, w: 0.6959755}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 0.5
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

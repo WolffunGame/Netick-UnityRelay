@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: Pose_Allround_Walk
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Body
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 0.9, y: 0.9, z: 0.9}
+  - boneName: Head
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: -2.7533755E-08, y: 0.38268346, z: 1.1404856E-08, w: 0.9238795}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Legs
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Arms
+    pos: {x: 0.0010000024, y: 0, z: 0.07}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Rifle_Mesh
+    pos: {x: 1.2, y: -0.5, z: 0.6}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Leg_MoveTarget
+    pos: {x: -0.85, y: 0.25, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Leg_MoveTarget
+    pos: {x: 0.85, y: 0.25, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Cockpit
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: Head
+    pos: {x: 0, y: 0.5, z: 0.33}
+    rot: {x: 0, y: -0.38268346, z: 0, w: 0.9238795}
+    scale: {x: 0.9, y: 0.9, z: 0.9}
+  - boneName: Head
+    pos: {x: 0, y: 0.25, z: -0.5}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0.85, y: 0.85, z: 0.85}
+  - boneName: pilotArm_right
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

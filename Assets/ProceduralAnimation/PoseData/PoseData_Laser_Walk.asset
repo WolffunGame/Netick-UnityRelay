@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_Laser_Walk
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: Body
+    pos: {x: 0, y: 2, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: backBody
+    pos: {x: 0, y: -0.6500001, z: 0.5}
+    rot: {x: -0.0005480928, y: -0.70326906, z: 0.0056195133, w: 0.7109014}
+    scale: {x: 1.25, y: 2, z: 2.75}
+  - boneName: mouthTooth
+    pos: {x: -6.007, y: 2.2357342, z: 0.32796657}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: mouthTooth1
+    pos: {x: -6.0069985, y: 2.2198784, z: 0.05243455}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: mouthTooth2
+    pos: {x: -6.0069985, y: 1.9940906, z: -0.09933316}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: mouthTooth3
+    pos: {x: -6.0069985, y: 1.7863821, z: -0.054285306}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: mouthTooth4
+    pos: {x: -6.0069985, y: 1.642448, z: 0.19783953}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: mouthTooth5
+    pos: {x: -6.0069985, y: 1.7615292, z: 0.451463}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: mouthTooth6
+    pos: {x: -6.0069985, y: 2.0294302, z: 0.50701356}
+    rot: {x: -0.15287414, y: -0.0036358233, z: -0.0017978174, w: 0.9882374}
+    scale: {x: 0.94978404, y: 0.94978404, z: 0.94978404}
+  - boneName: wing
+    pos: {x: -1, y: -0.25, z: 0}
+    rot: {x: 0.103553556, y: -0.6035537, z: -0.07945946, w: 0.7865658}
+    scale: {x: 2, y: 2, z: 2}
+  - boneName: wing1
+    pos: {x: 1, y: -0.25, z: 0}
+    rot: {x: 0.07945949, y: -0.78656596, z: -0.10355355, w: 0.6035535}
+    scale: {x: 2, y: 2, z: 2}
+  transitionDuration: 0
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

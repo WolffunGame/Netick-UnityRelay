@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: PoseData_DM_Add
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: buttonRemove
+    pos: {x: 4.5954294, y: 1.9738667, z: 12}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: buttonAdd
+    pos: {x: -4.5954294, y: 1.9738667, z: 10}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bumperTerminal1
+    pos: {x: -5.425326, y: 0, z: 8}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: bumperTerminal2
+    pos: {x: 5.425326, y: 2.842171E-16, z: 8}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: linkTube
+    pos: {x: -2.5621908E-16, y: 1.1539081, z: 8}
+    rot: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 0.15
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5154802
+      value: 1.0251515
+      inSlope: 1.792557
+      outSlope: 1.792557
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.69550574
+      value: 0.9165916
+      inSlope: -1.0266677
+      outSlope: -1.0266677
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.839457
+      value: 1.008196
+      inSlope: 1.1904908
+      outSlope: 1.1904908
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.22078457
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.0430424
+      outSlope: 0.0430424
+      weightedMode: 0
+      inWeight: 0.4108588
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
