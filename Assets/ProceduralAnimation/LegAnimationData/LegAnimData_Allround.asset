@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e002f73c85f8d19958926bae6274b814, type: 3}
+  m_Name: LegAnimData_Allround
+  m_EditorClassIdentifier:
+  stepAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.0047836304
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5033418
+      value: 0.99998707
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.6283538
+      outSlope: -3.6283538
+      weightedMode: 0
+      inWeight: 0.07726598
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stepSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  feetRotPitchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.101421356
+      value: -0.00060272217
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.33903515
+      value: 0.99998707
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.60844976
+      value: -0.665131
+      inSlope: -3.0315006
+      outSlope: -3.0315006
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.14812458
+    - serializedVersion: 3
+      time: 0.8945233
+      value: 0.004194954
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  speedAtMaxLength: 20
+  stepLength: 3
+  inAirMaxLength: 0.1
+  stepHeight: 1
+  stepTime: 0.9
+  stepYawDeltaOffset: 0
+  stepRandomRadius: 0
+  inAirDamp: 24
+  feetRotSYaw: -25
+  feetRotPitch: -60
+  velocityDamp: 32
+  legInertiaDamp: 16
+  legInertiaThreshold: 1
+  legInertiaMultiplier: 0.1
+  legInertiaMinDamp: 2
+  legInAirInertiaMultiplier: 0.05
+  legInAirYInertiaMultiplier: -0.015
+  useBodyRotationWhenInAir: 0
+  rayCastCheckOffset: 8
+  useRayCastCheck: 1

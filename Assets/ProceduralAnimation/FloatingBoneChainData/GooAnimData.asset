@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5fe7c7d800d54ef1488dc92299f78c, type: 3}
+  m_Name: GooAnimData
+  m_EditorClassIdentifier:
+  shape:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.0047836304
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5033418
+      value: 0.99998707
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.5126894
+      outSlope: -2.5126894
+      weightedMode: 0
+      inWeight: 0.09393412
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationMask:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -1
+      inSlope: 4.118114
+      outSlope: 4.118114
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.078482226
+    - serializedVersion: 3
+      time: 0.5033418
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 4.969978
+      outSlope: 4.969978
+      weightedMode: 0
+      inWeight: 0.040905643
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  widthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0024154591
+      value: 0.8995215
+      inSlope: 0.0011019091
+      outSlope: 0.0011019091
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9025464
+      value: 0.9005187
+      inSlope: -0.025496295
+      outSlope: -0.025496295
+      weightedMode: 0
+      inWeight: 0.060467012
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.8458042
+      outSlope: 1.8458042
+      weightedMode: 0
+      inWeight: 0.27264282
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  springCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.0047836304
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5033418
+      value: 0.99998707
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  widthMultiplierMax: 100
+  widthMultiplierMin: 200
+  segments: 25
+  twist: 15
+  animatedTwistSpeed: 81.9
+  shapeStrengthMin: 2
+  shapeStrengthMax: 1
+  velocityOffset: 3
+  normalYworldUpNormalBlend: 1
+  maxLength: 50
+  minLength: 10
+  useClamp: 0
+  worldPosHeightClamp: 0
+  ratio: 0.25
+  frequency: 10

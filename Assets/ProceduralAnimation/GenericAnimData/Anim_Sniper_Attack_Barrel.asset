@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e9a07cd8f8be6e23ded17b12583f0a, type: 3}
+  m_Name: Anim_Sniper_Attack_Barrel
+  m_EditorClassIdentifier:
+  scale: {x: 0, y: 0, z: 0}
+  pos: {x: 0, y: 0, z: -1}
+  rotation: {x: 0, y: 0, z: 1024}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 23.896997
+      outSlope: 23.896997
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10755657
+    - serializedVersion: 3
+      time: 0.09775154
+      value: 1.0556874
+      inSlope: 0.065500654
+      outSlope: 0.065500654
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.17114244
+    - serializedVersion: 3
+      time: 0.19895533
+      value: 0.97160816
+      inSlope: -0.1382482
+      outSlope: -0.1382482
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.24771102
+      value: 0.9892742
+      inSlope: 0.16353214
+      outSlope: 0.16353214
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50506544
+      value: 0.99372333
+      inSlope: -0.13060974
+      outSlope: -0.13060974
+      weightedMode: 0
+      inWeight: 0.26624984
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 1
+  affectScale: 1
+  affectPos: 1
+  affectRot: 1
+  additive: 1
+  targetScale: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0}

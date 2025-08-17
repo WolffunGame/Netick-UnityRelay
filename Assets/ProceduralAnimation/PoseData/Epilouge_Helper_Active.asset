@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11595d8100718f7a6482bd99527edd9e, type: 3}
+  m_Name: Epilouge_Helper_Active
+  m_EditorClassIdentifier:
+  pose:
+  - boneName: joint1
+    pos: {x: -0, y: 0, z: 0}
+    rot: {x: -0.50000006, y: -0.49999994, z: -0.49999994, w: 0.50000006}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: joint2
+    pos: {x: -2.817484E-07, y: 9.592326E-16, z: 1.3199999}
+    rot: {x: -6.674554E-09, y: 1.0672289E-07, z: -1.0672289E-07, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: joint3
+    pos: {x: -5.634968E-07, y: -5.9952674E-14, z: 1.3199999}
+    rot: {x: -6.674547E-09, y: 1.0672289E-07, z: -2.3863964E-07, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: joint4
+    pos: {x: -8.7085874E-07, y: -2.7701528E-13, z: 1.36}
+    rot: {x: 0.0010640495, y: 0.50015867, z: 0.0023219737, w: 0.8659301}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: faceBase
+    pos: {x: 3.2028765E-08, y: -1.0676303E-08, z: -0.050018616}
+    rot: {x: 0.49999943, y: 0.50000024, z: 0.5000005, w: 0.49999985}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: armJoint1 (1)
+    pos: {x: 0, y: -0.7093961, z: 0.23734282}
+    rot: {x: 0.9238793, y: 2.8599954E-06, z: 3.4884088E-06, w: 0.382684}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: armJoint1
+    pos: {x: 0, y: 0.7906039, z: 0.23734285}
+    rot: {x: -9.073951E-07, y: 0.92387927, z: 0.3826842, w: 1.8424262E-07}
+    scale: {x: 1, y: 1, z: 1}
+  - boneName: armJoint1
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  transitionDuration: 2
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.2942007
+      outSlope: 3.2942007
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.072642475
+    - serializedVersion: 3
+      time: 0.5518684
+      value: 1.0305967
+      inSlope: -0.0631653
+      outSlope: -0.0631653
+      weightedMode: 0
+      inWeight: 0.102208026
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.80155003
+      value: 0.981778
+      inSlope: -0.041818622
+      outSlope: -0.041818622
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.58183885
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

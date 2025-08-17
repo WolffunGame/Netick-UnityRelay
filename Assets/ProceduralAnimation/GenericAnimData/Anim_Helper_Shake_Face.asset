@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e9a07cd8f8be6e23ded17b12583f0a, type: 3}
+  m_Name: Anim_Helper_Shake_Face
+  m_EditorClassIdentifier:
+  scale: {x: 0, y: 0, z: 0}
+  pos: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 25, z: 0}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1401154
+    - serializedVersion: 3
+      time: 0.08958578
+      value: 1.0065231
+      inSlope: -0.023300136
+      outSlope: -0.023300136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19914834
+      value: -0.5171285
+      inSlope: 0.053283624
+      outSlope: 0.053283624
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.40754244
+      value: 0.2811057
+      inSlope: 0.3730603
+      outSlope: 0.3730603
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.60708046
+      value: -0.14599565
+      inSlope: 0.21087195
+      outSlope: 0.21087195
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.8968005
+    - serializedVersion: 3
+      time: 0.79184914
+      value: 0.07632215
+      inSlope: 0.05231094
+      outSlope: 0.05231094
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.579837
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.08348439
+      outSlope: -0.08348439
+      weightedMode: 0
+      inWeight: 0.07906461
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 1
+  affectScale: 1
+  affectPos: 1
+  affectRot: 1
+  additive: 1
+  targetScale: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0}

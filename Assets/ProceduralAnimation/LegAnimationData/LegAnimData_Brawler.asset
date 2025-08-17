@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e002f73c85f8d19958926bae6274b814, type: 3}
+  m_Name: LegAnimData_Brawler
+  m_EditorClassIdentifier:
+  stepAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.0047836304
+      inSlope: 4.7402115
+      outSlope: 4.7402115
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06850764
+    - serializedVersion: 3
+      time: 0.5033418
+      value: 0.99998707
+      inSlope: 0
+      outSlope: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.6424427
+      outSlope: -4.6424427
+      weightedMode: 0
+      inWeight: 0.049009055
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stepSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.40100476
+      outSlope: 0.40100476
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.10141988
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.18955065
+      outSlope: 0.18955065
+      weightedMode: 0
+      inWeight: 0.11359024
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  feetRotPitchCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  speedAtMaxLength: 25
+  stepLength: 2
+  inAirMaxLength: 0.1
+  stepHeight: 1
+  stepTime: 1
+  stepYawDeltaOffset: 0
+  stepRandomRadius: 0
+  inAirDamp: 32
+  feetRotSYaw: 2.5
+  feetRotPitch: 33
+  velocityDamp: 32
+  legInertiaDamp: 3
+  legInertiaThreshold: 0.8
+  legInertiaMultiplier: 0.025
+  legInertiaMinDamp: 0.25
+  legInAirInertiaMultiplier: 0.025
+  legInAirYInertiaMultiplier: -0.01
+  useBodyRotationWhenInAir: 0
+  rayCastCheckOffset: 12
+  useRayCastCheck: 0
